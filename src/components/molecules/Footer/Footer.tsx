@@ -1,11 +1,7 @@
 import { Container } from "@/components/atoms/Container/Container";
 import { memo } from "react";
 
-type FooterProps = {
-  isHome?: boolean;
-};
-
-export const Footer = memo(({ isHome }: FooterProps) => {
+export const Footer = memo(() => {
   const actualYear = new Date().getFullYear();
 
   return (
