@@ -17,7 +17,7 @@ const overlayVariants = {
 
 const marginsVariants = {
   default: "py-20",
-  banner: "mt-28",
+  banner: "lg:mt-28",
 };
 
 export const SectionWithOverlay = ({
