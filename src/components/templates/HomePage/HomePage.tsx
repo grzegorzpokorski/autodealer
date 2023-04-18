@@ -3,6 +3,7 @@ import { Main } from "@/components/molecules/Main/Main";
 import { SectionWithCounters } from "@/components/molecules/SectionWithCounters/SectionWithCounters";
 import { SectionWithFeatures } from "@/components/molecules/SectionWithFeatures/SectionWithFeatures";
 import { SectionWithOverlay } from "@/components/molecules/SectionWithOverlay/SectionWithOverlay";
+import { SectionWithRecommendedModels } from "@/components/organisms/SectionWithRecommendedModels/SectionWithRecommendedModels";
 import Image from "next/image";
 
 export const HomePage = () => {
@@ -49,6 +50,7 @@ export const HomePage = () => {
       <Main>
         <SectionWithCounters />
         <SectionWithFeatures />
+        <SectionWithRecommendedModels />
       </Main>
     </>
   );

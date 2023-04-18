@@ -1,11 +1,11 @@
-import { AnchorHTMLAttributes, ReactNode } from "react";
+import type { ReactNode } from "react";
 import LinkNext from "next/link";
 import { twMerge } from "tailwind-merge";
 
 type ButtonVariants = "primary" | "secondary" | "white";
 
 const baseButtonStyles =
-  "inline-flex transition-colors border-2 px-6 py-2 text-base text-center disabled:cursor-not-allowed items-center justify-center gap-1.5";
+  "inline-flex transition-colors border-2 text-center disabled:cursor-not-allowed items-center justify-center gap-1.5";
 
 const buttonVariants = {
   primary: twMerge(
@@ -26,6 +26,11 @@ const buttonVariants = {
   ),
 } as const;
 
+const sizes = {
+  default: "px-5 py-2 text-base",
+  large: "px-8 py-4 text-xl",
+};
+
 export type LinkProps = {
   href: string;
   children: ReactNode;
@@ -33,37 +38,46 @@ export type LinkProps = {
   onClick?: () => void;
   buttonStyle?: ButtonVariants;
   "aria-hidden"?: string;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+  size?: "default" | "large";
+};
 
-export const Link = (props: LinkProps) => {
-  const isInternal = props.href
-    ? props.href.startsWith("#") || props.href.startsWith("/")
+export const Link = ({
+  href,
+  onClick,
+  buttonStyle,
+  size = "default",
+  tabIndex,
+  children,
+}: LinkProps) => {
+  const isInternal = href
+    ? href.startsWith("#") || href.startsWith("/")
     : false;
 
   return isInternal ? (
     <LinkNext
-      href={props.href}
-      onClick={props.onClick}
+      href={href}
+      onClick={onClick}
       className={twMerge(
-        props.buttonStyle && buttonVariants[props.buttonStyle],
+        buttonStyle && buttonVariants[buttonStyle],
+        sizes[size],
       )}
-      tabIndex={props.tabIndex}
-      aria-hidden={props["aria-hidden"]}
+      tabIndex={tabIndex}
     >
-      {props.children}
+      {children}
     </LinkNext>
   ) : (
     <a
       target="_blank"
       rel="noopener noreferrer"
-      href={props.href}
-      tabIndex={props.tabIndex}
-      onClick={props.onClick}
+      href={href}
+      tabIndex={tabIndex}
+      onClick={onClick}
       className={twMerge(
-        props.buttonStyle && buttonVariants[props.buttonStyle],
+        buttonStyle && buttonVariants[buttonStyle],
+        sizes[size],
       )}
     >
-      {props.children}
+      {children}
     </a>
   );
 };
