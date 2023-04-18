@@ -50,6 +50,7 @@ const Item = ({ invoice, image, title, features, price, link }: ItemProps) => (
             width={image.width}
             height={image.height}
             className="object-cover object-center w-full h-full hover:scale-105 transition-all"
+            sizes="(max-width: 720px) 100vw, 50vw"
           />
         </picture>
       </NextLink>

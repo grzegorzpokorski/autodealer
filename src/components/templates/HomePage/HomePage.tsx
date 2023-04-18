@@ -37,8 +37,8 @@ export const HomePage = () => {
           </div>
           <picture className="relative w-full flex-1">
             <Image
-              src="/hero-image.png"
-              alt=""
+              src="/hero-image.webp"
+              alt="white mercedes car"
               className="w-full h-auto object-contain"
               width={1920}
               height={1084}
