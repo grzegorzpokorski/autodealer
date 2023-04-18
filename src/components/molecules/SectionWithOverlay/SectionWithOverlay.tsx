@@ -7,6 +7,7 @@ type Props = {
   ariaLabeledby: string;
   overlayColor: "primary-dark" | "secondary";
   as: "header" | "section";
+  margins?: "default" | "banner";
 };
 
 const overlayVariants = {
@@ -14,18 +15,25 @@ const overlayVariants = {
   secondary: "after:bg-secondary/95 ",
 };
 
+const marginsVariants = {
+  default: "py-20",
+  banner: "mt-28",
+};
+
 export const SectionWithOverlay = ({
   children,
   ariaLabeledby,
   overlayColor = "secondary",
   as: Tag,
+  margins = "default",
 }: Props) => {
   return (
     <Tag
       className={twMerge(
-        "py-20 bg-[url('/hero.webp')] bg-cover bg-center text-white",
+        "bg-[url('/hero.webp')] bg-cover bg-center text-white",
         "relative after:absolute after:content-[''] after:inset-0 z-[0]",
         overlayVariants[overlayColor],
+        marginsVariants[margins],
       )}
       aria-labelledby={ariaLabeledby}
     >

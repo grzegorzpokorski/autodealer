@@ -1,3 +1,4 @@
+import { Banner } from "@/components/organisms/Banner/Banner";
 import type { ReactNode } from "react";
 
 type MainProps = {
@@ -6,5 +7,10 @@ type MainProps = {
 };
 
 export const Main = ({ children }: MainProps) => {
-  return <main id="tresc">{children}</main>;
+  return (
+    <main id="tresc">
+      {children}
+      <Banner />
+    </main>
+  );
 };
