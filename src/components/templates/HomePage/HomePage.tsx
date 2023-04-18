@@ -1,6 +1,7 @@
 import { Link } from "@/components/atoms/Link/Link";
 import { Main } from "@/components/molecules/Main/Main";
 import { SectionWithCounters } from "@/components/molecules/SectionWithCounters/SectionWithCounters";
+import { SectionWithFeatures } from "@/components/molecules/SectionWithFeatures/SectionWithFeatures";
 import { SectionWithOverlay } from "@/components/molecules/SectionWithOverlay/SectionWithOverlay";
 import Image from "next/image";
 
@@ -47,6 +48,7 @@ export const HomePage = () => {
       </SectionWithOverlay>
       <Main>
         <SectionWithCounters />
+        <SectionWithFeatures />
       </Main>
     </>
   );
