@@ -42,6 +42,7 @@ export const HomePage = () => {
               className="w-full h-auto object-contain"
               width={1920}
               height={1084}
+              sizes="(max-width: 720px) 100vw, 50vw"
               priority
             />
           </picture>

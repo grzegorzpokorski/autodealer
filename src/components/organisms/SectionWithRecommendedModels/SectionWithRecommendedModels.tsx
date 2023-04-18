@@ -6,7 +6,7 @@ export const SectionWithRecommendedModels = () => {
   return (
     <section
       aria-labelledby="recomended-models"
-      className="pt-16 border-t border-secondary/10"
+      className="py-16 lg:pb-0 border-t border-secondary/10"
     >
       <Container>
         <header className="text-start">
@@ -33,11 +33,11 @@ export const SectionWithRecommendedModels = () => {
                 "Szary metalik",
                 "limuzyna",
               ],
-              price: 19999,
+              price: 229000,
               link: "/",
             },
             {
-              invoice: true,
+              invoice: false,
               image: {
                 src: "/citroen.webp",
                 width: 768,

@@ -1,7 +1,7 @@
 import { SectionWithOverlay } from "@/components/molecules/SectionWithOverlay/SectionWithOverlay";
-import HandWithKeys from "./../../../../public/hand-with-keys.webp";
 import Image from "next/image";
 import { Link } from "@/components/atoms/Link/Link";
+import HandWithKeys from "./../../../../public/hand-with-keys.webp";
 
 export const Banner = () => {
   return (
