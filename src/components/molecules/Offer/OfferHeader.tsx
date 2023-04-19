@@ -8,7 +8,7 @@ type Props = {
 
 export const OfferHeader = ({ href, title }: Props) => (
   <header className="px-4">
-    <Link href={href} className="hover:text-underline focus:text-underline">
+    <Link href={href} className="hover:underline focus:underline">
       <Heading as="h3" size="base">
         {title}
       </Heading>
