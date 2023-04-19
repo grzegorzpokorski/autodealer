@@ -1,8 +1,9 @@
 import { Main } from "@/components/molecules/Main/Main";
 import { Features } from "@/components/organisms/Features/Features";
-import { RecommendedModels } from "@/components/organisms/RecommendedModels/RecommendedModels";
+import { RecommendedOffers } from "@/components/organisms/RecommendedOffers/RecommendedOffers";
 import { Metrics } from "@/components/molecules/Metrics/Metrics";
 import { Hero } from "@/components/organisms/Hero/Hero";
+import offersFromJSON from "@/data/offers.json";
 
 export const HomePage = () => {
   return (
@@ -30,7 +31,7 @@ export const HomePage = () => {
           </Metrics.Item>
         </Metrics>
         <Features />
-        <RecommendedModels />
+        <RecommendedOffers offers={offersFromJSON.slice(0, 3)} />
       </Main>
     </>
   );

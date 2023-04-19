@@ -5,10 +5,15 @@ import { Section } from "@/components/atoms/Section/Section";
 import { Heading } from "@/components/atoms/Heading/Heading";
 import { GridList } from "@/components/atoms/GridList/GridList";
 import { Offer } from "@/components/molecules/Offer/Offer";
-import offers from "@/data/offers.json";
+import offersFromJSON from "@/data/offers.json";
 
-export const RecommendedModels = () => {
+type Props = {
+  offers: (typeof offersFromJSON)[number][];
+};
+
+export const RecommendedOffers = ({ offers }: Props) => {
   const sectionTitleID = useId();
+
   return (
     <Section ariaLabelledby={sectionTitleID} border="top">
       <Container>

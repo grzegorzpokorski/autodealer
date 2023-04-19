@@ -4,11 +4,15 @@ import { SectionWithOverlay } from "@/components/molecules/SectionWithOverlay/Se
 import { Heading } from "@/components/atoms/Heading/Heading";
 import { GridList } from "@/components/atoms/GridList/GridList";
 import { Offer } from "@/components/molecules/Offer/Offer";
-import offers from "@/data/offers.json";
 import { Section } from "@/components/atoms/Section/Section";
 import { Container } from "@/components/atoms/Container/Container";
+import offersFromJSON from "@/data/offers.json";
 
-export const OfferPage = () => {
+type Props = {
+  offers: (typeof offersFromJSON)[number][];
+};
+
+export const OfferPage = ({ offers }: Props) => {
   return (
     <>
       <SectionWithOverlay
