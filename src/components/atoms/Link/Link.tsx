@@ -49,8 +49,10 @@ export const Link = ({
   tabIndex,
   children,
 }: LinkProps) => {
-  const isInternal = href
-    ? href.startsWith("#") || href.startsWith("/")
+  const isInternal = ["#", "/", "tel:", "email:"].some((item) =>
+    href.startsWith(item),
+  )
+    ? true
     : false;
 
   return isInternal ? (

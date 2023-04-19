@@ -23,9 +23,11 @@ export const useNavbar = () => {
 
   return useMemo(
     () => ({
+      closeMobileMenu,
+      openMobileMenu,
       isMobileMenuOpen,
       toggleMobileMenu,
     }),
-    [isMobileMenuOpen, toggleMobileMenu],
+    [closeMobileMenu, isMobileMenuOpen, openMobileMenu, toggleMobileMenu],
   );
 };

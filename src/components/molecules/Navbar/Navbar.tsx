@@ -9,12 +9,12 @@ import { useNavbar } from "./useNavbar";
 
 export const Navbar = () => {
   const menuID = `menu-${useId()}`;
-  const { isMobileMenuOpen, toggleMobileMenu } = useNavbar();
+  const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useNavbar();
 
   return (
     <nav className="h-20 flex flex-col justify-center relative z-10">
       <Container>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between items-center">
           <Navbar.Logo />
           <Navbar.Toggler
             menuID={menuID}
@@ -22,12 +22,42 @@ export const Navbar = () => {
             onClick={toggleMobileMenu}
           />
           <Navbar.Menu id={menuID} isMobileMenuOpen={isMobileMenuOpen}>
-            <Navbar.Menu.Item label="O nas" href="/o-nas" />
-            <Navbar.Menu.Item label="Finansowanie" href="/finansowanie" />
-            <Navbar.Menu.Item label="Gwarancja" href="/gwarancja" />
-            <Navbar.Menu.Item label="Oferta" href="/oferta" />
-            <Navbar.Menu.Item label="Sprzedaliśmy" href="/sprzedalismy" />
-            <Navbar.Menu.Item label="Kontakt" href="/kontakt" />
+            <Navbar.Menu.Item
+              onClick={closeMobileMenu}
+              label="O nas"
+              href="/o-nas"
+            />
+            <Navbar.Menu.Item
+              onClick={closeMobileMenu}
+              label="Finansowanie"
+              href="/finansowanie"
+            />
+            <Navbar.Menu.Item
+              onClick={closeMobileMenu}
+              label="Gwarancja"
+              href="/gwarancja"
+            />
+            <Navbar.Menu.Item
+              onClick={closeMobileMenu}
+              label="Oferta"
+              href="/oferta"
+            />
+            <Navbar.Menu.Item
+              onClick={closeMobileMenu}
+              label="Sprzedaliśmy"
+              href="/sprzedalismy"
+            />
+            <Navbar.Menu.Item
+              onClick={closeMobileMenu}
+              label="Kontakt"
+              href="/kontakt"
+            />
+            <Navbar.Menu.Item
+              label="+48 123 456 789"
+              href="tel:123456789"
+              button
+              onClick={() => null}
+            />
           </Navbar.Menu>
         </div>
       </Container>

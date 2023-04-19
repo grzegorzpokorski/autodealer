@@ -1,27 +1,47 @@
 "use client";
 
+import { Link } from "@/components/atoms/Link/Link";
+import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
   href: string;
   label: string;
+  onClick: () => void;
+  button?: boolean;
 };
 
-export const NavbarMenuItem = ({ label, href }: Props) => {
+export const NavbarMenuItem = ({ label, href, button, onClick }: Props) => {
   const pathname = usePathname();
+
+  if (button) {
+    return (
+      <li className="lg:ms-8">
+        <Link
+          href={href}
+          buttonStyle="secondary"
+          size="default"
+          onClick={onClick}
+        >
+          {label}
+        </Link>
+      </li>
+    );
+  }
 
   return (
     <li>
-      <a
+      <NextLink
         href={href}
         className={twMerge(
           "text-secondary/60 hover:text-secondary focus:text-secondary transition-colors",
           pathname === href && "text-secondary",
         )}
+        onClick={onClick}
       >
         {label}
-      </a>
+      </NextLink>
     </li>
   );
 };
