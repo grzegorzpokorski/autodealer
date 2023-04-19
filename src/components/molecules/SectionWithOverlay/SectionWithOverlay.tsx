@@ -7,7 +7,8 @@ type Props = {
   ariaLabeledby: string;
   overlayColor: "primary-dark" | "secondary";
   as: "header" | "section";
-  margins?: "default" | "banner";
+  padding?: "none" | "default";
+  margin?: "none" | "banner";
 };
 
 const overlayVariants = {
@@ -15,17 +16,23 @@ const overlayVariants = {
   secondary: "after:bg-secondary/95 ",
 };
 
-const marginsVariants = {
+const paddingVariants = {
+  none: "p-0",
   default: "py-20",
+} as const;
+
+const marginVariants = {
+  none: "m-0",
   banner: "lg:mt-28",
-};
+} as const;
 
 export const SectionWithOverlay = ({
   children,
   ariaLabeledby,
   overlayColor = "secondary",
   as: Tag,
-  margins = "default",
+  padding = "default",
+  margin = "none",
 }: Props) => {
   return (
     <Tag
@@ -33,7 +40,8 @@ export const SectionWithOverlay = ({
         "bg-[url('/hero.webp')] bg-cover bg-center text-white",
         "relative after:absolute after:content-[''] after:inset-0 z-[0]",
         overlayVariants[overlayColor],
-        marginsVariants[margins],
+        paddingVariants[padding],
+        marginVariants[margin],
       )}
       aria-labelledby={ariaLabeledby}
     >

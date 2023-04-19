@@ -1,15 +1,20 @@
-import { SectionWithOverlay } from "@/components/molecules/SectionWithOverlay/SectionWithOverlay";
+import { useId } from "react";
 import Image from "next/image";
+import { SectionWithOverlay } from "@/components/molecules/SectionWithOverlay/SectionWithOverlay";
 import { Link } from "@/components/atoms/Link/Link";
-import HandWithKeys from "./../../../../public/hand-with-keys.webp";
+import { Heading } from "@/components/atoms/Heading/Heading";
+import HandWithKeys from "publicDir/hand-with-keys.webp";
 
 export const Banner = () => {
+  const sectionTitleID = useId();
+
   return (
     <SectionWithOverlay
       as="section"
+      ariaLabeledby={sectionTitleID}
       overlayColor="primary-dark"
-      ariaLabeledby="banner-title"
-      margins="banner"
+      margin="banner"
+      padding="none"
     >
       <div className="grid grid-cols-4 relative">
         <picture className="hidden md:flex relative col-span-1">
@@ -20,9 +25,9 @@ export const Banner = () => {
           />
         </picture>
         <header className="flex flex-col items-center text-center md:text-start md:items-start gap-4 col-span-4 md:col-span-3 py-20 md:ms-20 md:w-8/12">
-          <h2 className="font-bold text-4xl" id="banner-title">
+          <Heading as="h2" size="md" id={sectionTitleID}>
             Już dzisiaj znajdź dla siebie wymażone auto!
-          </h2>
+          </Heading>
           <Link href="/oferta" buttonStyle="white">
             Zobacz naszą ofertę
           </Link>

@@ -1,18 +1,21 @@
+import { useId } from "react";
+import Image from "next/image";
 import { Heading } from "@/components/atoms/Heading/Heading";
 import { Link } from "@/components/atoms/Link/Link";
 import { SectionWithOverlay } from "@/components/molecules/SectionWithOverlay/SectionWithOverlay";
-import Image from "next/image";
 
 export const Hero = () => {
+  const sectionTitleID = useId();
+
   return (
     <SectionWithOverlay
       as="header"
-      ariaLabeledby={"hero-title"}
+      ariaLabeledby={sectionTitleID}
       overlayColor="secondary"
     >
       <div className="flex flex-col md:flex-row gap-10 items-center text-center md:text-start">
         <div className="flex flex-col gap-4 flex-1">
-          <Heading as="h2" size="lg">
+          <Heading as="h2" size="lg" id={sectionTitleID}>
             Samochody z Polskiej sieci dealerskiej
           </Heading>
           <p>

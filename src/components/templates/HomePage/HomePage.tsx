@@ -1,7 +1,6 @@
 import { Main } from "@/components/molecules/Main/Main";
 import { Features } from "@/components/organisms/Features/Features";
 import { RecommendedModels } from "@/components/organisms/RecommendedModels/RecommendedModels";
-
 import { Metrics } from "@/components/molecules/Metrics/Metrics";
 import { Hero } from "@/components/organisms/Hero/Hero";
 
