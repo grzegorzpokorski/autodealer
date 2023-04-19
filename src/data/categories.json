@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Alfa Romeo",
+    "count": 4
+  },
+  {
+    "name": "Mercedes",
+    "count": 32
+  },
+  {
+    "name": "Audi",
+    "count": 46
+  },
+  {
+    "name": "BMW",
+    "count": 65
+  },
+  {
+    "name": "KIA",
+    "count": 15
+  },
+  {
+    "name": "Volkswagen",
+    "count": 102
+  },
+  {
+    "name": "Renault",
+    "count": 21
+  },
+  {
+    "name": "Citroen",
+    "count": 46
+  }
+]

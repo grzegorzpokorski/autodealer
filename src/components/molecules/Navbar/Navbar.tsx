@@ -54,7 +54,7 @@ export const Navbar = () => {
             />
             <Navbar.Menu.Item
               label="+48 123 456 789"
-              href="tel:123456789"
+              href="tel:+48123456789"
               button
               onClick={() => null}
             />

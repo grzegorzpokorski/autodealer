@@ -18,7 +18,7 @@ export const NavbarMenu = ({ children, id, isMobileMenuOpen }: Props) => (
   >
     <ul
       className={twMerge(
-        "list-none flex flex-col lg:flex-row gap-4 py-10 lg:py-0 overflow-y-auto w-full lg:w-auto text-center items-center",
+        "list-none flex flex-col lg:flex-row gap-6 py-10 lg:py-0 overflow-y-auto w-full lg:w-auto text-center items-center",
       )}
       role="list"
       id={id}
