@@ -1,10 +1,11 @@
 import { useId } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { Container } from "@/components/atoms/Container/Container";
 import { Section } from "@/components/atoms/Section/Section";
 import { Heading } from "@/components/atoms/Heading/Heading";
 import { GridList } from "@/components/atoms/GridList/GridList";
 import { Offer } from "@/components/molecules/Offer/Offer";
+import { Link } from "@/components/atoms/Link/Link";
 import offersFromJSON from "@/data/offers.json";
 
 type Props = {
@@ -26,9 +27,9 @@ export const RecommendedOffers = ({ offers }: Props) => {
           {offers.map((offer) => (
             <Offer key={offer.title}>
               {offer.invoice && <Offer.Invoice />}
-              <Link href={offer.link}>
+              <NextLink href={offer.link}>
                 <Offer.Image image={offer.image} />
-              </Link>
+              </NextLink>
               <Offer.Header href="/" title={offer.title} />
               {offer.features.length > 0 && (
                 <Offer.FeaturesList>
@@ -46,6 +47,11 @@ export const RecommendedOffers = ({ offers }: Props) => {
             </Offer>
           ))}
         </GridList>
+        <footer className="pt-8 text-center">
+          <Link href="/oferta" buttonStyle="primary" size="large">
+            Zobacz całą ofertę
+          </Link>
+        </footer>
       </Container>
     </Section>
   );
