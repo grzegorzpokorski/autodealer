@@ -41,7 +41,7 @@ export const Section = ({
     <Tag
       aria-labelledby={ariaLabelledby}
       className={twMerge(
-        "border-secondary/10",
+        "relative border-secondary/10",
         paddingVariants[padding],
         marginVariants[margin],
         borderVariants[border],

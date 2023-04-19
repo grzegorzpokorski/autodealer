@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { Feature } from "@/components/molecules/Feature/Feature";
 
-export const SectionWithFeatures = () => {
+export const Features = () => {
   const sectionTitleID = useId();
   return (
     <Section ariaLabelledby={sectionTitleID}>
