@@ -1,0 +1,122 @@
+[
+  {
+    "invoice": true,
+    "image": {
+      "src": "/mercedes.webp",
+      "width": 768,
+      "height": 576,
+      "alt": "Mercedes s500 amg aso"
+    },
+    "title": "Mercedes s500 amg aso",
+    "features": [
+      "2009",
+      "235 KM",
+      "139 000 km",
+      "3.0",
+      "Szary metalik",
+      "limuzyna"
+    ],
+    "price": 229000,
+    "link": "/"
+  },
+  {
+    "invoice": false,
+    "image": {
+      "src": "/citroen.webp",
+      "width": 768,
+      "height": 576,
+      "alt": "Citroen C4 Picasso"
+    },
+    "title": "Citroen C4 Picasso",
+    "features": [
+      "2009",
+      "235 KM",
+      "139 000 km",
+      "3.0",
+      "Szary metalik",
+      "limuzyna"
+    ],
+    "price": 56400,
+    "link": "/"
+  },
+  {
+    "invoice": true,
+    "image": {
+      "src": "/ferrari.webp",
+      "width": 768,
+      "height": 576,
+      "alt": "Ferrari F420 edition"
+    },
+    "title": "Ferrari F420 edition",
+    "features": [
+      "2009",
+      "235 KM",
+      "139 000 km",
+      "3.0",
+      "Szary metalik",
+      "limuzyna"
+    ],
+    "price": 419000,
+    "link": "/"
+  },
+  {
+    "invoice": true,
+    "image": {
+      "src": "/mercedes.webp",
+      "width": 768,
+      "height": 576,
+      "alt": "Mercedes s500"
+    },
+    "title": "Mercedes s500",
+    "features": [
+      "2009",
+      "235 KM",
+      "139 000 km",
+      "3.0",
+      "Szary metalik",
+      "limuzyna"
+    ],
+    "price": 229000,
+    "link": "/"
+  },
+  {
+    "invoice": false,
+    "image": {
+      "src": "/citroen.webp",
+      "width": 768,
+      "height": 576,
+      "alt": "Citroen C4"
+    },
+    "title": "Citroen C4",
+    "features": [
+      "2009",
+      "235 KM",
+      "139 000 km",
+      "3.0",
+      "Szary metalik",
+      "limuzyna"
+    ],
+    "price": 56400,
+    "link": "/"
+  },
+  {
+    "invoice": true,
+    "image": {
+      "src": "/ferrari.webp",
+      "width": 768,
+      "height": 576,
+      "alt": "Ferrari F420"
+    },
+    "title": "Ferrari F420",
+    "features": [
+      "2009",
+      "235 KM",
+      "139 000 km",
+      "3.0",
+      "Szary metalik",
+      "limuzyna"
+    ],
+    "price": 419000,
+    "link": "/"
+  }
+]

@@ -1,6 +1,7 @@
 import { Container } from "@/components/atoms/Container/Container";
 import { Link } from "@/components/atoms/Link/Link";
 import { OfferList } from "@/components/molecules/OfferLilst/OfferList";
+import offers from "@/data/offers.json";
 
 export const SectionWithRecommendedModels = () => {
   return (
@@ -14,70 +15,7 @@ export const SectionWithRecommendedModels = () => {
             Zobacz polecane modele
           </h2>
         </header>
-        <OfferList
-          offers={[
-            {
-              invoice: true,
-              image: {
-                src: "/mercedes.webp",
-                width: 768,
-                height: 576,
-                alt: "Mercedes s500 amg aso",
-              },
-              title: "Mercedes s500 amg aso",
-              features: [
-                "2009",
-                "235 KM",
-                "139 000 km",
-                "3.0",
-                "Szary metalik",
-                "limuzyna",
-              ],
-              price: 229000,
-              link: "/",
-            },
-            {
-              invoice: false,
-              image: {
-                src: "/citroen.webp",
-                width: 768,
-                height: 576,
-                alt: "Citroen C4 Picasso",
-              },
-              title: "Citroen C4 Picasso",
-              features: [
-                "2009",
-                "235 KM",
-                "139 000 km",
-                "3.0",
-                "Szary metalik",
-                "limuzyna",
-              ],
-              price: 56400,
-              link: "/",
-            },
-            {
-              invoice: true,
-              image: {
-                src: "/ferrari.webp",
-                width: 768,
-                height: 576,
-                alt: "Ferrari F420 edition",
-              },
-              title: "Ferrari F420 edition",
-              features: [
-                "2009",
-                "235 KM",
-                "139 000 km",
-                "3.0",
-                "Szary metalik",
-                "limuzyna",
-              ],
-              price: 419000,
-              link: "/",
-            },
-          ]}
-        />
+        <OfferList offers={offers.slice(0, 3)} withMarginAbove />
         <footer className="text-center mt-8">
           <Link href="/oferta" buttonStyle="primary" size="large">
             Zobacz całą ofertę

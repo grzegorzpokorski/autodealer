@@ -2,6 +2,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { Link } from "@/components/atoms/Link/Link";
 import { formatCurrency } from "@/utils/formatCurrency";
+import { twMerge } from "tailwind-merge";
 
 type ItemProps = {
   invoice: boolean;
@@ -19,12 +20,16 @@ type ItemProps = {
 
 type OfferListProps = {
   offers: ItemProps[];
+  withMarginAbove: boolean;
 };
 
-export const OfferList = ({ offers }: OfferListProps) => {
+export const OfferList = ({ offers, withMarginAbove }: OfferListProps) => {
   return (
     <ul
-      className="list-none grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 mt-16"
+      className={twMerge(
+        "list-none grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8",
+        withMarginAbove && "mt-16",
+      )}
       role="list"
     >
       {offers.map((props) => (
