@@ -12,6 +12,10 @@ const poppins = Poppins({
 export const metadata = {
   title: "AutoBart",
   description: "Samochody z Polskiej sieci dealerskiej",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
