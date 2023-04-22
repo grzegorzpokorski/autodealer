@@ -1,6 +1,8 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
+console.log(colors.primary);
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -16,7 +18,21 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-poppins)", ...defaultTheme.fontFamily.sans],
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            blockquote: {
+              borderColor: "#31a4fb80",
+            },
+            li: {
+              "&::marker": {
+                color: "#65bbfc",
+              },
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

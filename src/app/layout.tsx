@@ -10,8 +10,9 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "AutoBart",
-  description: "Samochody z Polskiej sieci dealerskiej",
+  title: { default: "AutoDealer", template: "AutoDealer | %s" },
+  description:
+    "Samochody z Polskiej sieci dealerskiej. Sprzedaż samochodów Gdynia.",
   robots: {
     index: false,
     follow: false,
