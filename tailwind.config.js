@@ -15,10 +15,10 @@ module.exports = {
         secondary: "#0f143c",
         "light-gray": "#f6f6f6",
       },
-      fontFamily: {
-        sans: ["var(--font-poppins)", ...defaultTheme.fontFamily.sans],
-      },
       typography: {
+        fontFamily: {
+          sans: ["var(--font-poppins)", ...defaultTheme.fontFamily.sans],
+        },
         DEFAULT: {
           css: {
             blockquote: {
