@@ -16,7 +16,7 @@ const bgVariants = {
 
 export const MetricsItem = ({ children, bg }: Props) => (
   <li className={twMerge("flex-1", bgVariants[bg])}>
-    <article className="p-8 flex flex-col lg:flex-row gap-4 items-center min-h-full">
+    <article className="p-8 flex flex-col lg:flex-row gap-4 items-center min-h-full justify-center">
       {children}
     </article>
   </li>

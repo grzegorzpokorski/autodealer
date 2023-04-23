@@ -4,6 +4,7 @@ import { Section } from "@/components/atoms/Section/Section";
 import { Heading } from "@/components/atoms/Heading/Heading";
 import { twMerge } from "tailwind-merge";
 import { MetricsItem } from "./MetricsItem/MetricsItem";
+import { MetricsLink } from "./MetricsLink";
 
 type Props = {
   children: ReactNode;
@@ -38,3 +39,4 @@ export const Metrics = ({ children, title }: Props) => {
 };
 
 Metrics.Item = MetricsItem;
+Metrics.Link = MetricsLink;
