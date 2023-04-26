@@ -18,7 +18,75 @@
       { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 229000,
-    "link": "/oferta/0"
+    "link": "/oferta/0",
+    "gallery": [
+      {
+        "src": "/offer/0/1.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/2.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/3.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/4.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/5.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/6.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/7.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/8.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/9.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/10.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/11.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      }
+    ]
   },
   {
     "id": "1",
@@ -39,7 +107,75 @@
       { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 56400,
-    "link": "/oferta/1"
+    "link": "/oferta/1",
+    "gallery": [
+      {
+        "src": "/offer/0/1.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/2.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/3.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/4.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/5.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/6.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/7.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/8.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/9.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/10.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/11.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      }
+    ]
   },
   {
     "id": "2",
@@ -60,6 +196,74 @@
       { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 419000,
-    "link": "/oferta/2"
+    "link": "/oferta/2",
+    "gallery": [
+      {
+        "src": "/offer/0/1.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/2.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/3.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/4.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/5.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/6.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/7.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/8.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/9.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/10.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      },
+      {
+        "src": "/offer/0/11.webp",
+        "width": 800,
+        "height": 600,
+        "alt": "Mercedes s500 amg aso"
+      }
+    ]
   }
 ]

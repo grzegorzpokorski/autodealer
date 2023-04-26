@@ -2,6 +2,7 @@ import { Container } from "@/components/atoms/Container/Container";
 import { Heading } from "@/components/atoms/Heading/Heading";
 import { Link } from "@/components/atoms/Link/Link";
 import { Main } from "@/components/molecules/Main/Main";
+import { Slider } from "@/components/molecules/Slider/Slider";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { twMerge } from "tailwind-merge";
 
@@ -22,6 +23,12 @@ type Props = {
     }[];
     price: number;
     link: string;
+    gallery: {
+      src: string;
+      width: number;
+      height: number;
+      alt: string;
+    }[];
   };
 };
 
@@ -31,6 +38,9 @@ export const SinglePage = ({ offer }: Props) => {
       <Main>
         <Container>
           <article className="grid grid-cols-12 gap-3 md:gap-6 py-8">
+            <div className="col-span-12">
+              <Slider images={offer.gallery} />
+            </div>
             <div className="col-span-12 md:col-span-7 flex flex-col gap-3 md:gap-6 order-2 md:order-1">
               <header
                 className="p-8 bg-white shadow prose max-w-none"
