@@ -12,7 +12,7 @@ export const Navbar = () => {
   const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useNavbar();
 
   return (
-    <nav className="h-20 flex flex-col justify-center relative z-10">
+    <nav className="h-20 flex flex-col justify-center relative z-10 bg-white">
       <Container>
         <div className="flex flex-row justify-between items-center">
           <Navbar.Logo />

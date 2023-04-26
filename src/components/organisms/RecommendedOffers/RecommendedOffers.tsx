@@ -34,8 +34,8 @@ export const RecommendedOffers = ({ offers }: Props) => {
               {offer.features.length > 0 && (
                 <Offer.FeaturesList>
                   {offer.features.map((feature) => (
-                    <Offer.FeaturesList.Item key={feature}>
-                      {feature}
+                    <Offer.FeaturesList.Item key={feature.label}>
+                      {feature.value}
                     </Offer.FeaturesList.Item>
                   ))}
                 </Offer.FeaturesList>

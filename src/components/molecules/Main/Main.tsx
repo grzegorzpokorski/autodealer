@@ -1,14 +1,15 @@
 import { Banner } from "@/components/organisms/Banner/Banner";
 import type { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 type MainProps = {
   children: ReactNode;
   withMarginOnTop?: boolean;
 };
 
-export const Main = ({ children }: MainProps) => {
+export const Main = ({ children, withMarginOnTop }: MainProps) => {
   return (
-    <main id="tresc">
+    <main id="tresc" className={twMerge(withMarginOnTop && "mt-8")}>
       {children}
       <Banner />
     </main>

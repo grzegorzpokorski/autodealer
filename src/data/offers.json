@@ -1,5 +1,6 @@
 [
   {
+    "id": "0",
     "invoice": true,
     "image": {
       "src": "/mercedes.webp",
@@ -9,17 +10,18 @@
     },
     "title": "Mercedes s500 amg aso",
     "features": [
-      "2009",
-      "235 KM",
-      "139 000 km",
-      "3.0",
-      "Szary metalik",
-      "limuzyna"
+      { "label": "Rocznik", "value": "2009" },
+      { "label": "Moc", "value": "235 KM" },
+      { "label": "Przebieg", "value": "139 000 km" },
+      { "label": "Pojemność silnika", "value": "3.0" },
+      { "label": "Kolor", "value": "Szary metalik" },
+      { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 229000,
-    "link": "/"
+    "link": "/oferta/0"
   },
   {
+    "id": "1",
     "invoice": false,
     "image": {
       "src": "/citroen.webp",
@@ -29,17 +31,18 @@
     },
     "title": "Citroen C4 Picasso",
     "features": [
-      "2009",
-      "235 KM",
-      "139 000 km",
-      "3.0",
-      "Szary metalik",
-      "limuzyna"
+      { "label": "Rocznik", "value": "2009" },
+      { "label": "Moc", "value": "235 KM" },
+      { "label": "Przebieg", "value": "139 000 km" },
+      { "label": "Pojemność silnika", "value": "3.0" },
+      { "label": "Kolor", "value": "Szary metalik" },
+      { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 56400,
-    "link": "/"
+    "link": "/oferta/1"
   },
   {
+    "id": "2",
     "invoice": true,
     "image": {
       "src": "/ferrari.webp",
@@ -49,74 +52,14 @@
     },
     "title": "Ferrari F420 edition",
     "features": [
-      "2009",
-      "235 KM",
-      "139 000 km",
-      "3.0",
-      "Szary metalik",
-      "limuzyna"
+      { "label": "Rocznik", "value": "2009" },
+      { "label": "Moc", "value": "235 KM" },
+      { "label": "Przebieg", "value": "139 000 km" },
+      { "label": "Pojemność silnika", "value": "3.0" },
+      { "label": "Kolor", "value": "Szary metalik" },
+      { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 419000,
-    "link": "/"
-  },
-  {
-    "invoice": true,
-    "image": {
-      "src": "/mercedes.webp",
-      "width": 768,
-      "height": 576,
-      "alt": "Mercedes s500"
-    },
-    "title": "Mercedes s500",
-    "features": [
-      "2009",
-      "235 KM",
-      "139 000 km",
-      "3.0",
-      "Szary metalik",
-      "limuzyna"
-    ],
-    "price": 229000,
-    "link": "/"
-  },
-  {
-    "invoice": false,
-    "image": {
-      "src": "/citroen.webp",
-      "width": 768,
-      "height": 576,
-      "alt": "Citroen C4"
-    },
-    "title": "Citroen C4",
-    "features": [
-      "2009",
-      "235 KM",
-      "139 000 km",
-      "3.0",
-      "Szary metalik",
-      "limuzyna"
-    ],
-    "price": 56400,
-    "link": "/"
-  },
-  {
-    "invoice": true,
-    "image": {
-      "src": "/ferrari.webp",
-      "width": 768,
-      "height": 576,
-      "alt": "Ferrari F420"
-    },
-    "title": "Ferrari F420",
-    "features": [
-      "2009",
-      "235 KM",
-      "139 000 km",
-      "3.0",
-      "Szary metalik",
-      "limuzyna"
-    ],
-    "price": 419000,
-    "link": "/"
+    "link": "/oferta/2"
   }
 ]
