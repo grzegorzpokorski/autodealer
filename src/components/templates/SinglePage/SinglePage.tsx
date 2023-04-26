@@ -126,12 +126,12 @@ export const SinglePage = ({ offer }: Props) => {
                     </p>
                   )}
                 </div>
-                <div className="flex flex-row gap-2 items-center justify-center">
+                <div className="flex flex-row flex-wrap gap-2 items-center justify-center">
                   <Link href="tel:+48123456789" buttonStyle="white">
                     <span className="font-bold">Zadźwoń:</span> +48 123 456 789
                   </Link>
                   {offer.invoice && (
-                    <p className="bg-white text-secondary h-full items-center inline-flex px-4">
+                    <p className="bg-white text-secondary items-center inline-flex px-4 py-2 border-2 border-white">
                       Faktura VAT
                     </p>
                   )}
