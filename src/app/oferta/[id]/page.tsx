@@ -9,6 +9,12 @@ export function generateStaticParams() {
 
 export default function Offer({ params: { id } }: { params: { id: string } }) {
   const offer = offersFromJSON.at(parseInt(id));
-  if (offer) return <SinglePage offer={offer} />;
+  if (offer)
+    return (
+      <SinglePage
+        offer={offer}
+        recommendedOffers={offersFromJSON.slice(0, 3)}
+      />
+    );
   return null;
 }

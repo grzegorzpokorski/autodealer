@@ -38,7 +38,7 @@ export const OfferPage = ({ offers }: Props) => {
                   <Offer key={offer.title}>
                     {offer.invoice && <Offer.Invoice />}
                     <Link href={offer.link}>
-                      <Offer.Image image={offer.image} />
+                      <Offer.Image image={offer.gallery[0]} />
                     </Link>
                     <Offer.Header href="/" title={offer.title} />
                     {offer.features.length > 0 && (

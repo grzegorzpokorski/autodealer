@@ -3,6 +3,7 @@ import { Heading } from "@/components/atoms/Heading/Heading";
 import { Link } from "@/components/atoms/Link/Link";
 import { Main } from "@/components/molecules/Main/Main";
 import { Slider } from "@/components/molecules/Slider/Slider";
+import { RecommendedOffers } from "@/components/organisms/RecommendedOffers/RecommendedOffers";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { twMerge } from "tailwind-merge";
 
@@ -10,12 +11,6 @@ type Props = {
   offer: {
     id: string;
     invoice: boolean;
-    image: {
-      src: string;
-      width: number;
-      height: number;
-      alt: string;
-    };
     title: string;
     features: {
       label: string;
@@ -30,9 +25,26 @@ type Props = {
       alt: string;
     }[];
   };
+  recommendedOffers: {
+    id: string;
+    invoice: boolean;
+    title: string;
+    features: {
+      label: string;
+      value: string;
+    }[];
+    price: number;
+    link: string;
+    gallery: {
+      src: string;
+      width: number;
+      height: number;
+      alt: string;
+    }[];
+  }[];
 };
 
-export const SinglePage = ({ offer }: Props) => {
+export const SinglePage = ({ offer, recommendedOffers }: Props) => {
   return (
     <>
       <Main>
@@ -136,20 +148,23 @@ export const SinglePage = ({ offer }: Props) => {
                     </p>
                   )}
                 </div>
-                <div className="flex flex-row flex-wrap gap-2 items-center justify-center">
+                <div className="flex flex-row flex-wrap flex-wrap justify-between gap-2">
                   <Link href="tel:+48123456789" buttonStyle="white">
                     <span className="font-bold">Zadźwoń:</span> +48 123 456 789
                   </Link>
-                  {offer.invoice && (
-                    <p className="bg-white text-secondary items-center inline-flex px-4 py-2 border-2 border-white">
-                      Faktura VAT
-                    </p>
-                  )}
+                  <Link href="tel:+48123456789" buttonStyle="white">
+                    <span className="font-bold">Wyznacz trasę</span>
+                  </Link>
                 </div>
               </div>
             </div>
           </article>
         </Container>
+        <RecommendedOffers
+          offers={recommendedOffers}
+          title="Zobacz również inne modele"
+          cta={false}
+        />
       </Main>
     </>
   );
