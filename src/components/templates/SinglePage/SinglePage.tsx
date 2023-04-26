@@ -105,7 +105,7 @@ export const SinglePage = ({ offer }: Props) => {
               </section>
             </div>
             <div className="col-span-12 md:col-span-5 flex flex-col gap-3 md:gap-6 order-1 md:order-2">
-              <div className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8">
+              <div className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow">
                 <div
                   className={twMerge(
                     "divide-y-2 [&>p]:py-4 [&>p:first-child]:pt-0 [&>p:last-child]:pb-0",
