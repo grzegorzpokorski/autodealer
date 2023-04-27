@@ -84,11 +84,13 @@ export const useSlider = ({ images }: Args) => {
     e.preventDefault();
     setIsLightboxOpen(true);
     document.body.classList.add("overflow-hidden");
+    document.body.querySelector("#page-root")?.setAttribute("inert", "true");
   }, []);
 
   const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
     document.body.classList.remove("overflow-hidden");
+    document.body.querySelector("#page-root")?.removeAttribute("inert");
   }, []);
 
   useOnKeydown(
