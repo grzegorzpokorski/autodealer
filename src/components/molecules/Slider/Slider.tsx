@@ -121,7 +121,7 @@ export const Slider = ({ images }: Props) => {
             {images.map((image) => (
               <li
                 key={image.src}
-                className="w-screen h-screen flex flex-col items-center justify-center"
+                className="w-[100dvw] h-[100dvh] flex flex-col items-center justify-center"
               >
                 <div className="max-w-[80dvw] w-[80dvw] max-h-[95dvh] h-auto mx-[10dvw]">
                   <Image
