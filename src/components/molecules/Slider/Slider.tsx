@@ -4,7 +4,6 @@ import Image from "next/image";
 import { MouseEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
-import { createPortal } from "react-dom";
 import { useSlider } from "./useSlider";
 import FsLightbox from "fslightbox-react";
 import { Portal } from "@/components/atoms/Portal/Portal";
