@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { FaAngleLeft, FaPlus } from "react-icons/fa";
+import { FaAngleLeft } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
 import { useSlider } from "./useSlider";
 import { Portal } from "@/components/atoms/Portal/Portal";
+import { ArrowButton } from "./ArrowButton";
+import { CloseButton } from "./CloseButton";
+import { LightboxCounter } from "./LightboxCounter";
 
 type Props = {
   images: {
@@ -29,10 +32,11 @@ export const Slider = ({ images }: Props) => {
     openLightbox,
     closeLightbox,
     isLightboxOpen,
+    setSlide,
   } = useSlider({ images });
 
   return (
-    <div className="relative group">
+    <div className="relative">
       <ul
         className="overflow-hidden flex flex-row gap-4 scroll-smooth snap-x"
         ref={sliderRef}
@@ -56,7 +60,10 @@ export const Slider = ({ images }: Props) => {
               href={image.src}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={openLightbox}
+              onClick={(e) => {
+                setSlide(idx);
+                openLightbox(e);
+              }}
               draggable={false}
             >
               <Image
@@ -73,30 +80,18 @@ export const Slider = ({ images }: Props) => {
           </li>
         ))}
       </ul>
-      <button
-        className={twMerge(
-          "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
-          "absolute top-1/2 -translate-y-1/2 left-4 xl:-left-5",
-          "disabled:bg-gray-400",
-          "opacity-80 hover:opacity-100 focus:opacity-100",
-        )}
-        onClick={prevSlide}
-      >
-        <FaAngleLeft />
-        <span className="sr-only">poprzednie zdjęcie</span>
-      </button>
-      <button
-        className={twMerge(
-          "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
-          "absolute top-1/2 -translate-y-1/2 right-4 xl:-right-5",
-          "disabled:bg-gray-400",
-          "opacity-80 hover:opacity-100 focus:opacity-100",
-        )}
-        onClick={nextSlide}
-      >
-        <FaAngleLeft className="rotate-180" />
-        <span className="sr-only">następne zdjęcie</span>
-      </button>
+      <ArrowButton onClick={prevSlide} position="left" lightbox={false}>
+        <>
+          <FaAngleLeft />
+          <span className="sr-only">poprzednie zdjęcie</span>
+        </>
+      </ArrowButton>
+      <ArrowButton onClick={nextSlide} position="right" lightbox={false}>
+        <>
+          <FaAngleLeft className="rotate-180" />
+          <span className="sr-only">następne zdjęcie</span>
+        </>
+      </ArrowButton>
       <Portal>
         <div
           className={twMerge(
@@ -137,47 +132,36 @@ export const Slider = ({ images }: Props) => {
               </li>
             ))}
           </ul>
-          <button
-            className={twMerge(
-              "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
-              "absolute top-1/2 -translate-y-1/2 left-4",
-              "disabled:bg-gray-400",
-              "opacity-80 hover:opacity-100 focus:opacity-100",
-            )}
+          <ArrowButton
             onClick={(e) => {
               prevSlide();
               e.stopPropagation();
             }}
+            position="left"
+            lightbox
           >
-            <FaAngleLeft />
-            <span className="sr-only">poprzednie zdjęcie</span>
-          </button>
-          <button
-            className={twMerge(
-              "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
-              "absolute top-1/2 -translate-y-1/2 right-4",
-              "disabled:bg-gray-400",
-              "opacity-80 hover:opacity-100 focus:opacity-100",
-            )}
+            <>
+              <FaAngleLeft />
+              <span className="sr-only">poprzednie zdjęcie</span>
+            </>
+          </ArrowButton>
+          <ArrowButton
             onClick={(e) => {
               nextSlide();
               e.stopPropagation();
             }}
+            position="right"
+            lightbox
           >
-            <FaAngleLeft className="rotate-180" />
-            <span className="sr-only">następne zdjęcie</span>
-          </button>
-          <button
-            className={twMerge(
-              "absolute top-4 right-4 text-white",
-              "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
-              "opacity-80 hover:opacity-100 focus:opacity-100",
-            )}
-            onClick={closeLightbox}
-          >
-            <span className="sr-only">zamknij galerię</span>
-            <FaPlus className="rotate-45" />
-          </button>
+            <>
+              <FaAngleLeft className="rotate-180" />
+              <span className="sr-only">następne zdjęcie</span>
+            </>
+          </ArrowButton>
+          <CloseButton onClick={closeLightbox} />
+          <LightboxCounter>
+            {currentSlide + 1}/{images.length}
+          </LightboxCounter>
         </div>
       </Portal>
     </div>
