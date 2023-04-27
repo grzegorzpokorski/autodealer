@@ -7,6 +7,7 @@ import { twMerge } from "tailwind-merge";
 import { createPortal } from "react-dom";
 import { useSlider } from "./useSlider";
 import FsLightbox from "fslightbox-react";
+import { Portal } from "@/components/atoms/Portal/Portal";
 
 type Props = {
   images: {
@@ -104,14 +105,13 @@ export const Slider = ({ images }: Props) => {
         <FaAngleLeft className="rotate-180" />
         <span className="sr-only">następne zdjęcie</span>
       </button>
-      {createPortal(
+      <Portal>
         <FsLightbox
           toggler={lightboxController.toggler}
           sources={images.map((image) => image.src)}
           slide={lightboxController.slide}
-        />,
-        document.body,
-      )}
+        />
+      </Portal>
     </div>
   );
 };
