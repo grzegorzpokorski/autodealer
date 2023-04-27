@@ -1,4 +1,12 @@
-import { MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
+import { useOnKeydown } from "@/hooks/useOnKeydown";
+import {
+  MouseEvent,
+  TouchEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 type Args = {
   images: {
@@ -13,11 +21,15 @@ export const useSlider = ({ images }: Args) => {
   const slidesCount = images.length;
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const prevSlide = () =>
-    setCurrentSlide((prev) => (prev === 0 ? slidesCount - 1 : prev - 1));
+  const prevSlide = useCallback(
+    () => setCurrentSlide((prev) => (prev === 0 ? slidesCount - 1 : prev - 1)),
+    [slidesCount],
+  );
 
-  const nextSlide = () =>
-    setCurrentSlide((prev) => (prev === slidesCount - 1 ? 0 : prev + 1));
+  const nextSlide = useCallback(
+    () => setCurrentSlide((prev) => (prev === slidesCount - 1 ? 0 : prev + 1)),
+    [slidesCount],
+  );
 
   const setSlide = (slide: number) => setCurrentSlide(slide);
 
@@ -35,22 +47,27 @@ export const useSlider = ({ images }: Args) => {
   const [dragEnd, setDragEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
 
-  const handleTouchStart = (e: TouchEvent) => {
+  const handleTouchStart = useCallback((e: TouchEvent) => {
     setDragEnd(null);
     setDragStart(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const handleMouseDown = (e: MouseEvent) => {
+  const handleMouseDown = useCallback((e: MouseEvent) => {
     setDragEnd(null);
     setDragStart(e.clientX);
-  };
+  }, []);
 
-  const handleTouchMove = (e: TouchEvent) =>
-    setDragEnd(e.targetTouches[0].clientX);
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => setDragEnd(e.targetTouches[0].clientX),
+    [],
+  );
 
-  const handleMouseMove = (e: MouseEvent) => setDragEnd(e.clientX);
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => setDragEnd(e.clientX),
+    [],
+  );
 
-  const handleDragEnd = () => {
+  const handleDragEnd = useCallback(() => {
     if (!dragStart || !dragEnd) return;
 
     const distance = dragStart - dragEnd;
@@ -59,7 +76,41 @@ export const useSlider = ({ images }: Args) => {
 
     if (isLeftSwipe) nextSlide();
     if (isRightSwipe) prevSlide();
-  };
+  }, [dragEnd, dragStart, nextSlide, prevSlide]);
+
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  const openLightbox = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    setIsLightboxOpen(true);
+    document.body.classList.add("overflow-hidden");
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setIsLightboxOpen(false);
+    document.body.classList.remove("overflow-hidden");
+  }, []);
+
+  useOnKeydown(
+    "Escape",
+    useCallback(() => {
+      closeLightbox();
+    }, []),
+  );
+
+  useOnKeydown(
+    "ArrowLeft",
+    useCallback(() => {
+      if (isLightboxOpen) prevSlide();
+    }, [isLightboxOpen, prevSlide]),
+  );
+
+  useOnKeydown(
+    "ArrowRight",
+    useCallback(() => {
+      if (isLightboxOpen) nextSlide();
+    }, [isLightboxOpen, nextSlide]),
+  );
 
   return {
     sliderRef,
@@ -72,5 +123,8 @@ export const useSlider = ({ images }: Args) => {
     handleMouseMove,
     handleDragEnd,
     currentSlide,
+    openLightbox,
+    closeLightbox,
+    isLightboxOpen,
   };
 };

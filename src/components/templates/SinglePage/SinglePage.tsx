@@ -148,12 +148,9 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
                     </p>
                   )}
                 </div>
-                <div className="flex flex-row flex-wrap flex-wrap justify-between gap-2">
+                <div className="flex flex-row flex-wrap flex-wrap justify-center gap-2">
                   <Link href="tel:+48123456789" buttonStyle="white">
-                    <span className="font-bold">Zadźwoń:</span> +48 123 456 789
-                  </Link>
-                  <Link href="tel:+48123456789" buttonStyle="white">
-                    <span className="font-bold">Wyznacz trasę</span>
+                    <span className="font-bold">Zadźwoń:</span>+48 123 456 789
                   </Link>
                 </div>
               </div>

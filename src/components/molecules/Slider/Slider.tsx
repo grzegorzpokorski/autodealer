@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { MouseEvent, useState } from "react";
 import { FaAngleLeft, FaPlus } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
 import { useSlider } from "./useSlider";
@@ -27,20 +26,10 @@ export const Slider = ({ images }: Props) => {
     handleMouseMove,
     handleDragEnd,
     currentSlide,
+    openLightbox,
+    closeLightbox,
+    isLightboxOpen,
   } = useSlider({ images });
-
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-
-  const openLightbox = (e: MouseEvent) => {
-    e.preventDefault();
-    setIsLightboxOpen(true);
-    document.body.classList.add("overflow-hidden");
-  };
-
-  const closeLightbox = () => {
-    setIsLightboxOpen(false);
-    document.body.classList.remove("overflow-hidden");
-  };
 
   return (
     <div className="relative group">
@@ -57,7 +46,11 @@ export const Slider = ({ images }: Props) => {
         {images.map((image, idx) => (
           <li
             key={image.src}
-            className="min-w-[100%] md:min-w-[60%] lg:min-w-[calc(40%)] min-h-[300px] bg-blue-500 h-64 flex flex-col items-center justify-center text-white font-bold text-2xl overflow-hidden snap-start relative"
+            className={twMerge(
+              "min-w-[100%] md:min-w-[60%] lg:min-w-[calc(40%)] min-h-[300px] bg-blue-500 h-64 flex flex-col items-center justify-center text-white font-bold text-2xl overflow-hidden snap-start relative",
+              "md:border-4 transition-[border]",
+              currentSlide === idx ? "border-primary" : "border-none",
+            )}
           >
             <a
               href={image.src}
@@ -69,7 +62,9 @@ export const Slider = ({ images }: Props) => {
               <Image
                 src={image.src}
                 alt={image.alt}
-                className="object-cover object-center hover:scale-105 transition-[transform]"
+                className={twMerge(
+                  "object-cover object-center hover:scale-105 transition-[transform]",
+                )}
                 sizes="(max-width: 720px) 100vw, 40vw"
                 fill
                 draggable={false}
@@ -105,8 +100,8 @@ export const Slider = ({ images }: Props) => {
       <Portal>
         <div
           className={twMerge(
-            "inset-0 bg-black/80 z-50",
-            isLightboxOpen ? "fixed" : "hidden",
+            "fixed bg-black/90 z-50 transition-all duration-300",
+            isLightboxOpen ? "opacity-100 inset-0" : "opacity-0 -top-[100vh]",
           )}
           onClick={closeLightbox}
           role="dialog"
