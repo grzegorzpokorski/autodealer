@@ -43,41 +43,6 @@ export const useSlider = ({ images }: Args) => {
     }
   }, [currentSlide]);
 
-  const [dragStart, setDragStart] = useState<number | null>(null);
-  const [dragEnd, setDragEnd] = useState<number | null>(null);
-  const minSwipeDistance = 50;
-
-  const handleTouchStart = useCallback((e: TouchEvent) => {
-    setDragEnd(null);
-    setDragStart(e.targetTouches[0].clientX);
-  }, []);
-
-  const handleMouseDown = useCallback((e: MouseEvent) => {
-    setDragEnd(null);
-    setDragStart(e.clientX);
-  }, []);
-
-  const handleTouchMove = useCallback(
-    (e: TouchEvent) => setDragEnd(e.targetTouches[0].clientX),
-    [],
-  );
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => setDragEnd(e.clientX),
-    [],
-  );
-
-  const handleDragEnd = useCallback(() => {
-    if (!dragStart || !dragEnd) return;
-
-    const distance = dragStart - dragEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) nextSlide();
-    if (isRightSwipe) prevSlide();
-  }, [dragEnd, dragStart, nextSlide, prevSlide]);
-
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const openLightbox = useCallback((e: MouseEvent) => {
@@ -92,6 +57,63 @@ export const useSlider = ({ images }: Args) => {
     document.body.classList.remove("overflow-hidden");
     document.body.querySelector("#page-root")?.removeAttribute("inert");
   }, []);
+
+  const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(
+    null,
+  );
+  const [dragEnd, setDragEnd] = useState<{ x: number; y: number } | null>(null);
+  const minXSwipeDistance = 50;
+  const minYSwipeDistance = 100;
+
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    setDragEnd(null);
+    setDragStart({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    });
+  }, []);
+
+  const handleMouseDown = useCallback((e: MouseEvent) => {
+    setDragEnd(null);
+    setDragStart({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  }, []);
+
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) =>
+      setDragEnd({
+        x: e.targetTouches[0].clientX,
+        y: e.targetTouches[0].clientY,
+      }),
+    [],
+  );
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) =>
+      setDragEnd({
+        x: e.clientX,
+        y: e.clientY,
+      }),
+    [],
+  );
+
+  const handleDragEnd = useCallback(() => {
+    if (!dragStart || !dragEnd) return;
+
+    const xDistance = dragStart.x - dragEnd.x;
+    const isLeftSwipe = xDistance > minXSwipeDistance;
+    const isRightSwipe = xDistance < -minXSwipeDistance;
+
+    const yDistance = dragStart.y - dragEnd.y;
+    const isUpSwipe =
+      yDistance > minYSwipeDistance && 2 * yDistance > xDistance;
+
+    if (isLeftSwipe) nextSlide();
+    if (isRightSwipe) prevSlide();
+    if (isUpSwipe) closeLightbox();
+  }, [closeLightbox, dragEnd, dragStart, nextSlide, prevSlide]);
 
   useOnKeydown(
     "Escape",
