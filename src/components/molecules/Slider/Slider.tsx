@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import { MouseEvent, useState } from "react";
-import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleLeft, FaPlus } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
 import { useSlider } from "./useSlider";
-import FsLightbox from "fslightbox-react";
 import { Portal } from "@/components/atoms/Portal/Portal";
 
 type Props = {
@@ -20,7 +19,6 @@ type Props = {
 export const Slider = ({ images }: Props) => {
   const {
     sliderRef,
-    setSlide,
     prevSlide,
     nextSlide,
     handleTouchStart,
@@ -28,20 +26,20 @@ export const Slider = ({ images }: Props) => {
     handleMouseDown,
     handleMouseMove,
     handleDragEnd,
+    currentSlide,
   } = useSlider({ images });
 
-  const [lightboxController, setLightboxController] = useState({
-    toggler: false,
-    slide: 1,
-  });
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const openLightboxOnSlide = (event: MouseEvent, number: number) => {
-    event.preventDefault();
-    setLightboxController({
-      toggler: !lightboxController.toggler,
-      slide: number,
-    });
-    setSlide(number - 1);
+  const openLightbox = (e: MouseEvent) => {
+    e.preventDefault();
+    setIsLightboxOpen(true);
+    document.body.classList.add("overflow-hidden");
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    document.body.classList.remove("overflow-hidden");
   };
 
   return (
@@ -65,7 +63,7 @@ export const Slider = ({ images }: Props) => {
               href={image.src}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => openLightboxOnSlide(e, idx + 1)}
+              onClick={openLightbox}
               draggable={false}
             >
               <Image
@@ -105,11 +103,87 @@ export const Slider = ({ images }: Props) => {
         <span className="sr-only">następne zdjęcie</span>
       </button>
       <Portal>
-        <FsLightbox
-          toggler={lightboxController.toggler}
-          sources={images.map((image) => image.src)}
-          slide={lightboxController.slide}
-        />
+        <div
+          className={twMerge(
+            "inset-0 bg-black/80 z-50",
+            isLightboxOpen ? "fixed" : "hidden",
+          )}
+          onClick={closeLightbox}
+          role="dialog"
+        >
+          <ul
+            className={twMerge(
+              "list-none ovevflow-hidden flex flex-row transition-[transform] duration-[500ms]",
+            )}
+            style={{ transform: `translateX(calc(-${currentSlide}*100dvw))` }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleDragEnd}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleDragEnd}
+          >
+            {images.map((image) => (
+              <li
+                key={image.src}
+                className="w-screen h-screen flex flex-col items-center justify-center"
+              >
+                <div className="max-w-[80dvw] w-[80dvw] max-h-[95dvh] h-auto mx-[10dvw]">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    height={image.height}
+                    width={image.width}
+                    className="m-auto w-auto h-auto max-h-full"
+                    draggable={false}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+          <button
+            className={twMerge(
+              "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
+              "absolute top-1/2 -translate-y-1/2 left-4",
+              "disabled:bg-gray-400",
+              "opacity-80 hover:opacity-100 focus:opacity-100",
+            )}
+            onClick={(e) => {
+              prevSlide();
+              e.stopPropagation();
+            }}
+          >
+            <FaAngleLeft />
+            <span className="sr-only">poprzednie zdjęcie</span>
+          </button>
+          <button
+            className={twMerge(
+              "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
+              "absolute top-1/2 -translate-y-1/2 right-4",
+              "disabled:bg-gray-400",
+              "opacity-80 hover:opacity-100 focus:opacity-100",
+            )}
+            onClick={(e) => {
+              nextSlide();
+              e.stopPropagation();
+            }}
+          >
+            <FaAngleLeft className="rotate-180" />
+            <span className="sr-only">następne zdjęcie</span>
+          </button>
+          <button
+            className={twMerge(
+              "absolute top-4 right-4 text-white",
+              "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
+              "opacity-80 hover:opacity-100 focus:opacity-100",
+            )}
+            onClick={closeLightbox}
+          >
+            <span className="sr-only">zamknij galerię</span>
+            <FaPlus className="rotate-45" />
+          </button>
+        </div>
       </Portal>
     </div>
   );

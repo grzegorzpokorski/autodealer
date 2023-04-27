@@ -71,5 +71,6 @@ export const useSlider = ({ images }: Args) => {
     handleMouseDown,
     handleMouseMove,
     handleDragEnd,
+    currentSlide,
   };
 };
