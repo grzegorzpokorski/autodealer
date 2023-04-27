@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import type { MouseEvent, TouchEvent } from "react";
-import { useEffect, useRef, useState } from "react";
-import { FaAngleLeft, FaSearch } from "react-icons/fa";
+import { MouseEvent, useState } from "react";
+import { FaAngleLeft } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
+import { createPortal } from "react-dom";
+import { useSlider } from "./useSlider";
+import FsLightbox from "fslightbox-react";
 
 type Props = {
   images: {
@@ -16,54 +18,30 @@ type Props = {
 };
 
 export const Slider = ({ images }: Props) => {
-  const sliderRef = useRef<HTMLUListElement>(null);
-  const slidesCount = images.length;
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const {
+    sliderRef,
+    setSlide,
+    prevSlide,
+    nextSlide,
+    handleTouchStart,
+    handleTouchMove,
+    handleMouseDown,
+    handleMouseMove,
+    handleDragEnd,
+  } = useSlider({ images });
 
-  const prevSlide = () =>
-    setCurrentSlide((prev) => (prev === 0 ? slidesCount - 1 : prev - 1));
+  const [lightboxController, setLightboxController] = useState({
+    toggler: false,
+    slide: 1,
+  });
 
-  const nextSlide = () =>
-    setCurrentSlide((prev) => (prev === slidesCount - 1 ? 0 : prev + 1));
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      const slides = sliderRef.current.children;
-      const current = slides[currentSlide];
-
-      if (current instanceof HTMLLIElement)
-        sliderRef.current.scrollTo(current.offsetLeft, 0);
-    }
-  }, [currentSlide]);
-
-  const [dragStart, setDragStart] = useState<number | null>(null);
-  const [dragEnd, setDragEnd] = useState<number | null>(null);
-  const minSwipeDistance = 50;
-
-  const handleTouchStart = (e: TouchEvent) => {
-    setDragEnd(null);
-    setDragStart(e.targetTouches[0].clientX);
-  };
-
-  const handleMouseDown = (e: MouseEvent) => {
-    setDragEnd(null);
-    setDragStart(e.clientX);
-  };
-
-  const handleTouchMove = (e: TouchEvent) =>
-    setDragEnd(e.targetTouches[0].clientX);
-
-  const handleMouseMove = (e: MouseEvent) => setDragEnd(e.clientX);
-
-  const handleDragEnd = () => {
-    if (!dragStart || !dragEnd) return;
-
-    const distance = dragStart - dragEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) nextSlide();
-    if (isRightSwipe) prevSlide();
+  const openLightboxOnSlide = (event: MouseEvent, number: number) => {
+    event.preventDefault();
+    setLightboxController({
+      toggler: !lightboxController.toggler,
+      slide: number,
+    });
+    setSlide(number - 1);
   };
 
   return (
@@ -82,17 +60,23 @@ export const Slider = ({ images }: Props) => {
           <li
             key={image.src}
             className="min-w-[100%] md:min-w-[60%] lg:min-w-[calc(40%)] min-h-[300px] bg-blue-500 h-64 flex flex-col items-center justify-center text-white font-bold text-2xl overflow-hidden snap-start relative"
-            data-role="slide"
-            data-slide={idx}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              className="object-cover object-center hover:scale-105 transition-[transform]"
-              sizes="(max-width: 720px) 100vw, 40vw"
+            <a
+              href={image.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => openLightboxOnSlide(e, idx + 1)}
               draggable={false}
-              fill
-            />
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                className="object-cover object-center hover:scale-105 transition-[transform]"
+                sizes="(max-width: 720px) 100vw, 40vw"
+                fill
+                draggable={false}
+              />
+            </a>
           </li>
         ))}
       </ul>
@@ -103,7 +87,6 @@ export const Slider = ({ images }: Props) => {
           "disabled:bg-gray-400",
           "opacity-80 hover:opacity-100 focus:opacity-100",
         )}
-        // disabled={currentSlide === 0}
         onClick={prevSlide}
       >
         <FaAngleLeft />
@@ -116,12 +99,19 @@ export const Slider = ({ images }: Props) => {
           "disabled:bg-gray-400",
           "opacity-80 hover:opacity-100 focus:opacity-100",
         )}
-        // disabled={currentSlide === slidesCount - 1}
         onClick={nextSlide}
       >
         <FaAngleLeft className="rotate-180" />
         <span className="sr-only">następne zdjęcie</span>
       </button>
+      {createPortal(
+        <FsLightbox
+          toggler={lightboxController.toggler}
+          sources={images.map((image) => image.src)}
+          slide={lightboxController.slide}
+        />,
+        document.body,
+      )}
     </div>
   );
 };
