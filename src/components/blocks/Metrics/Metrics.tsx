@@ -1,40 +1,22 @@
-import { useId, type ReactNode } from "react";
-import { Container } from "@/components/blocks/Container/Container";
-import { Section } from "@/components/blocks/Section/Section";
-import { Heading } from "@/components/blocks/Heading/Heading";
+import { type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { MetricsItem } from "./MetricsItem/MetricsItem";
 import { MetricsLink } from "./MetricsLink";
 
 type Props = {
   children: ReactNode;
-  title: string;
 };
 
-export const Metrics = ({ children, title }: Props) => {
-  const sectionTitleID = useId();
+export const Metrics = ({ children }: Props) => {
   return (
-    <Section
-      ariaLabelledby={sectionTitleID}
-      margin="negative-top"
-      padding="none"
+    <ul
+      className={twMerge(
+        "list-none flex flex-col lg:flex-row text-center md:text-start text-white",
+      )}
+      role="list"
     >
-      <Container>
-        <header>
-          <Heading as="h2" size="base" hidden id={sectionTitleID}>
-            {title}
-          </Heading>
-        </header>
-        <ul
-          className={twMerge(
-            "list-none flex flex-col lg:flex-row text-center md:text-start text-white",
-          )}
-          role="list"
-        >
-          {children}
-        </ul>
-      </Container>
-    </Section>
+      {children}
+    </ul>
   );
 };
 
