@@ -15,7 +15,7 @@ export const HedaerSection = ({ title, description }: Props) => {
       ariaLabeledby={headerTitleID}
       overlayColor="secondary"
     >
-      <header className="text-center">
+      <header className="flex flex-col gap-4 text-center max-w-[70ch] mx-auto">
         <Heading as="h1" size="lg" id={headerTitleID}>
           {title}
         </Heading>
