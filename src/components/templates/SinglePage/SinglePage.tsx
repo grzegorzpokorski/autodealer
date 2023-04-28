@@ -2,6 +2,8 @@ import { Container } from "@/components/atoms/Container/Container";
 import { Heading } from "@/components/atoms/Heading/Heading";
 import { Link } from "@/components/atoms/Link/Link";
 import { Main } from "@/components/molecules/Main/Main";
+import { Slider } from "@/components/molecules/Slider/Slider";
+import { RecommendedOffers } from "@/components/organisms/RecommendedOffers/RecommendedOffers";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { twMerge } from "tailwind-merge";
 
@@ -9,12 +11,6 @@ type Props = {
   offer: {
     id: string;
     invoice: boolean;
-    image: {
-      src: string;
-      width: number;
-      height: number;
-      alt: string;
-    };
     title: string;
     features: {
       label: string;
@@ -22,15 +18,41 @@ type Props = {
     }[];
     price: number;
     link: string;
+    gallery: {
+      src: string;
+      width: number;
+      height: number;
+      alt: string;
+    }[];
   };
+  recommendedOffers: {
+    id: string;
+    invoice: boolean;
+    title: string;
+    features: {
+      label: string;
+      value: string;
+    }[];
+    price: number;
+    link: string;
+    gallery: {
+      src: string;
+      width: number;
+      height: number;
+      alt: string;
+    }[];
+  }[];
 };
 
-export const SinglePage = ({ offer }: Props) => {
+export const SinglePage = ({ offer, recommendedOffers }: Props) => {
   return (
     <>
       <Main>
         <Container>
           <article className="grid grid-cols-12 gap-3 md:gap-6 py-8">
+            <div className="col-span-12">
+              <Slider images={offer.gallery} />
+            </div>
             <div className="col-span-12 md:col-span-7 flex flex-col gap-3 md:gap-6 order-2 md:order-1">
               <header
                 className="p-8 bg-white shadow prose max-w-none"
@@ -95,7 +117,7 @@ export const SinglePage = ({ offer }: Props) => {
               </section>
             </div>
             <div className="col-span-12 md:col-span-5 flex flex-col gap-3 md:gap-6 order-1 md:order-2">
-              <div className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8">
+              <div className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow">
                 <div
                   className={twMerge(
                     "divide-y-2 [&>p]:py-4 [&>p:first-child]:pt-0 [&>p:last-child]:pb-0",
@@ -126,20 +148,20 @@ export const SinglePage = ({ offer }: Props) => {
                     </p>
                   )}
                 </div>
-                <div className="flex flex-row flex-wrap gap-2 items-center justify-center">
+                <div className="flex flex-col flex-wrap flex-wrap justify-center gap-2">
                   <Link href="tel:+48123456789" buttonStyle="white">
-                    <span className="font-bold">Zadźwoń:</span> +48 123 456 789
+                    <span className="font-bold">Zadźwoń:</span>+48 123 456 789
                   </Link>
-                  {offer.invoice && (
-                    <p className="bg-white text-secondary items-center inline-flex px-4 py-2 border-2 border-white">
-                      Faktura VAT
-                    </p>
-                  )}
                 </div>
               </div>
             </div>
           </article>
         </Container>
+        <RecommendedOffers
+          offers={recommendedOffers}
+          title="Zobacz również inne modele"
+          cta={false}
+        />
       </Main>
     </>
   );

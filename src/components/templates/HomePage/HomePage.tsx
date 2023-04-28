@@ -31,7 +31,10 @@ export const HomePage = () => {
           </Metrics.Item>
         </Metrics>
         <Features />
-        <RecommendedOffers offers={offersFromJSON.slice(0, 3)} />
+        <RecommendedOffers
+          offers={offersFromJSON.slice(0, 3)}
+          title="Zobacz polecane modele"
+        />
       </Main>
     </>
   );

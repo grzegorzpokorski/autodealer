@@ -10,9 +10,11 @@ import offersFromJSON from "@/data/offers.json";
 
 type Props = {
   offers: (typeof offersFromJSON)[number][];
+  title: string;
+  cta?: boolean;
 };
 
-export const RecommendedOffers = ({ offers }: Props) => {
+export const RecommendedOffers = ({ offers, title, cta = true }: Props) => {
   const sectionTitleID = useId();
 
   return (
@@ -20,7 +22,7 @@ export const RecommendedOffers = ({ offers }: Props) => {
       <Container>
         <header>
           <Heading as="h2" size="md" id={sectionTitleID}>
-            Zobacz polecane modele
+            {title}
           </Heading>
         </header>
         <GridList margin="top">
@@ -28,7 +30,7 @@ export const RecommendedOffers = ({ offers }: Props) => {
             <Offer key={offer.title}>
               {offer.invoice && <Offer.Invoice />}
               <NextLink href={offer.link}>
-                <Offer.Image image={offer.image} />
+                <Offer.Image image={offer.gallery[0]} />
               </NextLink>
               <Offer.Header href="/" title={offer.title} />
               {offer.features.length > 0 && (
@@ -47,11 +49,13 @@ export const RecommendedOffers = ({ offers }: Props) => {
             </Offer>
           ))}
         </GridList>
-        <footer className="pt-8 text-center">
-          <Link href="/oferta" buttonStyle="primary" size="large">
-            Zobacz całą ofertę
-          </Link>
-        </footer>
+        {cta && (
+          <footer className="pt-8 text-center">
+            <Link href="/oferta" buttonStyle="primary" size="large">
+              Zobacz całą ofertę
+            </Link>
+          </footer>
+        )}
       </Container>
     </Section>
   );
