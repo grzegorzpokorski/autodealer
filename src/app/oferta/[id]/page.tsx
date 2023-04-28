@@ -1,4 +1,4 @@
-import { SinglePage } from "@/components/templates/SinglePage/SinglePage";
+import { SinglePage } from "@/components/pages/SinglePage/SinglePage";
 import offersFromJSON from "@/data/offers.json";
 
 export const dynamicParams = false;

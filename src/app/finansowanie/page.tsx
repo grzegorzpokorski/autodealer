@@ -1,4 +1,4 @@
-import { ContentPage } from "@/components/templates/ContentPage/ContentPage";
+import { ContentPage } from "@/components/pages/ContentPage/ContentPage";
 
 export const metadata = {
   title: "finansowanie",

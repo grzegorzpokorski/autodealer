@@ -1,4 +1,4 @@
-import { SoldPage } from "@/components/templates/SoldPage/SoldPage";
+import { SoldPage } from "@/components/pages/SoldPage/SoldPage";
 import categoriesFromJSON from "@/data/categories.json";
 
 export const metadata = {

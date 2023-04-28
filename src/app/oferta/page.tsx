@@ -1,4 +1,4 @@
-import { OfferPage } from "@/components/templates/OfferPage/OfferPage";
+import { OfferPage } from "@/components/pages/OfferPage/OfferPage";
 import offers from "@/data/offers.json";
 
 export const metadata = {
