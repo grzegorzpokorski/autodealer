@@ -11,6 +11,7 @@ import { twMerge } from "tailwind-merge";
 type Props = {
   offer: {
     id: string;
+    sold: boolean;
     invoice: boolean;
     title: string;
     features: {
@@ -18,7 +19,6 @@ type Props = {
       value: string;
     }[];
     price: number;
-    link: string;
     gallery: {
       src: string;
       width: number;
@@ -28,6 +28,7 @@ type Props = {
   };
   recommendedOffers: {
     id: string;
+    sold: boolean;
     invoice: boolean;
     title: string;
     features: {
@@ -35,7 +36,6 @@ type Props = {
       value: string;
     }[];
     price: number;
-    link: string;
     gallery: {
       src: string;
       width: number;
