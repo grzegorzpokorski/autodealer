@@ -1,6 +1,7 @@
 [
   {
     "id": "0",
+    "sold": false,
     "invoice": true,
     "title": "Mercedes s500 amg aso",
     "features": [
@@ -12,7 +13,6 @@
       { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 229000,
-    "link": "/oferta/0",
     "gallery": [
       {
         "src": "/offer/0/1.webp",
@@ -84,6 +84,7 @@
   },
   {
     "id": "1",
+    "sold": false,
     "invoice": false,
     "title": "Citroen C4 Picasso",
     "features": [
@@ -95,7 +96,6 @@
       { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 56400,
-    "link": "/oferta/1",
     "gallery": [
       {
         "src": "/offer/1/1.jpg",
@@ -125,6 +125,7 @@
   },
   {
     "id": "2",
+    "sold": false,
     "invoice": true,
     "title": "Ferrari F420 edition",
     "features": [
@@ -136,7 +137,6 @@
       { "label": "Typ", "value": "limuzyna" }
     ],
     "price": 419000,
-    "link": "/oferta/2",
     "gallery": [
       {
         "src": "/offer/2/1.jpg",
