@@ -76,7 +76,6 @@ export const Slider = ({ images }: Props) => {
                 sizes="(max-width: 720px) 100vw, 40vw"
                 fill
                 draggable={false}
-                priority={idx < 4 ? true : false}
               />
             </a>
           </li>
