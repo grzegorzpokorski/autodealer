@@ -65,6 +65,7 @@ export const Slider = ({ images }: Props) => {
                 openLightbox(e);
               }}
               draggable={false}
+              className="relative w-full h-full"
             >
               <Image
                 src={image.src}
@@ -75,6 +76,7 @@ export const Slider = ({ images }: Props) => {
                 sizes="(max-width: 720px) 100vw, 40vw"
                 fill
                 draggable={false}
+                priority={idx < 4 ? true : false}
               />
             </a>
           </li>
