@@ -55,32 +55,38 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
               <Slider images={offer.gallery} />
             </div>
             <div className="col-span-12 md:col-span-7 flex flex-col gap-3 md:gap-6 order-2 md:order-1">
-              <header
-                className="p-8 bg-white shadow prose max-w-none"
-                aria-labelledby="title"
-              >
-                <Heading as="h1" size="base" id="title">
-                  {offer.title}
-                </Heading>
-                <table>
-                  <thead className="sr-only">
-                    <tr>
-                      <th>parametr</th>
-                      <th>wartośc</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {offer.features.map((feature) => (
-                      <tr key={feature.label} className="pb-10">
-                        <td>{feature.label}</td>
-                        <td>{feature.value}</td>
+              <div className="p-8 bg-white shadow prose max-w-none flex flex-col gap-4">
+                <header aria-labelledby="title">
+                  <Heading as="h1" size="base" id="title">
+                    {offer.title}
+                  </Heading>
+                </header>
+                <section aria-labelledby="parametry">
+                  <header className="sr-only">
+                    <Heading as="h2" size="base" id="parametry" hidden>
+                      Parametry
+                    </Heading>
+                  </header>
+                  <table className="m-0">
+                    <thead className="sr-only">
+                      <tr>
+                        <th>parametr</th>
+                        <th>wartośc</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </header>
+                    </thead>
+                    <tbody>
+                      {offer.features.map((feature) => (
+                        <tr key={feature.label} className="pb-10">
+                          <td>{feature.label}</td>
+                          <td>{feature.value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </section>
+              </div>
               <section className="p-8 bg-white shadow" aria-labelledby="opis">
-                <header>
+                <header className="sr-only">
                   <Heading as="h2" size="base" id="opis" hidden>
                     Opis
                   </Heading>
@@ -118,7 +124,15 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
               </section>
             </div>
             <div className="col-span-12 md:col-span-5 flex flex-col gap-3 md:gap-6 order-1 md:order-2">
-              <div className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow">
+              <section
+                className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow"
+                aria-labelledby="cena-i-kontakt"
+              >
+                <header className="sr-only">
+                  <Heading as="h2" size="base" id="cena-i-kontakt" hidden>
+                    Cena i kontakt
+                  </Heading>
+                </header>
                 <div
                   className={twMerge(
                     "divide-y-2 [&>p]:py-4 [&>p:first-child]:pt-0 [&>p:last-child]:pb-0",
@@ -154,7 +168,7 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
                     <span className="font-bold">Zadźwoń:</span>+48 123 456 789
                   </LinkAsButton>
                 </div>
-              </div>
+              </section>
             </div>
           </article>
         </Container>
