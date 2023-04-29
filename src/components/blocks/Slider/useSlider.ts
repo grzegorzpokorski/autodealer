@@ -45,8 +45,7 @@ export const useSlider = ({ images }: Args) => {
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const openLightbox = useCallback((e: MouseEvent) => {
-    e.preventDefault();
+  const openLightbox = useCallback(() => {
     setIsLightboxOpen(true);
     document.body.classList.add("overflow-hidden");
     document.body.querySelector("#page-root")?.setAttribute("inert", "true");
@@ -81,23 +80,19 @@ export const useSlider = ({ images }: Args) => {
     });
   }, []);
 
-  const handleTouchMove = useCallback(
-    (e: TouchEvent) =>
-      setDragEnd({
-        x: e.targetTouches[0].clientX,
-        y: e.targetTouches[0].clientY,
-      }),
-    [],
-  );
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    setDragEnd({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY,
+    });
+  }, []);
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) =>
-      setDragEnd({
-        x: e.clientX,
-        y: e.clientY,
-      }),
-    [],
-  );
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    setDragEnd({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  }, []);
 
   const handleDragEnd = useCallback(() => {
     if (!dragStart || !dragEnd) return;
