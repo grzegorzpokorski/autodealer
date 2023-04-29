@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import { useSlider } from "./useSlider";
 import { LightboxItem } from "./LightboxItem";
 import { Lightbox } from "./Lightbox";
