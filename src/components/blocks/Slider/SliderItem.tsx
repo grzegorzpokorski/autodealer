@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
+import type { MouseEvent } from "react";
 
 type Props = {
   image: {
