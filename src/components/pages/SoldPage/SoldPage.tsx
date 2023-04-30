@@ -42,7 +42,7 @@ export const SoldPage = ({ soldByCategory }: Props) => {
           </Container>
         </Section>
         <BannerSection
-          title="Już dzisiaj znajdź dla siebie wymażone auto!"
+          title="Już dzisiaj znajdź dla siebie wymarzone auto!"
           button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
         />
       </Main>

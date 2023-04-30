@@ -19,7 +19,7 @@ export const ContentPage = ({ title, subtitle, content }: Props) => {
           <article className="py-16 lg:pb-0 mx-auto prose">{content}</article>
         </Container>
         <BannerSection
-          title="Już dzisiaj znajdź dla siebie wymażone auto!"
+          title="Już dzisiaj znajdź dla siebie wymarzone auto!"
           button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
         />
       </Main>

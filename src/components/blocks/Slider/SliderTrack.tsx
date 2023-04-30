@@ -34,17 +34,19 @@ export const SliderTrack = forwardRef<HTMLUListElement, Props>(
     },
     ref,
   ) => (
-    <ul
-      className="overflow-hidden flex flex-row gap-4 scroll-smooth snap-x"
-      ref={ref}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
-    >
-      {children}
+    <>
+      <ul
+        className="overflow-hidden flex flex-row gap-4 scroll-smooth snap-x"
+        ref={ref}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+      >
+        {children}
+      </ul>
       <ArrowButton onClick={prevSlide} position="left" lightbox={false}>
         <>
           <FaAngleLeft />
@@ -57,7 +59,7 @@ export const SliderTrack = forwardRef<HTMLUListElement, Props>(
           <span className="sr-only">następne zdjęcie</span>
         </>
       </ArrowButton>
-    </ul>
+    </>
   ),
 );
 

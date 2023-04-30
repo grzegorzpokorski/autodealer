@@ -15,7 +15,7 @@ export const OfferPage = ({ offers }: Props) => {
       <Main>
         <OffersSection offers={offers} title="Obecnie dostępne modele" />
         <BannerSection
-          title="Już dzisiaj znajdź dla siebie wymażone auto!"
+          title="Już dzisiaj znajdź dla siebie wymarzone auto!"
           button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
         />
       </Main>
