@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const OfferFooter = ({ children }: Props) => (
-  <footer className="flex flex-row justify-between items-center px-4">
+  <footer className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center px-4">
     {children}
   </footer>
 );
