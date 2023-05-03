@@ -1,4 +1,4 @@
-import offersFromJSON from "@/data/offers.json";
+import type offersFromJSON from "@/data/offers.json";
 import { Main } from "@/components/blocks/Main/Main";
 import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
 import { HedaerSection } from "@/components/sections/HeaderSection/HeaderSection";

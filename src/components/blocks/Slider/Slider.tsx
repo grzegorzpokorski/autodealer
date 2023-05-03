@@ -8,8 +8,6 @@ import { LightboxTrack } from "./LightboxTrack";
 import { SliderContainer } from "./SliderContainer";
 import { SliderTrack } from "./SliderTrack";
 import { SliderItem } from "./SliderItem";
-import { ArrowButton } from "./ArrowButton";
-import { FaAngleLeft } from "react-icons/fa";
 
 type Props = {
   images: {

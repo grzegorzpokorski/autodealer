@@ -1,12 +1,6 @@
 import { useOnKeydown } from "@/hooks/useOnKeydown";
-import {
-  MouseEvent,
-  TouchEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import type { MouseEvent, TouchEvent } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type Args = {
   images: {

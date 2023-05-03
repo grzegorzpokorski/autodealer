@@ -5,7 +5,7 @@ import { Heading } from "@/components/blocks/Heading/Heading";
 import { GridList } from "@/components/blocks/GridList/GridList";
 import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { OfferList } from "@/components/templates/OfferList/OfferList";
-import offersFromJSON from "@/data/offers.json";
+import type offersFromJSON from "@/data/offers.json";
 
 type Props = {
   offers: (typeof offersFromJSON)[number][];
