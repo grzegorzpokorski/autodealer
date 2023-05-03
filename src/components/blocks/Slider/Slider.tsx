@@ -1,6 +1,7 @@
 "use client";
 
 import type { MouseEvent } from "react";
+import { useEffect } from "react";
 import { useSlider } from "./useSlider";
 import { LightboxItem } from "./LightboxItem";
 import { Lightbox } from "./Lightbox";
@@ -34,6 +35,8 @@ export const Slider = ({ images }: Props) => {
     isLightboxOpen,
     setSlide,
   } = useSlider({ images });
+
+  useEffect(() => console.log("render slider"), []);
 
   return (
     <SliderContainer>

@@ -51,51 +51,49 @@ export const useSlider = ({ images }: Args) => {
     document.body.querySelector("#page-root")?.removeAttribute("inert");
   }, []);
 
-  const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(
-    null,
-  );
-  const [dragEnd, setDragEnd] = useState<{ x: number; y: number } | null>(null);
+  const dragStart = useRef<{ x: number; y: number } | null>(null);
+  const dragEnd = useRef<{ x: number; y: number } | null>(null);
   const minXSwipeDistance = 50;
   const minYSwipeDistance = 100;
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
-    setDragEnd(null);
-    setDragStart({
+    dragStart.current = null;
+    dragStart.current = {
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY,
-    });
+    };
   }, []);
 
   const handleMouseDown = useCallback((e: MouseEvent) => {
-    setDragEnd(null);
-    setDragStart({
+    dragStart.current = null;
+    dragStart.current = {
       x: e.clientX,
       y: e.clientY,
-    });
+    };
   }, []);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
-    setDragEnd({
+    dragEnd.current = {
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY,
-    });
+    };
   }, []);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    setDragEnd({
+    dragEnd.current = {
       x: e.clientX,
       y: e.clientY,
-    });
+    };
   }, []);
 
   const handleDragEnd = useCallback(() => {
-    if (!dragStart || !dragEnd) return;
+    if (!dragStart.current || !dragEnd.current) return;
 
-    const xDistance = dragStart.x - dragEnd.x;
+    const xDistance = dragStart.current.x - dragEnd.current.x;
     const isLeftSwipe = xDistance > minXSwipeDistance;
     const isRightSwipe = xDistance < -minXSwipeDistance;
 
-    const yDistance = dragStart.y - dragEnd.y;
+    const yDistance = dragStart.current.y - dragEnd.current.y;
     const isUpSwipe =
       yDistance > minYSwipeDistance && 2 * yDistance > xDistance;
 
