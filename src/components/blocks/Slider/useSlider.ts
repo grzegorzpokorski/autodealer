@@ -100,6 +100,9 @@ export const useSlider = ({ images }: Args) => {
     if (isLeftSwipe) nextSlide();
     if (isRightSwipe) prevSlide();
     if (isUpSwipe) closeLightbox();
+
+    dragEnd.current = null;
+    dragStart.current = null;
   }, [closeLightbox, dragEnd, dragStart, nextSlide, prevSlide]);
 
   useOnKeydown(
