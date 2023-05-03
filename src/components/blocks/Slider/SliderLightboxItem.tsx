@@ -9,7 +9,7 @@ type Props = {
   };
 };
 
-export const LightboxItem = ({ image }: Props) => (
+export const SliderLightboxItem = ({ image }: Props) => (
   <li
     key={image.src}
     className="w-[100dvw] h-[100dvh] flex flex-col items-center justify-center"

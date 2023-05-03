@@ -12,7 +12,7 @@ type Props = {
   onMouseUp: () => void;
 };
 
-export const LightboxTrack = ({
+export const SliderLightboxTrack = ({
   children,
   currentSlide,
   onTouchStart,

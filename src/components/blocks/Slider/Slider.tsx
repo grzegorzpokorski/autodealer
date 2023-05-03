@@ -2,9 +2,9 @@
 
 import type { MouseEvent } from "react";
 import { useSlider } from "./useSlider";
-import { LightboxItem } from "./LightboxItem";
-import { Lightbox } from "./Lightbox";
-import { LightboxTrack } from "./LightboxTrack";
+import { SliderLightboxItem } from "./SliderLightboxItem";
+import { SliderLightbox } from "./SliderLightbox";
+import { SliderLightboxTrack } from "./SliderLightboxTrack";
 import { SliderContainer } from "./SliderContainer";
 import { SliderTrack } from "./SliderTrack";
 import { SliderItem } from "./SliderItem";
@@ -61,7 +61,7 @@ export const Slider = ({ images }: Props) => {
           />
         ))}
       </SliderTrack>
-      <Lightbox
+      <SliderLightbox
         isOpen={isLightboxOpen}
         onClose={closeLightbox}
         nextSlide={nextSlide}
@@ -69,7 +69,7 @@ export const Slider = ({ images }: Props) => {
         currentSlide={currentSlide}
         slidesCount={images.length}
       >
-        <LightboxTrack
+        <SliderLightboxTrack
           currentSlide={currentSlide}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
@@ -79,10 +79,10 @@ export const Slider = ({ images }: Props) => {
           onMouseUp={handleDragEnd}
         >
           {images.map((image) => (
-            <LightboxItem key={image.src} image={image} />
+            <SliderLightboxItem key={image.src} image={image} />
           ))}
-        </LightboxTrack>
-      </Lightbox>
+        </SliderLightboxTrack>
+      </SliderLightbox>
     </SliderContainer>
   );
 };

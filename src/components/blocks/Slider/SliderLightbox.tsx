@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { ArrowButton } from "./ArrowButton";
 import { FaAngleLeft } from "react-icons/fa";
 import { CloseButton } from "./CloseButton";
-import { LightboxCounter } from "./LightboxCounter";
+import { SliderLightboxCounter } from "./SliderLightboxCounter";
 
 type Props = {
   children: ReactNode;
@@ -16,7 +16,7 @@ type Props = {
   slidesCount: number;
 };
 
-export const Lightbox = ({
+export const SliderLightbox = ({
   children,
   isOpen,
   onClose,
@@ -61,9 +61,9 @@ export const Lightbox = ({
           <span className="sr-only">następne zdjęcie</span>
         </>
       </ArrowButton>
-      <LightboxCounter>
+      <SliderLightboxCounter>
         {currentSlide + 1}/{slidesCount}
-      </LightboxCounter>
+      </SliderLightboxCounter>
       <CloseButton onClick={onClose} />
     </div>
   </Portal>
