@@ -1,0 +1,28 @@
+query GetOffers {
+  offers {
+    id
+    invoice
+    price
+    slug
+    sold
+    title
+    gallery {
+      url
+      height
+      width
+      alt
+    }
+    brand {
+      id
+      brandName
+    }
+    features {
+      kolor
+      moc
+      pojemnoscSilnika
+      przebieg
+      rocznik
+      typ
+    }
+  }
+}

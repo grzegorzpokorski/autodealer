@@ -1,21 +1,17 @@
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import type { MouseEvent } from "react";
+import type { GetOfferBySlugQuery } from "@/generated/graphql";
 
 type Props = {
-  image: {
-    src: string;
-    width: number;
-    height: number;
-    alt: string;
-  };
+  image: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"][number];
   isCurrent: boolean;
   onClick: (e: MouseEvent) => void;
 };
 
 export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
   <li
-    key={image.src}
+    key={image.url}
     className={twMerge(
       "min-w-[100%] md:min-w-[60%] lg:min-w-[calc(40%)] min-h-[300px] bg-blue-500 h-64 flex flex-col items-center justify-center text-white font-bold text-2xl overflow-hidden snap-start relative",
       "md:border-4 transition-[border]",
@@ -23,7 +19,7 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
     )}
   >
     <a
-      href={image.src}
+      href={image.url}
       target="_blank"
       rel="noopener noreferrer"
       onClick={onClick}
@@ -31,8 +27,8 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
       className="relative w-full h-full"
     >
       <Image
-        src={image.src}
-        alt={image.alt}
+        src={image.url}
+        alt={image.alt || ""}
         className={twMerge(
           "object-cover object-center hover:scale-105 transition-[transform]",
         )}

@@ -5,10 +5,10 @@ import { Heading } from "@/components/blocks/Heading/Heading";
 import { GridList } from "@/components/blocks/GridList/GridList";
 import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { OfferList } from "@/components/templates/OfferList/OfferList";
-import type offersFromJSON from "@/data/offers.json";
+import type { GetOffersQuery } from "@/generated/graphql";
 
 type Props = {
-  offers: (typeof offersFromJSON)[number][];
+  offers: GetOffersQuery["offers"];
   title: string;
   cta?: boolean;
 };

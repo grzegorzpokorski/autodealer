@@ -1,7 +1,9 @@
 import "./../styles/globals.css";
 import { Poppins } from "next/font/google";
 import type { ReactNode } from "react";
+
 import { Layout } from "@/components/blocks/Layout/Layout";
+import { AppProviders } from "@/providers/AppProviders";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -26,7 +28,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${poppins.variable} bg-light-gray text-secondary`}
     >
       <body>
-        <Layout>{children}</Layout>
+        <AppProviders>
+          <Layout>{children}</Layout>
+        </AppProviders>
         <div id="portal-root"></div>
       </body>
     </html>

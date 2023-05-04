@@ -4,9 +4,13 @@ import { FeaturesSection } from "@/components/sections/FeaturesSection/FeaturesS
 import { HeroSection } from "@/components/sections/HeroSection/HeroSection";
 import { MetricsSection } from "@/components/sections/MetricsSection/MetricsSection";
 import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
-import offersFromJSON from "@/data/offers.json";
+import type { GetOffersQuery } from "@/generated/graphql";
 
-export const HomePage = () => {
+type Props = {
+  offers: GetOffersQuery["offers"];
+};
+
+export const HomePage = ({ offers }: Props) => {
   return (
     <>
       <HeroSection />
@@ -14,7 +18,7 @@ export const HomePage = () => {
         <MetricsSection />
         <FeaturesSection />
         <RecommendedOffersSection
-          offers={offersFromJSON.slice(0, 3)}
+          offers={offers.slice(0, 3)}
           title="Zobacz polecane modele"
         />
         <BannerSection

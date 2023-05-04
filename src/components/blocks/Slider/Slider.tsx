@@ -8,14 +8,16 @@ import { SliderLightboxTrack } from "./SliderLightboxTrack";
 import { SliderContainer } from "./SliderContainer";
 import { SliderTrack } from "./SliderTrack";
 import { SliderItem } from "./SliderItem";
+import type { GetOfferBySlugQuery } from "@/generated/graphql";
 
 type Props = {
-  images: {
-    src: string;
-    width: number;
-    height: number;
-    alt: string;
-  }[];
+  images: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"];
+  // images: {
+  //   url: string;
+  //   width: number;
+  //   height: number;
+  //   alt: string;
+  // }[];
 };
 
 export const Slider = ({ images }: Props) => {
@@ -50,7 +52,7 @@ export const Slider = ({ images }: Props) => {
       >
         {images.map((image, idx) => (
           <SliderItem
-            key={image.src}
+            key={image.url}
             image={image}
             isCurrent={currentSlide === idx}
             onClick={(e: MouseEvent) => {
@@ -79,7 +81,7 @@ export const Slider = ({ images }: Props) => {
           onMouseUp={handleDragEnd}
         >
           {images.map((image) => (
-            <SliderLightboxItem key={image.src} image={image} />
+            <SliderLightboxItem key={image.url} image={image} />
           ))}
         </SliderLightboxTrack>
       </SliderLightbox>

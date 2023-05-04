@@ -1,23 +1,28 @@
 import Image from "next/image";
+import type { GetOffersQuery } from "@/generated/graphql";
 
 type Props = {
-  image: {
-    src: string;
-    height: number;
-    width: number;
-    alt: string;
-  };
+  image: GetOffersQuery["offers"][number]["gallery"][number];
+  // image: {
+  //   url: string;
+  //   height: number;
+  //   width: number;
+  //   alt: string;
+  // };
 };
 
-export const OfferImage = ({ image }: Props) => (
-  <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md">
-    <Image
-      src={image.src}
-      alt={image.alt}
-      width={image.width}
-      height={image.height}
-      className="object-cover object-center w-full h-full hover:scale-105 transition-all"
-      sizes="(max-width: 720px) 100vw, 50vw"
-    />
-  </picture>
-);
+export const OfferImage = ({ image }: Props) => {
+  console.log(image.url);
+  return (
+    <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md">
+      <Image
+        src={image.url}
+        alt={image.alt || ""}
+        width={image.width || 0}
+        height={image.height || 0}
+        className="object-cover object-center w-full h-full hover:scale-105 transition-all"
+        sizes="(max-width: 720px) 100vw, 50vw"
+      />
+    </picture>
+  );
+};

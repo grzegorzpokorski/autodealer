@@ -4,48 +4,53 @@ import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { Main } from "@/components/blocks/Main/Main";
 import { Slider } from "@/components/blocks/Slider/Slider";
 import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
-import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
+// import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
+import type { GetOfferBySlugQuery } from "@/generated/graphql";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
-  offer: {
-    id: string;
-    sold: boolean;
-    invoice: boolean;
-    title: string;
-    features: {
-      label: string;
-      value: string;
-    }[];
-    price: number;
-    gallery: {
-      src: string;
-      width: number;
-      height: number;
-      alt: string;
-    }[];
-  };
-  recommendedOffers: {
-    id: string;
-    sold: boolean;
-    invoice: boolean;
-    title: string;
-    features: {
-      label: string;
-      value: string;
-    }[];
-    price: number;
-    gallery: {
-      src: string;
-      width: number;
-      height: number;
-      alt: string;
-    }[];
-  }[];
+  offer: GetOfferBySlugQuery["offer"];
+  // offer: {
+  //   id: string;
+  //   sold: boolean;
+  //   invoice: boolean;
+  //   title: string;
+  //   features: {
+  //     label: string;
+  //     value: string;
+  //   }[];
+  //   price: number;
+  //   gallery: {
+  //     src: string;
+  //     width: number;
+  //     height: number;
+  //     alt: string;
+  //   }[];
+  // };
+  // recommendedOffers: {
+  //   id: string;
+  //   sold: boolean;
+  //   invoice: boolean;
+  //   title: string;
+  //   features: {
+  //     label: string;
+  //     value: string;
+  //   }[];
+  //   price: number;
+  //   gallery: {
+  //     src: string;
+  //     width: number;
+  //     height: number;
+  //     alt: string;
+  //   }[];
+  // }[];
 };
 
-export const SinglePage = ({ offer, recommendedOffers }: Props) => {
+// export const SinglePage = ({ offer, recommendedOffers }: Props) => {
+export const SinglePage = ({ offer }: Props) => {
+  if (!offer) return null;
+
   return (
     <>
       <Main>
@@ -67,22 +72,45 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
                       Parametry
                     </Heading>
                   </header>
-                  <table className="m-0">
-                    <thead className="sr-only">
-                      <tr>
-                        <th>parametr</th>
-                        <th>wartośc</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {offer.features.map((feature) => (
-                        <tr key={feature.label} className="pb-10">
-                          <td>{feature.label}</td>
-                          <td>{feature.value}</td>
+                  {offer.features && (
+                    <table className="m-0">
+                      <thead className="sr-only">
+                        <tr>
+                          <th>parametr</th>
+                          <th>wartośc</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <tr key={offer.features.kolor} className="pb-10">
+                          <td>Kolor</td>
+                          <td>{offer.features.kolor}</td>
+                        </tr>
+                        <tr key={offer.features.moc} className="pb-10">
+                          <td>Moc</td>
+                          <td>{offer.features.moc}</td>
+                        </tr>
+                        <tr
+                          key={offer.features.pojemnoscSilnika}
+                          className="pb-10"
+                        >
+                          <td>Pojemność silnika</td>
+                          <td>{offer.features.pojemnoscSilnika}</td>
+                        </tr>
+                        <tr key={offer.features.przebieg} className="pb-10">
+                          <td>Przebieg</td>
+                          <td>{offer.features.przebieg}</td>
+                        </tr>
+                        <tr key={offer.features.rocznik} className="pb-10">
+                          <td>Rocznik</td>
+                          <td>{offer.features.rocznik}</td>
+                        </tr>
+                        <tr key={offer.features.typ} className="pb-10">
+                          <td>Typ</td>
+                          <td>{offer.features.typ}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  )}
                 </section>
               </div>
               <section className="p-8 bg-white shadow" aria-labelledby="opis">
@@ -172,11 +200,11 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
             </div>
           </article>
         </Container>
-        <RecommendedOffersSection
+        {/* <RecommendedOffersSection
           offers={recommendedOffers}
           title="Zobacz również inne modele"
           cta={false}
-        />
+        /> */}
         <BannerSection
           title="Już dzisiaj znajdź dla siebie wymarzone auto!"
           button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
