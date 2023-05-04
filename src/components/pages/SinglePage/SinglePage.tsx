@@ -113,43 +113,21 @@ export const SinglePage = ({ offer }: Props) => {
                   )}
                 </section>
               </div>
-              <section className="p-8 bg-white shadow" aria-labelledby="opis">
-                <header className="sr-only">
-                  <Heading as="h2" size="base" id="opis" hidden>
-                    Opis
-                  </Heading>
-                </header>
-                <div className="prose max-w-none">
-                  <p>
-                    Samochód zakupiłem w salonie Mercedesa w Niemczech osobiście
-                    (posiadam dokumentację fotograficzną z odbioru, kopię oferty
-                    salonu). Samochód jest bez zbędnego rozpisywania się w
-                    stanie technicznym i wizualnym idealnym!
-                  </p>
-                  <p>
-                    Przepiękne zadbane wnętrze w połączeniu porcelanowej skóry i
-                    skórzanej deski rozdzielczej w kolorze espresso z
-                    przeszyciami białą nicią.
-                  </p>
-                  <p>
-                    Serwisowany regularnie w ASO MERCEDES-BENZ co dokumentuje
-                    pełna historia w bazie serwisowej ASO MB.
-                  </p>
-                  <p>Ważniejsze dla tej klasy opcje wyposażenia:</p>
-                  <ul>
-                    <li>12 x AIRBAG</li>
-                    <li>
-                      Delectus veritatis dignissimos repellendus repellat sed
-                      praesentium, explicabo mollitia, consequatur sint, sunt
-                      pariatur ut asperiores ipsa dolorem labore dolorum
-                      tenetur!
-                    </li>
-                    <li>
-                      Quo exercitationem corrupti dolorum fuga beatae, cum.
-                    </li>
-                  </ul>
-                </div>
-              </section>
+              {offer.description && (
+                <section className="p-8 bg-white shadow" aria-labelledby="opis">
+                  <header className="sr-only">
+                    <Heading as="h2" size="base" id="opis" hidden>
+                      Opis
+                    </Heading>
+                  </header>
+                  <div
+                    className="prose max-w-none"
+                    dangerouslySetInnerHTML={{
+                      __html: offer.description?.html,
+                    }}
+                  />
+                </section>
+              )}
             </div>
             <div className="col-span-12 md:col-span-5 flex flex-col gap-3 md:gap-6 order-1 md:order-2">
               <section

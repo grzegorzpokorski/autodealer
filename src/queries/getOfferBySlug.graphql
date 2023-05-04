@@ -24,5 +24,8 @@ query getOfferBySlug($slug: String) {
       rocznik
       typ
     }
+    description {
+      html
+    }
   }
 }

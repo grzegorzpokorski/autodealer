@@ -2503,7 +2503,7 @@ export type Offer = Node & {
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy: Maybe<User>;
-  description: Scalars['String'];
+  description: Maybe<RichText>;
   /** Get the document in other stages */
   documentInStages: Array<Offer>;
   features: Maybe<Feature>;
@@ -2619,7 +2619,7 @@ export type OfferConnection = {
 export type OfferCreateInput = {
   brand: InputMaybe<BrandCreateOneInlineInput>;
   createdAt: InputMaybe<Scalars['DateTime']>;
-  description: Scalars['String'];
+  description: InputMaybe<Scalars['RichTextAST']>;
   features: InputMaybe<FeatureCreateOneInlineInput>;
   gallery: AssetCreateManyInlineInput;
   invoice: Scalars['Boolean'];
@@ -2680,25 +2680,6 @@ export type OfferManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy: InputMaybe<UserWhereInput>;
-  description: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  description_contains: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  description_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  description_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  description_not: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  description_not_contains: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  description_not_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  description_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  description_not_starts_with: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  description_starts_with: InputMaybe<Scalars['String']>;
   documentInStages_every: InputMaybe<OfferWhereStageInput>;
   documentInStages_none: InputMaybe<OfferWhereStageInput>;
   documentInStages_some: InputMaybe<OfferWhereStageInput>;
@@ -2824,8 +2805,6 @@ export type OfferManyWhereInput = {
 export enum OfferOrderByInput {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
-  DescriptionAsc = 'description_ASC',
-  DescriptionDesc = 'description_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   InvoiceAsc = 'invoice_ASC',
@@ -2846,7 +2825,7 @@ export enum OfferOrderByInput {
 
 export type OfferUpdateInput = {
   brand: InputMaybe<BrandUpdateOneInlineInput>;
-  description: InputMaybe<Scalars['String']>;
+  description: InputMaybe<Scalars['RichTextAST']>;
   features: InputMaybe<FeatureUpdateOneInlineInput>;
   gallery: InputMaybe<AssetUpdateManyInlineInput>;
   invoice: InputMaybe<Scalars['Boolean']>;
@@ -2874,7 +2853,7 @@ export type OfferUpdateManyInlineInput = {
 };
 
 export type OfferUpdateManyInput = {
-  description: InputMaybe<Scalars['String']>;
+  description: InputMaybe<Scalars['RichTextAST']>;
   invoice: InputMaybe<Scalars['Boolean']>;
   price: InputMaybe<Scalars['Int']>;
   sold: InputMaybe<Scalars['Boolean']>;
@@ -2957,25 +2936,6 @@ export type OfferWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy: InputMaybe<UserWhereInput>;
-  description: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  description_contains: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  description_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  description_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  description_not: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  description_not_contains: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  description_not_ends_with: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  description_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  description_not_starts_with: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  description_starts_with: InputMaybe<Scalars['String']>;
   documentInStages_every: InputMaybe<OfferWhereStageInput>;
   documentInStages_none: InputMaybe<OfferWhereStageInput>;
   documentInStages_some: InputMaybe<OfferWhereStageInput>;
@@ -4970,7 +4930,7 @@ export type GetOfferBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetOfferBySlugQuery = { __typename?: 'Query', offer: { __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null } | null };
+export type GetOfferBySlugQuery = { __typename?: 'Query', offer: { __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null } | null };
 
 export type GetOfferSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4980,7 +4940,7 @@ export type GetOfferSlugsQuery = { __typename?: 'Query', offers: Array<{ __typen
 export type GetOffersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetOffersQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null }> };
+export type GetOffersQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }> };
 
 
 export const GetOfferBySlugDocument = gql`
@@ -5009,6 +4969,9 @@ export const GetOfferBySlugDocument = gql`
       przebieg
       rocznik
       typ
+    }
+    description {
+      html
     }
   }
 }
@@ -5101,6 +5064,9 @@ export const GetOffersDocument = gql`
       przebieg
       rocznik
       typ
+    }
+    description {
+      html
     }
   }
 }

@@ -24,5 +24,8 @@ query GetOffers {
       rocznik
       typ
     }
+    description {
+      html
+    }
   }
 }
