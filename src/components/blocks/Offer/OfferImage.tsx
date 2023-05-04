@@ -3,16 +3,9 @@ import type { GetOffersQuery } from "@/generated/graphql";
 
 type Props = {
   image: GetOffersQuery["offers"][number]["gallery"][number];
-  // image: {
-  //   url: string;
-  //   height: number;
-  //   width: number;
-  //   alt: string;
-  // };
 };
 
 export const OfferImage = ({ image }: Props) => {
-  console.log(image.url);
   return (
     <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md">
       <Image
