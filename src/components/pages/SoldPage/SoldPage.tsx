@@ -6,15 +6,13 @@ import { Main } from "@/components/blocks/Main/Main";
 import { Section } from "@/components/blocks/Section/Section";
 import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
 import { HedaerSection } from "@/components/sections/HeaderSection/HeaderSection";
+import type { GetBrandsOfSoldOffersQuery } from "@/generated/graphql";
 
 type Props = {
-  soldByCategory: {
-    name: string;
-    count: number;
-  }[];
+  brands: GetBrandsOfSoldOffersQuery["brands"];
 };
 
-export const SoldPage = ({ soldByCategory }: Props) => {
+export const SoldPage = ({ brands }: Props) => {
   return (
     <>
       <HedaerSection
@@ -31,11 +29,16 @@ export const SoldPage = ({ soldByCategory }: Props) => {
           </header>
           <Container>
             <GridList gap="gap-4">
-              {soldByCategory.length > 0 &&
-                soldByCategory.map((item) => (
-                  <CategoryLink key={item.name} href="/">
-                    {item.name}
-                    <CategoryLink.Counter>{item.count}</CategoryLink.Counter>
+              {brands.length > 0 &&
+                brands.map((brand) => (
+                  <CategoryLink
+                    key={brand.slug}
+                    href={`/sprzedalismy/${brand.slug}`}
+                  >
+                    {brand.brandName}
+                    <CategoryLink.Counter>
+                      {brand.offers.length}
+                    </CategoryLink.Counter>
                   </CategoryLink>
                 ))}
             </GridList>
@@ -43,7 +46,7 @@ export const SoldPage = ({ soldByCategory }: Props) => {
         </Section>
         <BannerSection
           title="Już dzisiaj znajdź dla siebie wymarzone auto!"
-          button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
+          button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}
         />
       </Main>
     </>

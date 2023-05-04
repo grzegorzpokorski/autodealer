@@ -20,7 +20,7 @@ export const ContentPage = ({ title, subtitle, content }: Props) => {
         </Container>
         <BannerSection
           title="Już dzisiaj znajdź dla siebie wymarzone auto!"
-          button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
+          button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}
         />
       </Main>
     </>

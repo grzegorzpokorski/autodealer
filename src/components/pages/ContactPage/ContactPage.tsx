@@ -11,7 +11,7 @@ export const ContactPage = () => {
         <ContactSection />
         <BannerSection
           title="Już dzisiaj znajdź dla siebie wymarzone auto!"
-          button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
+          button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}
         />
       </Main>
     </>

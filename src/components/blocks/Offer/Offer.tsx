@@ -12,7 +12,7 @@ type Props = {
 export const Offer = ({ children }: Props) => (
   <>
     <li className="shadow-md rounded-md bg-white">
-      <article className="flex flex-col gap-4 pb-4 min-h-full relative">
+      <article className="flex flex-col gap-4 pb-4 min-h-full items-between relative">
         {children}
       </article>
     </li>

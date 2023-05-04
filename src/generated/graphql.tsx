@@ -4925,6 +4925,18 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type GetBrandNameBySlugQueryVariables = Exact<{
+  slug: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetBrandNameBySlugQuery = { __typename?: 'Query', brand: { __typename?: 'Brand', brandName: string } | null };
+
+export type GetBrandsOfSoldOffersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBrandsOfSoldOffersQuery = { __typename?: 'Query', brands: Array<{ __typename?: 'Brand', brandName: string, slug: string, offers: Array<{ __typename?: 'Offer', id: string }> }> };
+
 export type GetOfferBySlugQueryVariables = Exact<{
   slug: InputMaybe<Scalars['String']>;
 }>;
@@ -4935,16 +4947,102 @@ export type GetOfferBySlugQuery = { __typename?: 'Query', offer: { __typename?: 
 export type GetOfferSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetOfferSlugsQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', slug: string }> };
+export type GetOfferSlugsQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', slug: string, sold: boolean }> };
 
-export type GetOffersQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetOffersQueryVariables = Exact<{
+  sold: InputMaybe<Scalars['Boolean']>;
+}>;
 
 
 export type GetOffersQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }> };
 
+export type GetSoldOffersByBrandSlugQueryVariables = Exact<{
+  slug: InputMaybe<Scalars['String']>;
+}>;
 
+
+export type GetSoldOffersByBrandSlugQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }> };
+
+
+export const GetBrandNameBySlugDocument = gql`
+    query GetBrandNameBySlug($slug: String) {
+  brand(where: {slug: $slug}) {
+    brandName
+  }
+}
+    `;
+
+/**
+ * __useGetBrandNameBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetBrandNameBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBrandNameBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBrandNameBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetBrandNameBySlugQuery(baseOptions?: Apollo.QueryHookOptions<GetBrandNameBySlugQuery, GetBrandNameBySlugQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBrandNameBySlugQuery, GetBrandNameBySlugQueryVariables>(GetBrandNameBySlugDocument, options);
+      }
+export function useGetBrandNameBySlugLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBrandNameBySlugQuery, GetBrandNameBySlugQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBrandNameBySlugQuery, GetBrandNameBySlugQueryVariables>(GetBrandNameBySlugDocument, options);
+        }
+export type GetBrandNameBySlugQueryHookResult = ReturnType<typeof useGetBrandNameBySlugQuery>;
+export type GetBrandNameBySlugLazyQueryHookResult = ReturnType<typeof useGetBrandNameBySlugLazyQuery>;
+export type GetBrandNameBySlugQueryResult = Apollo.QueryResult<GetBrandNameBySlugQuery, GetBrandNameBySlugQueryVariables>;
+export const GetBrandsOfSoldOffersDocument = gql`
+    query GetBrandsOfSoldOffers {
+  brands(
+    orderBy: brandName_ASC
+    stage: PUBLISHED
+    where: {offers_some: {sold: true}}
+  ) {
+    brandName
+    slug
+    offers(where: {sold: true}) {
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetBrandsOfSoldOffersQuery__
+ *
+ * To run a query within a React component, call `useGetBrandsOfSoldOffersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBrandsOfSoldOffersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBrandsOfSoldOffersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBrandsOfSoldOffersQuery(baseOptions?: Apollo.QueryHookOptions<GetBrandsOfSoldOffersQuery, GetBrandsOfSoldOffersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBrandsOfSoldOffersQuery, GetBrandsOfSoldOffersQueryVariables>(GetBrandsOfSoldOffersDocument, options);
+      }
+export function useGetBrandsOfSoldOffersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBrandsOfSoldOffersQuery, GetBrandsOfSoldOffersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBrandsOfSoldOffersQuery, GetBrandsOfSoldOffersQueryVariables>(GetBrandsOfSoldOffersDocument, options);
+        }
+export type GetBrandsOfSoldOffersQueryHookResult = ReturnType<typeof useGetBrandsOfSoldOffersQuery>;
+export type GetBrandsOfSoldOffersLazyQueryHookResult = ReturnType<typeof useGetBrandsOfSoldOffersLazyQuery>;
+export type GetBrandsOfSoldOffersQueryResult = Apollo.QueryResult<GetBrandsOfSoldOffersQuery, GetBrandsOfSoldOffersQueryVariables>;
 export const GetOfferBySlugDocument = gql`
-    query getOfferBySlug($slug: String) {
+    query GetOfferBySlug($slug: String) {
   offer(where: {slug: $slug}) {
     id
     invoice
@@ -5006,8 +5104,9 @@ export type GetOfferBySlugLazyQueryHookResult = ReturnType<typeof useGetOfferByS
 export type GetOfferBySlugQueryResult = Apollo.QueryResult<GetOfferBySlugQuery, GetOfferBySlugQueryVariables>;
 export const GetOfferSlugsDocument = gql`
     query GetOfferSlugs {
-  offers {
+  offers(stage: PUBLISHED) {
     slug
+    sold
   }
 }
     `;
@@ -5039,8 +5138,70 @@ export type GetOfferSlugsQueryHookResult = ReturnType<typeof useGetOfferSlugsQue
 export type GetOfferSlugsLazyQueryHookResult = ReturnType<typeof useGetOfferSlugsLazyQuery>;
 export type GetOfferSlugsQueryResult = Apollo.QueryResult<GetOfferSlugsQuery, GetOfferSlugsQueryVariables>;
 export const GetOffersDocument = gql`
-    query GetOffers {
-  offers {
+    query GetOffers($sold: Boolean) {
+  offers(stage: PUBLISHED, where: {sold: $sold}, orderBy: price_DESC) {
+    id
+    invoice
+    price
+    slug
+    sold
+    title
+    gallery {
+      url
+      height
+      width
+      alt
+    }
+    brand {
+      id
+      brandName
+    }
+    features {
+      kolor
+      moc
+      pojemnoscSilnika
+      przebieg
+      rocznik
+      typ
+    }
+    description {
+      html
+    }
+    sold
+  }
+}
+    `;
+
+/**
+ * __useGetOffersQuery__
+ *
+ * To run a query within a React component, call `useGetOffersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOffersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOffersQuery({
+ *   variables: {
+ *      sold: // value for 'sold'
+ *   },
+ * });
+ */
+export function useGetOffersQuery(baseOptions?: Apollo.QueryHookOptions<GetOffersQuery, GetOffersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetOffersQuery, GetOffersQueryVariables>(GetOffersDocument, options);
+      }
+export function useGetOffersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetOffersQuery, GetOffersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetOffersQuery, GetOffersQueryVariables>(GetOffersDocument, options);
+        }
+export type GetOffersQueryHookResult = ReturnType<typeof useGetOffersQuery>;
+export type GetOffersLazyQueryHookResult = ReturnType<typeof useGetOffersLazyQuery>;
+export type GetOffersQueryResult = Apollo.QueryResult<GetOffersQuery, GetOffersQueryVariables>;
+export const GetSoldOffersByBrandSlugDocument = gql`
+    query GetSoldOffersByBrandSlug($slug: String) {
+  offers(where: {sold: true, brand: {slug: $slug}}, stage: PUBLISHED) {
     id
     invoice
     price
@@ -5073,28 +5234,29 @@ export const GetOffersDocument = gql`
     `;
 
 /**
- * __useGetOffersQuery__
+ * __useGetSoldOffersByBrandSlugQuery__
  *
- * To run a query within a React component, call `useGetOffersQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetOffersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetSoldOffersByBrandSlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSoldOffersByBrandSlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetOffersQuery({
+ * const { data, loading, error } = useGetSoldOffersByBrandSlugQuery({
  *   variables: {
+ *      slug: // value for 'slug'
  *   },
  * });
  */
-export function useGetOffersQuery(baseOptions?: Apollo.QueryHookOptions<GetOffersQuery, GetOffersQueryVariables>) {
+export function useGetSoldOffersByBrandSlugQuery(baseOptions?: Apollo.QueryHookOptions<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetOffersQuery, GetOffersQueryVariables>(GetOffersDocument, options);
+        return Apollo.useQuery<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>(GetSoldOffersByBrandSlugDocument, options);
       }
-export function useGetOffersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetOffersQuery, GetOffersQueryVariables>) {
+export function useGetSoldOffersByBrandSlugLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetOffersQuery, GetOffersQueryVariables>(GetOffersDocument, options);
+          return Apollo.useLazyQuery<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>(GetSoldOffersByBrandSlugDocument, options);
         }
-export type GetOffersQueryHookResult = ReturnType<typeof useGetOffersQuery>;
-export type GetOffersLazyQueryHookResult = ReturnType<typeof useGetOffersLazyQuery>;
-export type GetOffersQueryResult = Apollo.QueryResult<GetOffersQuery, GetOffersQueryVariables>;
+export type GetSoldOffersByBrandSlugQueryHookResult = ReturnType<typeof useGetSoldOffersByBrandSlugQuery>;
+export type GetSoldOffersByBrandSlugLazyQueryHookResult = ReturnType<typeof useGetSoldOffersByBrandSlugLazyQuery>;
+export type GetSoldOffersByBrandSlugQueryResult = Apollo.QueryResult<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>;

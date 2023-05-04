@@ -1,0 +1,13 @@
+query GetBrandsOfSoldOffers {
+  brands(
+    orderBy: brandName_ASC
+    stage: PUBLISHED
+    where: { offers_some: { sold: true } }
+  ) {
+    brandName
+    slug
+    offers(where: { sold: true }) {
+      id
+    }
+  }
+}

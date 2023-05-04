@@ -1,5 +1,6 @@
 query GetOfferSlugs {
-  offers {
+  offers(stage: PUBLISHED) {
     slug
+    sold
   }
 }

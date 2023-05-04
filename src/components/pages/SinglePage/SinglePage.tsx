@@ -11,40 +11,6 @@ import { twMerge } from "tailwind-merge";
 
 type Props = {
   offer: GetOfferBySlugQuery["offer"];
-  // offer: {
-  //   id: string;
-  //   sold: boolean;
-  //   invoice: boolean;
-  //   title: string;
-  //   features: {
-  //     label: string;
-  //     value: string;
-  //   }[];
-  //   price: number;
-  //   gallery: {
-  //     src: string;
-  //     width: number;
-  //     height: number;
-  //     alt: string;
-  //   }[];
-  // };
-  // recommendedOffers: {
-  //   id: string;
-  //   sold: boolean;
-  //   invoice: boolean;
-  //   title: string;
-  //   features: {
-  //     label: string;
-  //     value: string;
-  //   }[];
-  //   price: number;
-  //   gallery: {
-  //     src: string;
-  //     width: number;
-  //     height: number;
-  //     alt: string;
-  //   }[];
-  // }[];
 };
 
 // export const SinglePage = ({ offer, recommendedOffers }: Props) => {
@@ -170,9 +136,15 @@ export const SinglePage = ({ offer }: Props) => {
                   )}
                 </div>
                 <div className="flex flex-col flex-wrap flex-wrap justify-center gap-2">
-                  <LinkAsButton href="tel:+48123456789" buttonStyle="white">
-                    <span className="font-bold">Zadźwoń:</span>+48 123 456 789
-                  </LinkAsButton>
+                  {offer.sold ? (
+                    <p className="inline-flex transition-colors border-2 text-center items-center justify-center gap-1.5 bg-white text-gray-800 border-white px-5 py-2 text-base font-bold">
+                      sprzedany
+                    </p>
+                  ) : (
+                    <LinkAsButton href="tel:+48123456789" buttonStyle="white">
+                      <span className="font-bold">Zadźwoń:</span>+48 123 456 789
+                    </LinkAsButton>
+                  )}
                 </div>
               </section>
             </div>
@@ -185,7 +157,7 @@ export const SinglePage = ({ offer }: Props) => {
         /> */}
         <BannerSection
           title="Już dzisiaj znajdź dla siebie wymarzone auto!"
-          button={{ label: "Zobacz naszą ofetę", href: "/oferta" }}
+          button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}
         />
       </Main>
     </>

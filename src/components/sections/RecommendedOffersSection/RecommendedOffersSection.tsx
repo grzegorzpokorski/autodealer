@@ -33,7 +33,7 @@ export const RecommendedOffersSection = ({
         </GridList>
         {cta && (
           <footer className="pt-8 text-center">
-            <LinkAsButton href="/oferta" buttonStyle="primary" size="large">
+            <LinkAsButton href="/oferty" buttonStyle="primary" size="large">
               Zobacz całą ofertę
             </LinkAsButton>
           </footer>

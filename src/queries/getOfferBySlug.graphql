@@ -1,4 +1,4 @@
-query getOfferBySlug($slug: String) {
+query GetOfferBySlug($slug: String) {
   offer(where: { slug: $slug }) {
     id
     invoice

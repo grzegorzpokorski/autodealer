@@ -1,6 +1,9 @@
 import { OfferPage } from "@/components/pages/OfferPage/OfferPage";
 import { client } from "@/lib/apollo";
-import type { GetOffersQuery } from "@/generated/graphql";
+import type {
+  GetOffersQuery,
+  GetOffersQueryVariables,
+} from "@/generated/graphql";
 import { GetOffersDocument } from "@/generated/graphql";
 
 export const metadata = {
@@ -8,8 +11,9 @@ export const metadata = {
 };
 
 export default async function Page() {
-  const offers = await client.query<GetOffersQuery>({
+  const offers = await client.query<GetOffersQuery, GetOffersQueryVariables>({
     query: GetOffersDocument,
+    variables: { sold: false },
   });
 
   return <OfferPage offers={offers.data.offers} />;

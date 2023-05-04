@@ -1,0 +1,5 @@
+query GetBrandNameBySlug($slug: String) {
+  brand(where: { slug: $slug }) {
+    brandName
+  }
+}
