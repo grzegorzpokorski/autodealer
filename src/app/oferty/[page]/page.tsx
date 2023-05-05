@@ -8,7 +8,7 @@ export const metadata = {
 
 export const dynamicParams = false;
 
-const offersPerPage = 1;
+const offersPerPage = 3;
 
 export const generateStaticParams = async () => {
   const offers = await getOffers({
