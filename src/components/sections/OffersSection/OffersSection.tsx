@@ -1,34 +1,23 @@
+import { useId } from "react";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { Section } from "@/components/blocks/Section/Section";
 import { Container } from "@/components/blocks/Container/Container";
 import { GridList } from "@/components/blocks/GridList/GridList";
-import { useId } from "react";
 import { OfferList } from "@/components/templates/OfferList/OfferList";
 import type { GetOffersQuery } from "@/generated/graphql";
+import { Pagination } from "@/components/blocks/Pagination/Pagination";
 
 type Props = {
   title: string;
   offers: GetOffersQuery["offers"];
-  // offers: {
-  //   id: string;
-  //   sold: boolean;
-  //   invoice: boolean;
-  //   title: string;
-  //   features: {
-  //     label: string;
-  //     value: string;
-  //   }[];
-  //   price: number;
-  //   gallery: {
-  //     src: string;
-  //     width: number;
-  //     height: number;
-  //     alt: string;
-  //   }[];
-  // }[];
+  pagination?: {
+    currentPage: number;
+    totalPages: number;
+    base: string;
+  };
 };
 
-export const OffersSection = ({ title, offers }: Props) => {
+export const OffersSection = ({ title, offers, pagination }: Props) => {
   const sectionHeadingId = useId();
 
   return (
@@ -40,6 +29,9 @@ export const OffersSection = ({ title, offers }: Props) => {
         <GridList>
           {offers.length > 0 && <OfferList offers={offers} />}
         </GridList>
+        {pagination && pagination.totalPages > 1 && (
+          <Pagination pagination={pagination} />
+        )}
       </Container>
     </Section>
   );

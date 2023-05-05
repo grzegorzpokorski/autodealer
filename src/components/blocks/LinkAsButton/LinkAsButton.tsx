@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
 import LinkNext from "next/link";
 import { twMerge } from "tailwind-merge";
 
@@ -37,9 +37,8 @@ export type LinkProps = {
   tabIndex?: number;
   onClick?: () => void;
   buttonStyle?: ButtonVariants;
-  "aria-hidden"?: string;
   size?: "default" | "large";
-};
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const LinkAsButton = ({
   href,
@@ -48,6 +47,7 @@ export const LinkAsButton = ({
   size = "default",
   tabIndex,
   children,
+  ...rest
 }: LinkProps) => {
   const isInternal = ["#", "/", "tel:", "email:"].some((item) =>
     href.startsWith(item),
@@ -64,6 +64,7 @@ export const LinkAsButton = ({
         sizes[size],
       )}
       tabIndex={tabIndex}
+      {...rest}
     >
       {children}
     </LinkNext>
@@ -78,6 +79,7 @@ export const LinkAsButton = ({
         buttonStyle && buttonVariants[buttonStyle],
         sizes[size],
       )}
+      {...rest}
     >
       {children}
     </a>

@@ -1,6 +1,17 @@
 import { BrandArchivePage } from "@/components/pages/BrandArchivePage/BrandArchivePage";
 import { getBrandNameBySlug } from "@/data/getBrandNameBySlug";
+import { getBrandsOfSoldOffers } from "@/data/getBrandsOfSoldOffers";
 import { getOffersByBrandSlug } from "@/data/getOffersByBrandSlug";
+
+export const dynamicParams = false;
+
+export const generateStaticParams = async () => {
+  const brands = await getBrandsOfSoldOffers();
+
+  return brands.data.brands.map((brand) => ({
+    brandSlug: brand.slug,
+  }));
+};
 
 export default async function Page({
   params: { brandSlug },
