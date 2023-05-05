@@ -30,7 +30,9 @@ export const OffersSection = ({ title, offers, pagination }: Props) => {
           {offers.length > 0 && <OfferList offers={offers} />}
         </GridList>
         {pagination && pagination.totalPages > 1 && (
-          <Pagination pagination={pagination} />
+          <div className="mt-8">
+            <Pagination pagination={pagination} />
+          </div>
         )}
       </Container>
     </Section>
