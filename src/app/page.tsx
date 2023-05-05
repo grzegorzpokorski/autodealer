@@ -1,15 +1,12 @@
 import { HomePage } from "@/components/pages/HomePage/HomePage";
-import type {
-  GetOffersQuery,
-  GetOffersQueryVariables,
-} from "@/generated/graphql";
-import { GetOffersDocument } from "@/generated/graphql";
-import { client } from "@/lib/apollo";
+import { getOffers } from "@/data/getOffers";
+import { OfferOrderByInput } from "@/generated/graphql";
 
 export default async function Home() {
-  const offers = await client.query<GetOffersQuery, GetOffersQueryVariables>({
-    query: GetOffersDocument,
-    variables: { sold: false },
+  const offers = await getOffers({
+    sold: false,
+    order: OfferOrderByInput.PriceDesc,
   });
+
   return <HomePage offers={offers.data.offers} />;
 }

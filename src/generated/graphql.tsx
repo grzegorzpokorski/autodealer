@@ -4950,14 +4950,18 @@ export type GetOfferSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetOfferSlugsQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', slug: string, sold: boolean }> };
 
 export type GetOffersQueryVariables = Exact<{
-  sold: InputMaybe<Scalars['Boolean']>;
+  sold?: InputMaybe<Scalars['Boolean']>;
+  order?: InputMaybe<OfferOrderByInput>;
+  first?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type GetOffersQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }> };
+export type GetOffersQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }>, offersConnection: { __typename?: 'OfferConnection', aggregate: { __typename?: 'Aggregate', count: number } } };
 
 export type GetSoldOffersByBrandSlugQueryVariables = Exact<{
   slug: InputMaybe<Scalars['String']>;
+  sold: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
@@ -5138,8 +5142,14 @@ export type GetOfferSlugsQueryHookResult = ReturnType<typeof useGetOfferSlugsQue
 export type GetOfferSlugsLazyQueryHookResult = ReturnType<typeof useGetOfferSlugsLazyQuery>;
 export type GetOfferSlugsQueryResult = Apollo.QueryResult<GetOfferSlugsQuery, GetOfferSlugsQueryVariables>;
 export const GetOffersDocument = gql`
-    query GetOffers($sold: Boolean) {
-  offers(stage: PUBLISHED, where: {sold: $sold}, orderBy: price_DESC) {
+    query GetOffers($sold: Boolean = false, $order: OfferOrderByInput = price_DESC, $first: Int = 3, $skip: Int = 0) {
+  offers(
+    stage: PUBLISHED
+    where: {sold: $sold}
+    orderBy: $order
+    first: $first
+    skip: $skip
+  ) {
     id
     invoice
     price
@@ -5169,6 +5179,11 @@ export const GetOffersDocument = gql`
     }
     sold
   }
+  offersConnection(stage: PUBLISHED, where: {sold: $sold}) {
+    aggregate {
+      count
+    }
+  }
 }
     `;
 
@@ -5185,6 +5200,9 @@ export const GetOffersDocument = gql`
  * const { data, loading, error } = useGetOffersQuery({
  *   variables: {
  *      sold: // value for 'sold'
+ *      order: // value for 'order'
+ *      first: // value for 'first'
+ *      skip: // value for 'skip'
  *   },
  * });
  */
@@ -5200,8 +5218,8 @@ export type GetOffersQueryHookResult = ReturnType<typeof useGetOffersQuery>;
 export type GetOffersLazyQueryHookResult = ReturnType<typeof useGetOffersLazyQuery>;
 export type GetOffersQueryResult = Apollo.QueryResult<GetOffersQuery, GetOffersQueryVariables>;
 export const GetSoldOffersByBrandSlugDocument = gql`
-    query GetSoldOffersByBrandSlug($slug: String) {
-  offers(where: {sold: true, brand: {slug: $slug}}, stage: PUBLISHED) {
+    query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean) {
+  offers(where: {sold: $sold, brand: {slug: $slug}}, stage: PUBLISHED) {
     id
     invoice
     price
@@ -5246,6 +5264,7 @@ export const GetSoldOffersByBrandSlugDocument = gql`
  * const { data, loading, error } = useGetSoldOffersByBrandSlugQuery({
  *   variables: {
  *      slug: // value for 'slug'
+ *      sold: // value for 'sold'
  *   },
  * });
  */

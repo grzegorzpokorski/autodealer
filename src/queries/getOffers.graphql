@@ -1,5 +1,16 @@
-query GetOffers($sold: Boolean) {
-  offers(stage: PUBLISHED, where: { sold: $sold }, orderBy: price_DESC) {
+query GetOffers(
+  $sold: Boolean = false
+  $order: OfferOrderByInput = price_DESC
+  $first: Int = 3
+  $skip: Int = 0
+) {
+  offers(
+    stage: PUBLISHED
+    where: { sold: $sold }
+    orderBy: $order
+    first: $first
+    skip: $skip
+  ) {
     id
     invoice
     price
@@ -28,5 +39,10 @@ query GetOffers($sold: Boolean) {
       html
     }
     sold
+  }
+  offersConnection(stage: PUBLISHED, where: { sold: $sold }) {
+    aggregate {
+      count
+    }
   }
 }

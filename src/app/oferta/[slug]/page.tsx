@@ -1,21 +1,11 @@
 import { SinglePage } from "@/components/pages/SinglePage/SinglePage";
-import type {
-  GetOfferBySlugQuery,
-  GetOfferBySlugQueryVariables,
-  GetOfferSlugsQuery,
-} from "@/generated/graphql";
-import {
-  GetOfferSlugsDocument,
-  GetOfferBySlugDocument,
-} from "@/generated/graphql";
-import { client } from "@/lib/apollo";
+import { getOfferBySlug } from "@/data/getOfferBySlig";
+import { getOffersSlugs } from "@/data/getOffersSlugs";
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const slugs = await client.query<GetOfferSlugsQuery>({
-    query: GetOfferSlugsDocument,
-  });
+  const slugs = await getOffersSlugs();
   return slugs.data.offers.map((offer) => ({ slug: offer.slug }));
 }
 
@@ -24,13 +14,7 @@ export default async function Offer({
 }: {
   params: { slug: string };
 }) {
-  const offer = await client.query<
-    GetOfferBySlugQuery,
-    GetOfferBySlugQueryVariables
-  >({
-    query: GetOfferBySlugDocument,
-    variables: { slug },
-  });
+  const offer = await getOfferBySlug({ slug });
 
   if (offer.data.offer)
     return (

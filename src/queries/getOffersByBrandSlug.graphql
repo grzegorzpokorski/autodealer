@@ -1,5 +1,5 @@
-query GetSoldOffersByBrandSlug($slug: String) {
-  offers(where: { sold: true, brand: { slug: $slug } }, stage: PUBLISHED) {
+query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean) {
+  offers(where: { sold: $sold, brand: { slug: $slug } }, stage: PUBLISHED) {
     id
     invoice
     price
