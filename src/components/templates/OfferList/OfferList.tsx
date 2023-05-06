@@ -5,23 +5,6 @@ import { formatNumber } from "@/utils/formatNumber";
 
 type Props = {
   offers: GetOffersQuery["offers"];
-  // offers: {
-  //   id: string;
-  //   sold: boolean;
-  //   invoice: boolean;
-  //   title: string;
-  //   features: {
-  //     label: string;
-  //     value: string;
-  //   }[];
-  //   price: number;
-  //   gallery: {
-  //     src: string;
-  //     width: number;
-  //     height: number;
-  //     alt: string;
-  //   }[];
-  // }[];
 };
 
 export const OfferList = ({ offers }: Props) => (
