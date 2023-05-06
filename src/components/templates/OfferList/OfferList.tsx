@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Offer } from "@/components/blocks/Offer/Offer";
 import type { GetOffersQuery } from "@/generated/graphql";
+import { formatNumber } from "@/utils/formatNumber";
 
 type Props = {
   offers: GetOffersQuery["offers"];
@@ -41,7 +42,7 @@ export const OfferList = ({ offers }: Props) => (
               {offer.features.moc}
             </Offer.FeaturesList.Item>
             <Offer.FeaturesList.Item key={offer.features.przebieg}>
-              {offer.features.przebieg}
+              {formatNumber(parseInt(offer.features.przebieg))} km
             </Offer.FeaturesList.Item>
             <Offer.FeaturesList.Item key={offer.features.pojemnoscSilnika}>
               {offer.features.pojemnoscSilnika}

@@ -16,6 +16,7 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
       "min-w-[100%] md:min-w-[60%] lg:min-w-[calc(40%)] min-h-[300px] bg-blue-500 h-64 flex flex-col items-center justify-center text-white font-bold text-2xl overflow-hidden snap-start relative",
       "md:border-4 transition-[border]",
       isCurrent ? "border-primary" : "border-none",
+      "rounded md:rounded-lg",
     )}
   >
     <a
@@ -24,7 +25,7 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
       rel="noopener noreferrer"
       onClick={onClick}
       draggable={false}
-      className="relative w-full h-full"
+      className="relative w-full h-full rounded"
     >
       <Image
         src={image.url}

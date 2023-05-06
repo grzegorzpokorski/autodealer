@@ -7,6 +7,7 @@ import { BannerSection } from "@/components/sections/BannerSection/BannerSection
 // import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
 import type { GetOfferBySlugQuery } from "@/generated/graphql";
 import { formatCurrency } from "@/utils/formatCurrency";
+import { formatNumber } from "@/utils/formatNumber";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
@@ -26,7 +27,7 @@ export const SinglePage = ({ offer }: Props) => {
               <Slider images={offer.gallery} />
             </div>
             <div className="col-span-12 md:col-span-7 flex flex-col gap-3 md:gap-6 order-2 md:order-1">
-              <div className="p-8 bg-white shadow prose max-w-none flex flex-col gap-4">
+              <div className="p-8 bg-white shadow prose max-w-none flex flex-col gap-4 rounded">
                 <header aria-labelledby="title">
                   <Heading as="h1" size="base" id="title">
                     {offer.title}
@@ -53,7 +54,7 @@ export const SinglePage = ({ offer }: Props) => {
                         </tr>
                         <tr key={offer.features.moc} className="pb-10">
                           <td>Moc</td>
-                          <td>{offer.features.moc}</td>
+                          <td>{offer.features.moc} KM</td>
                         </tr>
                         <tr
                           key={offer.features.pojemnoscSilnika}
@@ -64,7 +65,9 @@ export const SinglePage = ({ offer }: Props) => {
                         </tr>
                         <tr key={offer.features.przebieg} className="pb-10">
                           <td>Przebieg</td>
-                          <td>{offer.features.przebieg}</td>
+                          <td>
+                            {formatNumber(parseInt(offer.features.przebieg))} km
+                          </td>
                         </tr>
                         <tr key={offer.features.rocznik} className="pb-10">
                           <td>Rocznik</td>
@@ -80,7 +83,10 @@ export const SinglePage = ({ offer }: Props) => {
                 </section>
               </div>
               {offer.description && (
-                <section className="p-8 bg-white shadow" aria-labelledby="opis">
+                <section
+                  className="p-8 bg-white shadow rounded"
+                  aria-labelledby="opis"
+                >
                   <header className="sr-only">
                     <Heading as="h2" size="base" id="opis" hidden>
                       Opis
@@ -97,7 +103,7 @@ export const SinglePage = ({ offer }: Props) => {
             </div>
             <div className="col-span-12 md:col-span-5 flex flex-col gap-3 md:gap-6 order-1 md:order-2">
               <section
-                className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow"
+                className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow rounded"
                 aria-labelledby="cena-i-kontakt"
               >
                 <header className="sr-only">
