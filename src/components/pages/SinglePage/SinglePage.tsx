@@ -4,18 +4,19 @@ import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { Main } from "@/components/blocks/Main/Main";
 import { Slider } from "@/components/blocks/Slider/Slider";
 import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
+import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
 // import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
-import type { GetOfferBySlugQuery } from "@/generated/graphql";
+import type { GetOfferBySlugQuery, GetOffersQuery } from "@/generated/graphql";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { formatNumber } from "@/utils/formatNumber";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
   offer: GetOfferBySlugQuery["offer"];
+  recommendedOffers: GetOffersQuery["offers"];
 };
 
-// export const SinglePage = ({ offer, recommendedOffers }: Props) => {
-export const SinglePage = ({ offer }: Props) => {
+export const SinglePage = ({ offer, recommendedOffers }: Props) => {
   if (!offer) return null;
 
   return (
@@ -156,11 +157,11 @@ export const SinglePage = ({ offer }: Props) => {
             </div>
           </article>
         </Container>
-        {/* <RecommendedOffersSection
+        <RecommendedOffersSection
           offers={recommendedOffers}
-          title="Zobacz również inne modele"
+          title="Zobacz dostępne modele"
           cta={false}
-        /> */}
+        />
         <BannerSection
           title="Już dzisiaj znajdź dla siebie wymarzone auto!"
           button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}

@@ -4977,6 +4977,15 @@ export type GetOffersCountQueryVariables = Exact<{
 
 export type GetOffersCountQuery = { __typename?: 'Query', offersConnection: { __typename?: 'OfferConnection', aggregate: { __typename?: 'Aggregate', count: number } } };
 
+export type GetRecomendedOffersQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  currentSlug: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetRecomendedOffersQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }> };
+
 
 export const GetBrandNameBySlugDocument = gql`
     query GetBrandNameBySlug($slug: String) {
@@ -5340,3 +5349,73 @@ export function useGetOffersCountLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetOffersCountQueryHookResult = ReturnType<typeof useGetOffersCountQuery>;
 export type GetOffersCountLazyQueryHookResult = ReturnType<typeof useGetOffersCountLazyQuery>;
 export type GetOffersCountQueryResult = Apollo.QueryResult<GetOffersCountQuery, GetOffersCountQueryVariables>;
+export const GetRecomendedOffersDocument = gql`
+    query getRecomendedOffers($first: Int = 3, $skip: Int = 0, $currentSlug: String) {
+  offers(
+    stage: PUBLISHED
+    orderBy: createdAt_DESC
+    where: {sold: false, NOT: {slug: $currentSlug}}
+    first: $first
+    skip: $skip
+  ) {
+    id
+    invoice
+    price
+    slug
+    sold
+    title
+    gallery {
+      url
+      height
+      width
+      alt
+    }
+    brand {
+      id
+      brandName
+    }
+    features {
+      kolor
+      moc
+      pojemnoscSilnika
+      przebieg
+      rocznik
+      typ
+    }
+    description {
+      html
+    }
+    sold
+  }
+}
+    `;
+
+/**
+ * __useGetRecomendedOffersQuery__
+ *
+ * To run a query within a React component, call `useGetRecomendedOffersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRecomendedOffersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRecomendedOffersQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      skip: // value for 'skip'
+ *      currentSlug: // value for 'currentSlug'
+ *   },
+ * });
+ */
+export function useGetRecomendedOffersQuery(baseOptions?: Apollo.QueryHookOptions<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>(GetRecomendedOffersDocument, options);
+      }
+export function useGetRecomendedOffersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>(GetRecomendedOffersDocument, options);
+        }
+export type GetRecomendedOffersQueryHookResult = ReturnType<typeof useGetRecomendedOffersQuery>;
+export type GetRecomendedOffersLazyQueryHookResult = ReturnType<typeof useGetRecomendedOffersLazyQuery>;
+export type GetRecomendedOffersQueryResult = Apollo.QueryResult<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>;

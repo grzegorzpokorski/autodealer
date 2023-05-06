@@ -20,6 +20,8 @@ export const RecommendedOffersSection = ({
 }: Props) => {
   const sectionTitleID = useId();
 
+  if (offers.length === 0) return null;
+
   return (
     <Section ariaLabelledby={sectionTitleID} border="top">
       <Container>
@@ -29,7 +31,7 @@ export const RecommendedOffersSection = ({
           </Heading>
         </header>
         <GridList margin="top">
-          {offers.length > 0 && <OfferList offers={offers} />}
+          <OfferList offers={offers} />
         </GridList>
         {cta && (
           <footer className="pt-8 text-center">

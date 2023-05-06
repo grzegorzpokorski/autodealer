@@ -1,0 +1,42 @@
+query getRecomendedOffers(
+  $first: Int = 3
+  $skip: Int = 0
+  $currentSlug: String
+) {
+  offers(
+    stage: PUBLISHED
+    orderBy: createdAt_DESC
+    where: { sold: false, NOT: { slug: $currentSlug } }
+    first: $first
+    skip: $skip
+  ) {
+    id
+    invoice
+    price
+    slug
+    sold
+    title
+    gallery {
+      url
+      height
+      width
+      alt
+    }
+    brand {
+      id
+      brandName
+    }
+    features {
+      kolor
+      moc
+      pojemnoscSilnika
+      przebieg
+      rocznik
+      typ
+    }
+    description {
+      html
+    }
+    sold
+  }
+}

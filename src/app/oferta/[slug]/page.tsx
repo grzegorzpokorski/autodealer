@@ -1,6 +1,7 @@
 import { SinglePage } from "@/components/pages/SinglePage/SinglePage";
 import { getOfferBySlug } from "@/data/getOfferBySlig";
 import { getOffersSlugs } from "@/data/getOffersSlugs";
+import { getRecomendedOffers } from "@/data/getRecomendedOffers";
 
 export const dynamicParams = false;
 
@@ -15,12 +16,17 @@ export default async function Offer({
   params: { slug: string };
 }) {
   const offer = await getOfferBySlug({ slug });
+  const recommendedOffers = await getRecomendedOffers({
+    first: 3,
+    skip: 0,
+    currentSlug: slug,
+  });
 
   if (offer.data.offer)
     return (
       <SinglePage
         offer={offer.data.offer}
-        // recommendedOffers={offersFromJSON.slice(0, 3)}
+        recommendedOffers={recommendedOffers.data.offers}
       />
     );
   return null;
