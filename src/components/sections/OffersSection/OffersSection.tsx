@@ -23,9 +23,17 @@ export const OffersSection = ({ title, offers, pagination }: Props) => {
   return (
     <Section ariaLabelledby={sectionHeadingId}>
       <Container>
-        <Heading as="h2" size="base" hidden id={sectionHeadingId}>
+        <Heading as="h2" size="base" id={sectionHeadingId} hidden>
           {title}
         </Heading>
+        {pagination && (
+          <output
+            className="inline-flex mb-8 text-secondary text-sm"
+            aria-hidden="true"
+          >
+            Strona {pagination.currentPage} z {pagination.totalPages}
+          </output>
+        )}
         <GridList>
           {offers.length > 0 && <OfferList offers={offers} />}
         </GridList>
