@@ -1,8 +1,8 @@
 query GetOffers(
   $sold: Boolean = false
-  $order: OfferOrderByInput = price_DESC
   $first: Int = 3
   $skip: Int = 0
+  $order: OfferOrderByInput = price_DESC
 ) {
   offers(
     stage: PUBLISHED

@@ -3,7 +3,7 @@ import { Container } from "@/components/blocks/Container/Container";
 import { Section } from "@/components/blocks/Section/Section";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { Metrics } from "@/components/blocks/Metrics/Metrics";
-import { FaMailBulk, FaPhoneAlt } from "react-icons/fa";
+import { FaMailBulk, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 export const ContactSection = () => {
   const sectionTitleID = useId();
@@ -34,6 +34,16 @@ export const ContactSection = () => {
             <Metrics.Item.Description>
               <Metrics.Link href="mailto:mail@yoursuperbcompany.com">
                 mail@yoursuperbcompany.com
+              </Metrics.Link>
+            </Metrics.Item.Description>
+          </Metrics.Item>
+          <Metrics.Item bg="primary-dark">
+            <Metrics.Item.Number>
+              <FaMapMarkerAlt />
+            </Metrics.Item.Number>
+            <Metrics.Item.Description>
+              <Metrics.Link href="https://www.google.com/maps/dir/?api=1&destination=Złota 44, 00-001 Warszawa">
+                Złota 44, 00-001 Warszawa
               </Metrics.Link>
             </Metrics.Item.Description>
           </Metrics.Item>

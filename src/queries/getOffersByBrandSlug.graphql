@@ -1,5 +1,17 @@
-query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean) {
-  offers(where: { sold: $sold, brand: { slug: $slug } }, stage: PUBLISHED) {
+query GetSoldOffersByBrandSlug(
+  $slug: String
+  $sold: Boolean
+  $first: Int
+  $skip: Int
+  $order: OfferOrderByInput = price_DESC
+) {
+  offers(
+    stage: PUBLISHED
+    where: { sold: $sold, brand: { slug: $slug } }
+    first: $first
+    skip: $skip
+    orderBy: $order
+  ) {
     id
     invoice
     price
@@ -26,6 +38,11 @@ query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean) {
     }
     description {
       html
+    }
+  }
+  offersConnection(where: { sold: $sold, brand: { slug: $slug } }) {
+    aggregate {
+      count
     }
   }
 }

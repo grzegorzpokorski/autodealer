@@ -4951,9 +4951,9 @@ export type GetOfferSlugsQuery = { __typename?: 'Query', offers: Array<{ __typen
 
 export type GetOffersQueryVariables = Exact<{
   sold?: InputMaybe<Scalars['Boolean']>;
-  order?: InputMaybe<OfferOrderByInput>;
   first?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<OfferOrderByInput>;
 }>;
 
 
@@ -4962,10 +4962,13 @@ export type GetOffersQuery = { __typename?: 'Query', offers: Array<{ __typename?
 export type GetSoldOffersByBrandSlugQueryVariables = Exact<{
   slug: InputMaybe<Scalars['String']>;
   sold: InputMaybe<Scalars['Boolean']>;
+  first: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<OfferOrderByInput>;
 }>;
 
 
-export type GetSoldOffersByBrandSlugQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }> };
+export type GetSoldOffersByBrandSlugQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }>, offersConnection: { __typename?: 'OfferConnection', aggregate: { __typename?: 'Aggregate', count: number } } };
 
 export type GetOffersCountQueryVariables = Exact<{
   sold: InputMaybe<Scalars['Boolean']>;
@@ -5149,7 +5152,7 @@ export type GetOfferSlugsQueryHookResult = ReturnType<typeof useGetOfferSlugsQue
 export type GetOfferSlugsLazyQueryHookResult = ReturnType<typeof useGetOfferSlugsLazyQuery>;
 export type GetOfferSlugsQueryResult = Apollo.QueryResult<GetOfferSlugsQuery, GetOfferSlugsQueryVariables>;
 export const GetOffersDocument = gql`
-    query GetOffers($sold: Boolean = false, $order: OfferOrderByInput = price_DESC, $first: Int = 3, $skip: Int = 0) {
+    query GetOffers($sold: Boolean = false, $first: Int = 3, $skip: Int = 0, $order: OfferOrderByInput = price_DESC) {
   offers(
     stage: PUBLISHED
     where: {sold: $sold}
@@ -5207,9 +5210,9 @@ export const GetOffersDocument = gql`
  * const { data, loading, error } = useGetOffersQuery({
  *   variables: {
  *      sold: // value for 'sold'
- *      order: // value for 'order'
  *      first: // value for 'first'
  *      skip: // value for 'skip'
+ *      order: // value for 'order'
  *   },
  * });
  */
@@ -5225,8 +5228,14 @@ export type GetOffersQueryHookResult = ReturnType<typeof useGetOffersQuery>;
 export type GetOffersLazyQueryHookResult = ReturnType<typeof useGetOffersLazyQuery>;
 export type GetOffersQueryResult = Apollo.QueryResult<GetOffersQuery, GetOffersQueryVariables>;
 export const GetSoldOffersByBrandSlugDocument = gql`
-    query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean) {
-  offers(where: {sold: $sold, brand: {slug: $slug}}, stage: PUBLISHED) {
+    query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean, $first: Int, $skip: Int, $order: OfferOrderByInput = price_DESC) {
+  offers(
+    stage: PUBLISHED
+    where: {sold: $sold, brand: {slug: $slug}}
+    first: $first
+    skip: $skip
+    orderBy: $order
+  ) {
     id
     invoice
     price
@@ -5255,6 +5264,11 @@ export const GetSoldOffersByBrandSlugDocument = gql`
       html
     }
   }
+  offersConnection(where: {sold: $sold, brand: {slug: $slug}}) {
+    aggregate {
+      count
+    }
+  }
 }
     `;
 
@@ -5272,6 +5286,9 @@ export const GetSoldOffersByBrandSlugDocument = gql`
  *   variables: {
  *      slug: // value for 'slug'
  *      sold: // value for 'sold'
+ *      first: // value for 'first'
+ *      skip: // value for 'skip'
+ *      order: // value for 'order'
  *   },
  * });
  */

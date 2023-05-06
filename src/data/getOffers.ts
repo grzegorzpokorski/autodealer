@@ -7,9 +7,9 @@ import { client } from "@/lib/apollo";
 
 type Args = {
   sold: boolean;
-  order?: OfferOrderByInput;
   first: number;
   skip: number;
+  order?: OfferOrderByInput;
 };
 
 export const getOffers = async ({

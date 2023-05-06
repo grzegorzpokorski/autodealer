@@ -143,7 +143,7 @@ export const SinglePage = ({ offer }: Props) => {
                 </div>
                 <div className="flex flex-col flex-wrap flex-wrap justify-center gap-2">
                   {offer.sold ? (
-                    <p className="inline-flex transition-colors border-2 text-center items-center justify-center gap-1.5 bg-white text-gray-800 border-white px-5 py-2 text-base font-bold">
+                    <p className="inline-flex transition-colors border-2 text-center items-center justify-center gap-1.5 bg-white text-gray-800 border-white px-5 py-2 text-base font-bold rounded">
                       sprzedany
                     </p>
                   ) : (
