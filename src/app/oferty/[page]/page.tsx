@@ -1,6 +1,7 @@
 import { OfferPage } from "@/components/pages/OfferPage/OfferPage";
 import { OffersSection } from "@/components/sections/OffersSection/OffersSection";
 import { getOffers } from "@/data/getOffers";
+import { getOffersCount } from "@/data/getOffersCount";
 
 export const metadata = {
   title: "oferta",
@@ -11,13 +12,10 @@ export const dynamicParams = false;
 const offersPerPage = 3;
 
 export const generateStaticParams = async () => {
-  const offers = await getOffers({
-    sold: false,
-    first: 1,
-    skip: 0,
-  });
+  const offertCount = await getOffersCount({ sold: false });
 
-  const totalOffersCount = offers.data.offersConnection.aggregate.count || 1;
+  const totalOffersCount =
+    offertCount.data.offersConnection.aggregate.count || 1;
   const totalPages = Math.ceil(totalOffersCount / offersPerPage);
 
   return [...Array(totalPages).keys()].map((i) => ({ page: `${i + 1}` }));

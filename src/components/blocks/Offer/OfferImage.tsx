@@ -7,7 +7,7 @@ type Props = {
 
 export const OfferImage = ({ image }: Props) => {
   return (
-    <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md">
+    <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md bg-primary">
       <Image
         src={image.url}
         alt={image.alt || ""}

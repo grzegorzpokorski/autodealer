@@ -1,0 +1,7 @@
+query GetOffersCount($sold: Boolean) {
+  offersConnection(where: { sold: $sold }, stage: PUBLISHED) {
+    aggregate {
+      count
+    }
+  }
+}

@@ -4967,6 +4967,13 @@ export type GetSoldOffersByBrandSlugQueryVariables = Exact<{
 
 export type GetSoldOffersByBrandSlugQuery = { __typename?: 'Query', offers: Array<{ __typename?: 'Offer', id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ __typename?: 'Asset', url: string, height: number | null, width: number | null, alt: string | null }>, brand: { __typename?: 'Brand', id: string, brandName: string } | null, features: { __typename?: 'Feature', kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description: { __typename?: 'RichText', html: string } | null }> };
 
+export type GetOffersCountQueryVariables = Exact<{
+  sold: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type GetOffersCountQuery = { __typename?: 'Query', offersConnection: { __typename?: 'OfferConnection', aggregate: { __typename?: 'Aggregate', count: number } } };
+
 
 export const GetBrandNameBySlugDocument = gql`
     query GetBrandNameBySlug($slug: String) {
@@ -5279,3 +5286,40 @@ export function useGetSoldOffersByBrandSlugLazyQuery(baseOptions?: Apollo.LazyQu
 export type GetSoldOffersByBrandSlugQueryHookResult = ReturnType<typeof useGetSoldOffersByBrandSlugQuery>;
 export type GetSoldOffersByBrandSlugLazyQueryHookResult = ReturnType<typeof useGetSoldOffersByBrandSlugLazyQuery>;
 export type GetSoldOffersByBrandSlugQueryResult = Apollo.QueryResult<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>;
+export const GetOffersCountDocument = gql`
+    query GetOffersCount($sold: Boolean) {
+  offersConnection(where: {sold: $sold}, stage: PUBLISHED) {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetOffersCountQuery__
+ *
+ * To run a query within a React component, call `useGetOffersCountQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOffersCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOffersCountQuery({
+ *   variables: {
+ *      sold: // value for 'sold'
+ *   },
+ * });
+ */
+export function useGetOffersCountQuery(baseOptions?: Apollo.QueryHookOptions<GetOffersCountQuery, GetOffersCountQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetOffersCountQuery, GetOffersCountQueryVariables>(GetOffersCountDocument, options);
+      }
+export function useGetOffersCountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetOffersCountQuery, GetOffersCountQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetOffersCountQuery, GetOffersCountQueryVariables>(GetOffersCountDocument, options);
+        }
+export type GetOffersCountQueryHookResult = ReturnType<typeof useGetOffersCountQuery>;
+export type GetOffersCountLazyQueryHookResult = ReturnType<typeof useGetOffersCountLazyQuery>;
+export type GetOffersCountQueryResult = Apollo.QueryResult<GetOffersCountQuery, GetOffersCountQueryVariables>;

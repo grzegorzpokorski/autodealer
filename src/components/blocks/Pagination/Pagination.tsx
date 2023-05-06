@@ -55,7 +55,7 @@ export const Pagination = ({ pagination }: Props) => {
 
   return (
     <nav aria-label="Paginacja" role="navigation">
-      <ul className="flex justify-center items-center gap-x-3">
+      <ul className="flex justify-center items-center gap-2">
         {pages.map((page, idx) =>
           page === QUESTIONS_PAGINATION_SEPARATOR ? (
             <li key={`${page.toString()}_${idx}`} aria-hidden="true">
@@ -65,6 +65,7 @@ export const Pagination = ({ pagination }: Props) => {
             <li key={page}>
               <LinkAsButton
                 href={`${pagination.base}/${page}`}
+                size="small"
                 buttonStyle={
                   pagination.currentPage === page ? "secondary" : "primary"
                 }

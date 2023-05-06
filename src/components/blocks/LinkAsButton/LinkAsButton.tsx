@@ -27,6 +27,7 @@ const buttonVariants = {
 } as const;
 
 const sizes = {
+  small: "px-3.5 py-1.5 text-sm",
   default: "px-5 py-2 text-base",
   large: "px-8 py-4 text-xl",
 };
@@ -37,7 +38,7 @@ export type LinkProps = {
   tabIndex?: number;
   onClick?: () => void;
   buttonStyle?: ButtonVariants;
-  size?: "default" | "large";
+  size?: "small" | "default" | "large";
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const LinkAsButton = ({
