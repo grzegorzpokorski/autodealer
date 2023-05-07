@@ -1,5 +1,5 @@
 import { SinglePage } from "@/components/pages/SinglePage/SinglePage";
-import { getOfferBySlug } from "@/queries/getOfferBySlig";
+import { getOfferBySlug } from "@/queries/getOfferBySlug";
 import { getOffersSlugs } from "@/queries/getOffersSlugs";
 import { getRecomendedOffers } from "@/queries/getRecomendedOffers";
 
