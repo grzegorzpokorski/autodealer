@@ -5,7 +5,6 @@ import { Main } from "@/components/blocks/Main/Main";
 import { Slider } from "@/components/blocks/Slider/Slider";
 import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
 import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
-// import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
 import type { GetOfferBySlugQuery, GetOffersQuery } from "@/generated/graphql";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { formatNumber } from "@/utils/formatNumber";
