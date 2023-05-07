@@ -67,7 +67,7 @@ export const Pagination = ({ pagination }: Props) => {
                 href={`${pagination.base}/${page}`}
                 size="small"
                 buttonStyle={
-                  pagination.currentPage === page ? "secondary" : "primary"
+                  pagination.currentPage === page ? "primary" : "primary-white"
                 }
                 aria-label={`Strona ${page}${
                   pagination.currentPage - 1 === page

@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 import LinkNext from "next/link";
 import { twMerge } from "tailwind-merge";
 
-type ButtonVariants = "primary" | "secondary" | "white";
+type ButtonVariants = "primary" | "secondary" | "white" | "primary-white";
 
 const baseButtonStyles =
   "inline-flex transition-colors border-2 text-center disabled:cursor-not-allowed items-center justify-center gap-1.5 rounded";
@@ -11,6 +11,10 @@ const buttonVariants = {
   primary: twMerge(
     baseButtonStyles,
     "bg-primary-dark hover:bg-primary focus:bg-primary text-white border-primary-dark",
+  ),
+  "primary-white": twMerge(
+    baseButtonStyles,
+    "bg-transpatent hover:bg-primary hover:text-white focus:bg-primary focus:text-white text-primary border-primary-dark",
   ),
   secondary: twMerge(
     baseButtonStyles,
