@@ -1,5 +1,5 @@
 import { SoldPage } from "@/components/pages/SoldPage/SoldPage";
-import { getBrandsOfSoldOffers } from "@/data/getBrandsOfSoldOffers";
+import { getBrandsOfSoldOffers } from "@/queries/getBrandsOfSoldOffers";
 
 export const metadata = {
   title: "sprzedaliśmy",

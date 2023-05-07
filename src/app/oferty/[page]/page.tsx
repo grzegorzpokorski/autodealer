@@ -1,7 +1,7 @@
 import { OfferPage } from "@/components/pages/OfferPage/OfferPage";
 import { OffersSection } from "@/components/sections/OffersSection/OffersSection";
-import { getOffers } from "@/data/getOffers";
-import { getOffersCount } from "@/data/getOffersCount";
+import { getOffers } from "@/queries/getOffers";
+import { getOffersCount } from "@/queries/getOffersCount";
 import { offersPerPage } from "@/settings/consts";
 
 export const dynamicParams = false;

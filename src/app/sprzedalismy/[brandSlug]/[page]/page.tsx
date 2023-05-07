@@ -2,9 +2,9 @@ import { Main } from "@/components/blocks/Main/Main";
 import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
 import { HedaerSection } from "@/components/sections/HeaderSection/HeaderSection";
 import { OffersSection } from "@/components/sections/OffersSection/OffersSection";
-import { getBrandNameBySlug } from "@/data/getBrandNameBySlug";
-import { getBrandsOfSoldOffers } from "@/data/getBrandsOfSoldOffers";
-import { getOffersByBrandSlug } from "@/data/getOffersByBrandSlug";
+import { getBrandNameBySlug } from "@/queries/getBrandNameBySlug";
+import { getBrandsOfSoldOffers } from "@/queries/getBrandsOfSoldOffers";
+import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
 import { OfferOrderByInput } from "@/generated/graphql";
 import { offersPerPage } from "@/settings/consts";
 

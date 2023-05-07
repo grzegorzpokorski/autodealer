@@ -6,7 +6,7 @@ loadEnvConfig(process.cwd());
 const config: CodegenConfig = {
   overwrite: true,
   schema: process.env.HYGRAPH_URL,
-  documents: ["src/queries/**/*.graphql"],
+  documents: ["src/graphql/**/*.graphql"],
   generates: {
     "./src/generated/graphql.tsx": {
       plugins: [

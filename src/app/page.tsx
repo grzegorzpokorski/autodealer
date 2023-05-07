@@ -1,5 +1,5 @@
 import { HomePage } from "@/components/pages/HomePage/HomePage";
-import { getOffers } from "@/data/getOffers";
+import { getOffers } from "@/queries/getOffers";
 import { OfferOrderByInput } from "@/generated/graphql";
 
 export default async function Home() {

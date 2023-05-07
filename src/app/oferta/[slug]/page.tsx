@@ -1,12 +1,13 @@
 import { SinglePage } from "@/components/pages/SinglePage/SinglePage";
-import { getOfferBySlug } from "@/data/getOfferBySlig";
-import { getOffersSlugs } from "@/data/getOffersSlugs";
-import { getRecomendedOffers } from "@/data/getRecomendedOffers";
+import { getOfferBySlug } from "@/queries/getOfferBySlig";
+import { getOffersSlugs } from "@/queries/getOffersSlugs";
+import { getRecomendedOffers } from "@/queries/getRecomendedOffers";
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const slugs = await getOffersSlugs();
+
   return slugs.data.offers.map((offer) => ({ slug: offer.slug }));
 }
 
