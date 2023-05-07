@@ -4,11 +4,11 @@ import { getOffers } from "@/data/getOffers";
 import { getOffersCount } from "@/data/getOffersCount";
 import { offersPerPage } from "@/settings/consts";
 
+export const dynamicParams = false;
+
 export const metadata = {
   title: "oferta",
 };
-
-export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
   const offertCount = await getOffersCount({ sold: false });
