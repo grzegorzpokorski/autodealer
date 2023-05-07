@@ -1,9 +1,11 @@
-import type { GetOfferSlugsQuery } from "@/generated/graphql";
 import { GetOfferSlugsDocument } from "@/generated/graphql";
-import { client } from "@/lib/apollo";
+import { fetcher } from "@/lib/fetcher";
 
 export const getOffersSlugs = async () => {
-  return await client.query<GetOfferSlugsQuery>({
+  const result = await fetcher({
     query: GetOfferSlugsDocument,
+    variables: {},
   });
+
+  return result.offers.map((offer) => offer.slug);
 };

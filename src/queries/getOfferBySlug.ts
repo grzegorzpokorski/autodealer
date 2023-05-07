@@ -1,17 +1,15 @@
-import type {
-  GetOfferBySlugQuery,
-  GetOfferBySlugQueryVariables,
-} from "@/generated/graphql";
 import { GetOfferBySlugDocument } from "@/generated/graphql";
-import { client } from "@/lib/apollo";
+import { fetcher } from "@/lib/fetcher";
 
 type Args = {
   slug: string;
 };
 
 export const getOfferBySlug = async ({ slug }: Args) => {
-  return await client.query<GetOfferBySlugQuery, GetOfferBySlugQueryVariables>({
+  const result = await fetcher({
     query: GetOfferBySlugDocument,
     variables: { slug },
   });
+
+  return result.offer;
 };

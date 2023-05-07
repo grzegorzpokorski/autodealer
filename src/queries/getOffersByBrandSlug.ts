@@ -1,12 +1,8 @@
-import type {
-  GetSoldOffersByBrandSlugQuery,
-  GetSoldOffersByBrandSlugQueryVariables,
-} from "@/generated/graphql";
 import {
   GetSoldOffersByBrandSlugDocument,
   OfferOrderByInput,
 } from "@/generated/graphql";
-import { client } from "@/lib/apollo";
+import { fetcher } from "@/lib/fetcher";
 
 type Args = {
   brandSlug: string;
@@ -22,11 +18,14 @@ export const getOffersByBrandSlug = async ({
   first,
   skip,
   order = OfferOrderByInput.PriceDesc,
-}: Args) =>
-  await client.query<
-    GetSoldOffersByBrandSlugQuery,
-    GetSoldOffersByBrandSlugQueryVariables
-  >({
+}: Args) => {
+  const result = await fetcher({
     query: GetSoldOffersByBrandSlugDocument,
     variables: { slug: brandSlug, sold, first, skip, order },
   });
+
+  return {
+    offers: result.offers,
+    offersCount: result.offersConnection.aggregate.count,
+  };
+};

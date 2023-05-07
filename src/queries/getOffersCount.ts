@@ -1,17 +1,15 @@
-import type {
-  GetOffersCountQuery,
-  GetOffersCountQueryVariables,
-} from "@/generated/graphql";
 import { GetOffersCountDocument } from "@/generated/graphql";
-import { client } from "@/lib/apollo";
+import { fetcher } from "@/lib/fetcher";
 
 type Args = {
   sold: boolean;
 };
 
 export const getOffersCount = async ({ sold }: Args) => {
-  return await client.query<GetOffersCountQuery, GetOffersCountQueryVariables>({
+  const result = await fetcher({
     query: GetOffersCountDocument,
     variables: { sold },
   });
+
+  return result.offersConnection.aggregate.count;
 };

@@ -1,9 +1,6 @@
-import type {
-  GetOffersQuery,
-  GetOffersQueryVariables,
-} from "@/generated/graphql";
-import { GetOffersDocument, OfferOrderByInput } from "@/generated/graphql";
-import { client } from "@/lib/apollo";
+import type { OfferOrderByInput } from "@/generated/graphql";
+import { fetcher } from "@/lib/fetcher";
+import { GetOffersDocument } from "@/generated/graphql";
 
 type Args = {
   sold: boolean;
@@ -11,15 +8,11 @@ type Args = {
   skip: number;
   order?: OfferOrderByInput;
 };
-
-export const getOffers = async ({
-  sold,
-  order = OfferOrderByInput.PriceDesc,
-  first = 3,
-  skip = 0,
-}: Args) => {
-  return await client.query<GetOffersQuery, GetOffersQueryVariables>({
+export const getOffers = async ({ first, skip, sold, order }: Args) => {
+  const result = await fetcher({
     query: GetOffersDocument,
-    variables: { sold, order, first, skip },
+    variables: { first, order, skip, sold },
   });
+
+  return result.offers;
 };
