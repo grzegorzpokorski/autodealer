@@ -8,7 +8,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const slugs = await getOffersSlugs();
 
-  return slugs.data.offers.map((offer) => ({ slug: offer.slug }));
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function Offer({
@@ -23,12 +23,7 @@ export default async function Offer({
     currentSlug: slug,
   });
 
-  if (offer.data.offer)
-    return (
-      <SinglePage
-        offer={offer.data.offer}
-        recommendedOffers={recommendedOffers.data.offers}
-      />
-    );
-  return null;
+  if (!offer) return null;
+
+  return <SinglePage offer={offer} recommendedOffers={recommendedOffers} />;
 }

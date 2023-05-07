@@ -11,16 +11,11 @@ import { offersPerPage } from "@/settings/consts";
 export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
-  const { data } = await getBrandsOfSoldOffers();
-
-  const brands = data.brands.map((brand) => ({
-    slug: brand.slug,
-    offersCount: brand.offers.length,
-  }));
+  const brands = await getBrandsOfSoldOffers();
 
   return brands
     .map((brand) =>
-      [...Array(Math.ceil(brand.offersCount / offersPerPage)).keys()].map(
+      [...Array(Math.ceil(brand.offers.length / offersPerPage)).keys()].map(
         (i) => ({ brandSlug: brand.slug, page: `${i + 1}` }),
       ),
     )
@@ -41,19 +36,17 @@ export default async function Page({
     skip: (currentPage - 1) * offersPerPage,
     order: OfferOrderByInput.CreatedAtDesc,
   });
-  const totalOffersCount = offers.data.offersConnection.aggregate.count || 1;
+  const totalOffersCount = offers.offersCount;
   const totalPages = Math.ceil(totalOffersCount / offersPerPage);
 
   return (
     <>
-      <HedaerSection
-        title={`Sprzedane: ${brandName.data.brand?.brandName || brandSlug}`}
-      />
+      <HedaerSection title={`Sprzedane: ${brandName || brandSlug}`} />
       <Main>
         <OffersSection
-          offers={offers.data.offers}
+          offers={offers.offers}
           title={`Sprzedane samochody marki ${
-            brandName.data.brand?.brandName || brandSlug
+            brandName || brandSlug
           }, strona ${currentPage} z ${totalPages}`}
           pagination={{
             currentPage: currentPage,

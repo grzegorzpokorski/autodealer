@@ -8,5 +8,5 @@ export const metadata = {
 export default async function Page() {
   const brands = await getBrandsOfSoldOffers();
 
-  return <SoldPage brands={brands.data.brands} />;
+  return <SoldPage brands={brands} />;
 }

@@ -11,11 +11,8 @@ export const metadata = {
 };
 
 export const generateStaticParams = async () => {
-  const offertCount = await getOffersCount({ sold: false });
-
-  const totalOffersCount =
-    offertCount.data.offersConnection.aggregate.count || 1;
-  const totalPages = Math.ceil(totalOffersCount / offersPerPage);
+  const offersCount = await getOffersCount({ sold: false });
+  const totalPages = Math.ceil(offersCount / offersPerPage);
 
   return [...Array(totalPages).keys()].map((i) => ({ page: `${i + 1}` }));
 };
@@ -32,13 +29,12 @@ export default async function Page({
     skip: (currentPage - 1) * offersPerPage,
   });
 
-  const totalOffersCount = offers.data.offersConnection.aggregate.count || 1;
-  const totalPages = Math.ceil(totalOffersCount / offersPerPage);
+  const totalPages = Math.ceil(offers.length / offersPerPage);
 
   return (
     <OfferPage>
       <OffersSection
-        offers={offers.data.offers}
+        offers={offers}
         title={`Obecnie dostępne modele, strona ${currentPage} z ${totalPages}`}
         pagination={{
           currentPage: currentPage,
