@@ -8,7 +8,7 @@ import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
 import { OfferOrderByInput } from "@/generated/graphql";
 import { offersPerPage } from "@/settings/consts";
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
   const brands = await getBrandsOfSoldOffers();

@@ -4,7 +4,7 @@ import { getOffers } from "@/queries/getOffers";
 import { getOffersCount } from "@/queries/getOffersCount";
 import { offersPerPage } from "@/settings/consts";
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export const metadata = {
   title: "oferta",
