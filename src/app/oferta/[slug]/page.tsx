@@ -3,7 +3,7 @@ import { getOfferBySlug } from "@/queries/getOfferBySlug";
 import { getOffersSlugs } from "@/queries/getOffersSlugs";
 import { getRecomendedOffers } from "@/queries/getRecomendedOffers";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const slugs = await getOffersSlugs();
