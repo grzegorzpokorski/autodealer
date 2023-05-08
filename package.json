@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --dir .",
-    "lint:fix": "next lint --dir . --fix --quiet",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix --quiet",
     "codegen": "graphql-codegen -r dotenv/config --config codegen.yml",
     "codegen:watch": "graphql-codegen -w -r dotenv/config --config codegen.yml"
   },
