@@ -13,7 +13,7 @@ export async function fetcher<Result, Variables>({
   query,
   variables,
   headers,
-  cache = "default",
+  cache = "force-cache",
 }: {
   query: TypedDocumentString<Result, Variables>;
   variables: Variables;
