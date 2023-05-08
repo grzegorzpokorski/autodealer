@@ -2,6 +2,7 @@ import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import type { MouseEvent } from "react";
 import type { GetOfferBySlugQuery } from "@/generated/graphql";
+import { base64 } from "@/utils/imagePlaiceholder";
 
 type Props = {
   image: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"][number];
@@ -36,6 +37,8 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
         sizes="(max-width: 720px) 100vw, 40vw"
         fill
         draggable={false}
+        placeholder="blur"
+        blurDataURL={base64}
       />
     </a>
   </li>

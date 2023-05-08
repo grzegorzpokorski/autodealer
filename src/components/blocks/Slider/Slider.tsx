@@ -12,12 +12,6 @@ import type { GetOfferBySlugQuery } from "@/generated/graphql";
 
 type Props = {
   images: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"];
-  // images: {
-  //   url: string;
-  //   width: number;
-  //   height: number;
-  //   alt: string;
-  // }[];
 };
 
 export const Slider = ({ images }: Props) => {
@@ -50,18 +44,20 @@ export const Slider = ({ images }: Props) => {
         nextSlide={nextSlide}
         prevSlide={prevSlide}
       >
-        {images.map((image, idx) => (
-          <SliderItem
-            key={image.url}
-            image={image}
-            isCurrent={currentSlide === idx}
-            onClick={(e: MouseEvent) => {
-              e.preventDefault();
-              setSlide(idx);
-              openLightbox();
-            }}
-          />
-        ))}
+        {images.map((image, idx) => {
+          return (
+            <SliderItem
+              key={image.url}
+              image={image}
+              isCurrent={currentSlide === idx}
+              onClick={(e: MouseEvent) => {
+                e.preventDefault();
+                setSlide(idx);
+                openLightbox();
+              }}
+            />
+          );
+        })}
       </SliderTrack>
       <SliderLightbox
         isOpen={isLightboxOpen}
