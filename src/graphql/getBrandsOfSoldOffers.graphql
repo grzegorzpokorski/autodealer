@@ -3,10 +3,11 @@ query GetBrandsOfSoldOffers {
     orderBy: brandName_ASC
     stage: PUBLISHED
     where: { offers_some: { sold: true } }
+    first: 100
   ) {
     brandName
     slug
-    offers(where: { sold: true }) {
+    offers(where: { sold: true }, first: 100) {
       id
     }
   }

@@ -10,5 +10,5 @@ export default async function Home() {
     skip: 0,
   });
 
-  return <HomePage offers={offers} />;
+  return <HomePage offers={offers.offers} />;
 }

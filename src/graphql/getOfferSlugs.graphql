@@ -1,6 +1,0 @@
-query GetOfferSlugs {
-  offers(stage: PUBLISHED) {
-    slug
-    sold
-  }
-}

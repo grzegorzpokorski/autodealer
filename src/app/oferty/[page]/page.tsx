@@ -29,12 +29,12 @@ export default async function Page({
     skip: (currentPage - 1) * offersPerPage,
   });
 
-  const totalPages = Math.ceil(offers.length / offersPerPage);
+  const totalPages = Math.ceil(offers.offersCount / offersPerPage);
 
   return (
     <OfferPage>
       <OffersSection
-        offers={offers}
+        offers={offers.offers}
         title={`Obecnie dostępne modele, strona ${currentPage} z ${totalPages}`}
         pagination={{
           currentPage: currentPage,

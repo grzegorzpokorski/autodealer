@@ -4916,11 +4916,6 @@ export type GetOfferBySlugQueryVariables = Exact<{
 
 export type GetOfferBySlugQuery = { offer?: { id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null } | null };
 
-export type GetOfferSlugsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetOfferSlugsQuery = { offers: Array<{ slug: string, sold: boolean }> };
-
 export type GetOffersQueryVariables = Exact<{
   sold?: InputMaybe<Scalars['Boolean']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -4948,6 +4943,11 @@ export type GetOffersCountQueryVariables = Exact<{
 
 
 export type GetOffersCountQuery = { offersConnection: { aggregate: { count: number } } };
+
+export type GetOffersSlugsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetOffersSlugsQuery = { offers: Array<{ slug: string, sold: boolean }> };
 
 export type GetRecomendedOffersQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -4986,10 +4986,11 @@ export const GetBrandsOfSoldOffersDocument = new TypedDocumentString(`
     orderBy: brandName_ASC
     stage: PUBLISHED
     where: {offers_some: {sold: true}}
+    first: 100
   ) {
     brandName
     slug
-    offers(where: {sold: true}) {
+    offers(where: {sold: true}, first: 100) {
       id
     }
   }
@@ -5028,14 +5029,6 @@ export const GetOfferBySlugDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<GetOfferBySlugQuery, GetOfferBySlugQueryVariables>;
-export const GetOfferSlugsDocument = new TypedDocumentString(`
-    query GetOfferSlugs {
-  offers(stage: PUBLISHED) {
-    slug
-    sold
-  }
-}
-    `) as unknown as TypedDocumentString<GetOfferSlugsQuery, GetOfferSlugsQueryVariables>;
 export const GetOffersDocument = new TypedDocumentString(`
     query GetOffers($sold: Boolean = false, $first: Int = 3, $skip: Int = 0, $order: OfferOrderByInput = price_DESC) {
   offers(
@@ -5134,6 +5127,14 @@ export const GetOffersCountDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<GetOffersCountQuery, GetOffersCountQueryVariables>;
+export const GetOffersSlugsDocument = new TypedDocumentString(`
+    query GetOffersSlugs {
+  offers(stage: PUBLISHED, first: 100) {
+    slug
+    sold
+  }
+}
+    `) as unknown as TypedDocumentString<GetOffersSlugsQuery, GetOffersSlugsQueryVariables>;
 export const GetRecomendedOffersDocument = new TypedDocumentString(`
     query getRecomendedOffers($first: Int = 3, $skip: Int = 0, $currentSlug: String) {
   offers(
