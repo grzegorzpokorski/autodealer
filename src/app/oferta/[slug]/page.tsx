@@ -2,8 +2,9 @@ import { SinglePage } from "@/components/pages/SinglePage/SinglePage";
 import { getOfferBySlug } from "@/queries/getOfferBySlug";
 import { getOffersSlugs } from "@/queries/getOffersSlugs";
 import { getRecomendedOffers } from "@/queries/getRecomendedOffers";
+import { notFound } from "next/navigation";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const slugs = await getOffersSlugs();
@@ -23,7 +24,7 @@ export default async function Offer({
     currentSlug: slug,
   });
 
-  if (!offer) return null;
+  if (!offer) return notFound();
 
   return <SinglePage offer={offer} recommendedOffers={recommendedOffers} />;
 }
