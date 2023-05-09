@@ -23,9 +23,11 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
       <Main>
         <Container>
           <article className="grid grid-cols-12 gap-3 md:gap-6 py-8">
-            <div className="col-span-12">
-              <Slider images={offer.gallery} />
-            </div>
+            {offer.gallery.length > 0 && (
+              <div className="col-span-12">
+                <Slider images={offer.gallery} />
+              </div>
+            )}
             <div className="col-span-12 md:col-span-7 flex flex-col gap-3 md:gap-6 order-2 md:order-1">
               <div className="p-8 bg-white shadow prose max-w-none flex flex-col gap-4 rounded">
                 <header aria-labelledby="title">
