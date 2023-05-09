@@ -33,7 +33,7 @@ export async function fetcher<Result, Variables>({
       ...(variables && { variables }),
     }),
     cache,
-    // next: { revalidate: 900 },
+    next: { revalidate: 0 },
   });
 
   const body = (await result.json()) as GraphQlErrorRespone<Result>;
