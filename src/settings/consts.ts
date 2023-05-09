@@ -1,1 +1,1 @@
-export const offersPerPage = 3;
+export const offersPerPage = 6;
