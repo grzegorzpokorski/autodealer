@@ -22,7 +22,14 @@ module.exports = {
       version: "detect",
     },
   },
-  ignorePatterns: ["build/", "dist/", "node_modules/", "*.js", "*.jsx"],
+  ignorePatterns: [
+    "build/",
+    "dist/",
+    "node_modules/",
+    "*.js",
+    "*.jsx",
+    "src/generated/",
+  ],
   rules: {
     "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/consistent-type-imports": "error",
