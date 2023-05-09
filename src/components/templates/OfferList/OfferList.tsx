@@ -22,7 +22,7 @@ export const OfferList = ({ offers }: Props) => (
               {offer.features.rocznik}
             </Offer.FeaturesList.Item>
             <Offer.FeaturesList.Item key={offer.features.moc}>
-              {offer.features.moc}
+              {offer.features.moc} KM
             </Offer.FeaturesList.Item>
             <Offer.FeaturesList.Item key={offer.features.przebieg}>
               {formatNumber(parseInt(offer.features.przebieg))} km
