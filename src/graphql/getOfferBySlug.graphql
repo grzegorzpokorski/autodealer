@@ -6,7 +6,7 @@ query GetOfferBySlug($slug: String) {
     slug
     sold
     title
-    gallery {
+    gallery(first: 20) {
       url
       height
       width

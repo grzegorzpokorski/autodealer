@@ -18,7 +18,7 @@ query GetSoldOffersByBrandSlug(
     slug
     sold
     title
-    gallery {
+    gallery(first: 1) {
       url
       height
       width

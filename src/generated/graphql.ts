@@ -4947,7 +4947,7 @@ export type GetOffersCountQuery = { offersConnection: { aggregate: { count: numb
 export type GetOffersSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetOffersSlugsQuery = { offers: Array<{ slug: string, sold: boolean }> };
+export type GetOffersSlugsQuery = { offers: Array<{ slug: string }> };
 
 export type GetRecomendedOffersQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -5005,7 +5005,7 @@ export const GetOfferBySlugDocument = new TypedDocumentString(`
     slug
     sold
     title
-    gallery {
+    gallery(first: 20) {
       url
       height
       width
@@ -5044,7 +5044,7 @@ export const GetOffersDocument = new TypedDocumentString(`
     slug
     sold
     title
-    gallery {
+    gallery(first: 1) {
       url
       height
       width
@@ -5089,7 +5089,7 @@ export const GetSoldOffersByBrandSlugDocument = new TypedDocumentString(`
     slug
     sold
     title
-    gallery {
+    gallery(first: 1) {
       url
       height
       width
@@ -5131,7 +5131,6 @@ export const GetOffersSlugsDocument = new TypedDocumentString(`
     query GetOffersSlugs {
   offers(stage: PUBLISHED, first: 100) {
     slug
-    sold
   }
 }
     `) as unknown as TypedDocumentString<GetOffersSlugsQuery, GetOffersSlugsQueryVariables>;
@@ -5150,7 +5149,7 @@ export const GetRecomendedOffersDocument = new TypedDocumentString(`
     slug
     sold
     title
-    gallery {
+    gallery(first: 1) {
       url
       height
       width
