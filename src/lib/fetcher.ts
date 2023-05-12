@@ -13,7 +13,7 @@ export async function fetcher<Result, Variables>({
   query,
   variables,
   headers,
-  cache = "default",
+  cache = "force-cache",
 }: {
   query: TypedDocumentString<Result, Variables>;
   variables: Variables;
@@ -33,7 +33,6 @@ export async function fetcher<Result, Variables>({
       ...(variables && { variables }),
     }),
     cache,
-    next: { revalidate: false },
   });
 
   const body = (await result.json()) as GraphQlErrorRespone<Result>;
