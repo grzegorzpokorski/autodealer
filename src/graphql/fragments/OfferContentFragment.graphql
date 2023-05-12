@@ -1,0 +1,27 @@
+fragment OfferContent on Offer {
+  id
+  invoice
+  price
+  slug
+  sold
+  title
+  gallery(first: $limitCountOfImages) {
+    ...Image
+  }
+  brand {
+    id
+    brandName
+  }
+  features {
+    kolor
+    moc
+    pojemnoscSilnika
+    przebieg
+    rocznik
+    typ
+  }
+  description {
+    html
+  }
+  sold
+}

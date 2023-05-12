@@ -4,10 +4,10 @@ import { FeaturesSection } from "@/components/sections/FeaturesSection/FeaturesS
 import { HeroSection } from "@/components/sections/HeroSection/HeroSection";
 import { MetricsSection } from "@/components/sections/MetricsSection/MetricsSection";
 import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
-import type { GetOffersQuery } from "@/generated/graphql";
+import type { OfferContentFragment } from "@/generated/graphql";
 
 type Props = {
-  offers: GetOffersQuery["offers"];
+  offers: OfferContentFragment[];
 };
 
 export const HomePage = ({ offers }: Props) => {

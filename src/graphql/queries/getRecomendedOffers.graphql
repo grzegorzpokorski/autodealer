@@ -1,0 +1,16 @@
+query getRecomendedOffers(
+  $first: Int = 3
+  $skip: Int = 0
+  $currentSlug: String
+  $limitCountOfImages: Int = 1
+) {
+  offers(
+    stage: PUBLISHED
+    orderBy: createdAt_DESC
+    where: { sold: false, NOT: { slug: $currentSlug } }
+    first: $first
+    skip: $skip
+  ) {
+    ...OfferContent
+  }
+}

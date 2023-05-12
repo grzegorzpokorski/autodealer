@@ -11,10 +11,10 @@ export const OfferImage = ({ image }: Props) => {
     return (
       <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md bg-primary">
         <Image
-          src={image.url}
+          src={image.thumbnail}
           alt={image.alt || ""}
-          width={image.width || 10}
-          height={image.height || 10}
+          width={image.width || 600}
+          height={image.height || 300}
           className="object-cover object-center w-full h-full hover:scale-105 transition-all"
           sizes="(max-width: 720px) 100vw, 50vw"
           placeholder="blur"

@@ -4897,6 +4897,10 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type ImageFragment = { url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string };
+
+export type OfferContentFragment = { id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null };
+
 export type GetBrandNameBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
@@ -4911,20 +4915,22 @@ export type GetBrandsOfSoldOffersQuery = { brands: Array<{ brandName: string, sl
 
 export type GetOfferBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
+  limitCountOfImages?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type GetOfferBySlugQuery = { offer?: { id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null } | null };
+export type GetOfferBySlugQuery = { offer?: { id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null } | null };
 
 export type GetOffersQueryVariables = Exact<{
   sold?: InputMaybe<Scalars['Boolean']>;
   first?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   order?: InputMaybe<OfferOrderByInput>;
+  limitCountOfImages?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type GetOffersQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }>, offersConnection: { aggregate: { count: number } } };
+export type GetOffersQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }>, offersConnection: { aggregate: { count: number } } };
 
 export type GetSoldOffersByBrandSlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
@@ -4932,10 +4938,11 @@ export type GetSoldOffersByBrandSlugQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   order?: InputMaybe<OfferOrderByInput>;
+  limitCountOfImages?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type GetSoldOffersByBrandSlugQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }>, offersConnection: { aggregate: { count: number } } };
+export type GetSoldOffersByBrandSlugQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }>, offersConnection: { aggregate: { count: number } } };
 
 export type GetOffersCountQueryVariables = Exact<{
   sold?: InputMaybe<Scalars['Boolean']>;
@@ -4953,10 +4960,11 @@ export type GetRecomendedOffersQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   currentSlug?: InputMaybe<Scalars['String']>;
+  limitCountOfImages?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type GetRecomendedOffersQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }> };
+export type GetRecomendedOffersQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }> };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -4972,7 +4980,50 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
-
+export const ImageFragmentDoc = new TypedDocumentString(`
+    fragment Image on Asset {
+  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})
+  url(transformation: {image: {resize: {height: 600, fit: scale}}})
+  height
+  width
+  alt
+}
+    `) as unknown as TypedDocumentString<ImageFragment, unknown>;
+export const OfferContentFragmentDoc = new TypedDocumentString(`
+    fragment OfferContent on Offer {
+  id
+  invoice
+  price
+  slug
+  sold
+  title
+  gallery(first: $limitCountOfImages) {
+    ...Image
+  }
+  brand {
+    id
+    brandName
+  }
+  features {
+    kolor
+    moc
+    pojemnoscSilnika
+    przebieg
+    rocznik
+    typ
+  }
+  description {
+    html
+  }
+  sold
+}
+    fragment Image on Asset {
+  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})
+  url(transformation: {image: {resize: {height: 600, fit: scale}}})
+  height
+  width
+  alt
+}`) as unknown as TypedDocumentString<OfferContentFragment, unknown>;
 export const GetBrandNameBySlugDocument = new TypedDocumentString(`
     query GetBrandNameBySlug($slug: String) {
   brand(where: {slug: $slug}) {
@@ -4997,40 +5048,47 @@ export const GetBrandsOfSoldOffersDocument = new TypedDocumentString(`
 }
     `) as unknown as TypedDocumentString<GetBrandsOfSoldOffersQuery, GetBrandsOfSoldOffersQueryVariables>;
 export const GetOfferBySlugDocument = new TypedDocumentString(`
-    query GetOfferBySlug($slug: String) {
+    query GetOfferBySlug($slug: String, $limitCountOfImages: Int = 20) {
   offer(where: {slug: $slug}) {
-    id
-    invoice
-    price
-    slug
-    sold
-    title
-    gallery(first: 20) {
-      url
-      height
-      width
-      alt
-    }
-    brand {
-      id
-      brandName
-    }
-    features {
-      kolor
-      moc
-      pojemnoscSilnika
-      przebieg
-      rocznik
-      typ
-    }
-    description {
-      html
-    }
+    ...OfferContent
   }
 }
-    `) as unknown as TypedDocumentString<GetOfferBySlugQuery, GetOfferBySlugQueryVariables>;
+    fragment Image on Asset {
+  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})
+  url(transformation: {image: {resize: {height: 600, fit: scale}}})
+  height
+  width
+  alt
+}
+fragment OfferContent on Offer {
+  id
+  invoice
+  price
+  slug
+  sold
+  title
+  gallery(first: $limitCountOfImages) {
+    ...Image
+  }
+  brand {
+    id
+    brandName
+  }
+  features {
+    kolor
+    moc
+    pojemnoscSilnika
+    przebieg
+    rocznik
+    typ
+  }
+  description {
+    html
+  }
+  sold
+}`) as unknown as TypedDocumentString<GetOfferBySlugQuery, GetOfferBySlugQueryVariables>;
 export const GetOffersDocument = new TypedDocumentString(`
-    query GetOffers($sold: Boolean = false, $first: Int = 3, $skip: Int = 0, $order: OfferOrderByInput = price_DESC) {
+    query GetOffers($sold: Boolean = false, $first: Int = 3, $skip: Int = 0, $order: OfferOrderByInput = price_DESC, $limitCountOfImages: Int = 20) {
   offers(
     stage: PUBLISHED
     where: {sold: $sold}
@@ -5038,34 +5096,7 @@ export const GetOffersDocument = new TypedDocumentString(`
     first: $first
     skip: $skip
   ) {
-    id
-    invoice
-    price
-    slug
-    sold
-    title
-    gallery(first: 1) {
-      url
-      height
-      width
-      alt
-    }
-    brand {
-      id
-      brandName
-    }
-    features {
-      kolor
-      moc
-      pojemnoscSilnika
-      przebieg
-      rocznik
-      typ
-    }
-    description {
-      html
-    }
-    sold
+    ...OfferContent
   }
   offersConnection(stage: PUBLISHED, where: {sold: $sold}) {
     aggregate {
@@ -5073,9 +5104,42 @@ export const GetOffersDocument = new TypedDocumentString(`
     }
   }
 }
-    `) as unknown as TypedDocumentString<GetOffersQuery, GetOffersQueryVariables>;
+    fragment Image on Asset {
+  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})
+  url(transformation: {image: {resize: {height: 600, fit: scale}}})
+  height
+  width
+  alt
+}
+fragment OfferContent on Offer {
+  id
+  invoice
+  price
+  slug
+  sold
+  title
+  gallery(first: $limitCountOfImages) {
+    ...Image
+  }
+  brand {
+    id
+    brandName
+  }
+  features {
+    kolor
+    moc
+    pojemnoscSilnika
+    przebieg
+    rocznik
+    typ
+  }
+  description {
+    html
+  }
+  sold
+}`) as unknown as TypedDocumentString<GetOffersQuery, GetOffersQueryVariables>;
 export const GetSoldOffersByBrandSlugDocument = new TypedDocumentString(`
-    query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean, $first: Int, $skip: Int, $order: OfferOrderByInput = price_DESC) {
+    query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean, $first: Int, $skip: Int, $order: OfferOrderByInput = price_DESC, $limitCountOfImages: Int = 20) {
   offers(
     stage: PUBLISHED
     where: {sold: $sold, brand: {slug: $slug}}
@@ -5083,33 +5147,7 @@ export const GetSoldOffersByBrandSlugDocument = new TypedDocumentString(`
     skip: $skip
     orderBy: $order
   ) {
-    id
-    invoice
-    price
-    slug
-    sold
-    title
-    gallery(first: 1) {
-      url
-      height
-      width
-      alt
-    }
-    brand {
-      id
-      brandName
-    }
-    features {
-      kolor
-      moc
-      pojemnoscSilnika
-      przebieg
-      rocznik
-      typ
-    }
-    description {
-      html
-    }
+    ...OfferContent
   }
   offersConnection(where: {sold: $sold, brand: {slug: $slug}}) {
     aggregate {
@@ -5117,7 +5155,40 @@ export const GetSoldOffersByBrandSlugDocument = new TypedDocumentString(`
     }
   }
 }
-    `) as unknown as TypedDocumentString<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>;
+    fragment Image on Asset {
+  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})
+  url(transformation: {image: {resize: {height: 600, fit: scale}}})
+  height
+  width
+  alt
+}
+fragment OfferContent on Offer {
+  id
+  invoice
+  price
+  slug
+  sold
+  title
+  gallery(first: $limitCountOfImages) {
+    ...Image
+  }
+  brand {
+    id
+    brandName
+  }
+  features {
+    kolor
+    moc
+    pojemnoscSilnika
+    przebieg
+    rocznik
+    typ
+  }
+  description {
+    html
+  }
+  sold
+}`) as unknown as TypedDocumentString<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>;
 export const GetOffersCountDocument = new TypedDocumentString(`
     query GetOffersCount($sold: Boolean) {
   offersConnection(where: {sold: $sold}, stage: PUBLISHED) {
@@ -5135,7 +5206,7 @@ export const GetOffersSlugsDocument = new TypedDocumentString(`
 }
     `) as unknown as TypedDocumentString<GetOffersSlugsQuery, GetOffersSlugsQueryVariables>;
 export const GetRecomendedOffersDocument = new TypedDocumentString(`
-    query getRecomendedOffers($first: Int = 3, $skip: Int = 0, $currentSlug: String) {
+    query getRecomendedOffers($first: Int = 3, $skip: Int = 0, $currentSlug: String, $limitCountOfImages: Int = 1) {
   offers(
     stage: PUBLISHED
     orderBy: createdAt_DESC
@@ -5143,34 +5214,40 @@ export const GetRecomendedOffersDocument = new TypedDocumentString(`
     first: $first
     skip: $skip
   ) {
-    id
-    invoice
-    price
-    slug
-    sold
-    title
-    gallery(first: 1) {
-      url
-      height
-      width
-      alt
-    }
-    brand {
-      id
-      brandName
-    }
-    features {
-      kolor
-      moc
-      pojemnoscSilnika
-      przebieg
-      rocznik
-      typ
-    }
-    description {
-      html
-    }
-    sold
+    ...OfferContent
   }
 }
-    `) as unknown as TypedDocumentString<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>;
+    fragment Image on Asset {
+  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})
+  url(transformation: {image: {resize: {height: 600, fit: scale}}})
+  height
+  width
+  alt
+}
+fragment OfferContent on Offer {
+  id
+  invoice
+  price
+  slug
+  sold
+  title
+  gallery(first: $limitCountOfImages) {
+    ...Image
+  }
+  brand {
+    id
+    brandName
+  }
+  features {
+    kolor
+    moc
+    pojemnoscSilnika
+    przebieg
+    rocznik
+    typ
+  }
+  description {
+    html
+  }
+  sold
+}`) as unknown as TypedDocumentString<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>;

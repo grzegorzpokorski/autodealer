@@ -4,6 +4,7 @@ query GetSoldOffersByBrandSlug(
   $first: Int
   $skip: Int
   $order: OfferOrderByInput = price_DESC
+  $limitCountOfImages: Int = 20
 ) {
   offers(
     stage: PUBLISHED
@@ -12,33 +13,7 @@ query GetSoldOffersByBrandSlug(
     skip: $skip
     orderBy: $order
   ) {
-    id
-    invoice
-    price
-    slug
-    sold
-    title
-    gallery(first: 1) {
-      url
-      height
-      width
-      alt
-    }
-    brand {
-      id
-      brandName
-    }
-    features {
-      kolor
-      moc
-      pojemnoscSilnika
-      przebieg
-      rocznik
-      typ
-    }
-    description {
-      html
-    }
+    ...OfferContent
   }
   offersConnection(where: { sold: $sold, brand: { slug: $slug } }) {
     aggregate {

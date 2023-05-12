@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import type { MouseEvent } from "react";
-import type { GetOfferBySlugQuery } from "@/generated/graphql";
+import type { ImageFragment } from "@/generated/graphql";
 import { base64 } from "@/utils/imagePlaiceholder";
 
 type Props = {
-  image: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"][number];
+  image: ImageFragment;
   isCurrent: boolean;
   onClick: (e: MouseEvent) => void;
 };
@@ -29,7 +29,7 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
       className="relative w-full h-full rounded"
     >
       <Image
-        src={image.url}
+        src={image.thumbnail}
         alt={image.alt || ""}
         className={twMerge(
           "object-cover object-center hover:scale-105 transition-[transform]",

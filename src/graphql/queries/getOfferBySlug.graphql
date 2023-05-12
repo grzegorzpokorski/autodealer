@@ -1,0 +1,5 @@
+query GetOfferBySlug($slug: String, $limitCountOfImages: Int = 20) {
+  offer(where: { slug: $slug }) {
+    ...OfferContent
+  }
+}

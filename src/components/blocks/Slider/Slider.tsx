@@ -8,10 +8,10 @@ import { SliderLightboxTrack } from "./SliderLightboxTrack";
 import { SliderContainer } from "./SliderContainer";
 import { SliderTrack } from "./SliderTrack";
 import { SliderItem } from "./SliderItem";
-import type { GetOfferBySlugQuery } from "@/generated/graphql";
+import type { ImageFragment } from "@/generated/graphql";
 
 type Props = {
-  images: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"];
+  images: ImageFragment[];
 };
 
 export const Slider = ({ images }: Props) => {

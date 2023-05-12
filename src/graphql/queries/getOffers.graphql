@@ -3,6 +3,7 @@ query GetOffers(
   $first: Int = 3
   $skip: Int = 0
   $order: OfferOrderByInput = price_DESC
+  $limitCountOfImages: Int = 20
 ) {
   offers(
     stage: PUBLISHED
@@ -11,34 +12,7 @@ query GetOffers(
     first: $first
     skip: $skip
   ) {
-    id
-    invoice
-    price
-    slug
-    sold
-    title
-    gallery(first: 1) {
-      url
-      height
-      width
-      alt
-    }
-    brand {
-      id
-      brandName
-    }
-    features {
-      kolor
-      moc
-      pojemnoscSilnika
-      przebieg
-      rocznik
-      typ
-    }
-    description {
-      html
-    }
-    sold
+    ...OfferContent
   }
   offersConnection(stage: PUBLISHED, where: { sold: $sold }) {
     aggregate {
