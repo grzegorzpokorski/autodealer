@@ -86,12 +86,12 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
               </div>
               {offer.description && (
                 <section
-                  className="p-8 bg-white shadow rounded"
-                  aria-labelledby="opis"
+                  className="p-8 bg-white shadow rounded flex flex-col gap-4"
+                  aria-labelledby="Opis samochodu"
                 >
-                  <header className="sr-only">
-                    <Heading as="h2" size="base" id="opis" hidden>
-                      Opis
+                  <header>
+                    <Heading as="h2" size="base" id="opis">
+                      Opis samochodu
                     </Heading>
                   </header>
                   <div
