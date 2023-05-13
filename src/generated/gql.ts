@@ -21,9 +21,9 @@ const documents = {
     "query GetOfferBySlug($slug: String, $limitCountOfImages: Int = 20) {\n  offer(where: {slug: $slug}) {\n    ...OfferContent\n  }\n}": types.GetOfferBySlugDocument,
     "query GetOffers($sold: Boolean = false, $first: Int = 3, $skip: Int = 0, $order: OfferOrderByInput = price_DESC, $limitCountOfImages: Int = 20) {\n  offers(\n    stage: PUBLISHED\n    where: {sold: $sold}\n    orderBy: $order\n    first: $first\n    skip: $skip\n  ) {\n    ...OfferContent\n  }\n  offersConnection(stage: PUBLISHED, where: {sold: $sold}) {\n    aggregate {\n      count\n    }\n  }\n}": types.GetOffersDocument,
     "query GetSoldOffersByBrandSlug($slug: String, $sold: Boolean, $first: Int, $skip: Int, $order: OfferOrderByInput = price_DESC, $limitCountOfImages: Int = 20) {\n  offers(\n    stage: PUBLISHED\n    where: {sold: $sold, brand: {slug: $slug}}\n    first: $first\n    skip: $skip\n    orderBy: $order\n  ) {\n    ...OfferContent\n  }\n  offersConnection(where: {sold: $sold, brand: {slug: $slug}}) {\n    aggregate {\n      count\n    }\n  }\n}": types.GetSoldOffersByBrandSlugDocument,
+    "query getOffersBySlugs($first: Int = 3, $skip: Int = 0, $limitCountOfImages: Int = 1, $sold: Boolean, $slugs: [String]) {\n  offers(\n    stage: PUBLISHED\n    orderBy: createdAt_DESC\n    where: {sold: $sold, slug_in: $slugs}\n    first: $first\n    skip: $skip\n  ) {\n    ...OfferContent\n  }\n}": types.GetOffersBySlugsDocument,
     "query GetOffersCount($sold: Boolean) {\n  offersConnection(where: {sold: $sold}, stage: PUBLISHED) {\n    aggregate {\n      count\n    }\n  }\n}": types.GetOffersCountDocument,
-    "query GetOffersSlugs {\n  offers(stage: PUBLISHED, first: 100) {\n    slug\n  }\n}": types.GetOffersSlugsDocument,
-    "query getRecomendedOffers($first: Int = 3, $skip: Int = 0, $currentSlug: String, $limitCountOfImages: Int = 1) {\n  offers(\n    stage: PUBLISHED\n    orderBy: createdAt_DESC\n    where: {sold: false, NOT: {slug: $currentSlug}}\n    first: $first\n    skip: $skip\n  ) {\n    ...OfferContent\n  }\n}": types.GetRecomendedOffersDocument,
+    "query GetOffersSlugs($sold: Boolean) {\n  offers(stage: PUBLISHED, first: 100, where: {sold: $sold}) {\n    slug\n  }\n}": types.GetOffersSlugsDocument,
 };
 
 /**
@@ -57,15 +57,15 @@ export function graphql(source: "query GetSoldOffersByBrandSlug($slug: String, $
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "query getOffersBySlugs($first: Int = 3, $skip: Int = 0, $limitCountOfImages: Int = 1, $sold: Boolean, $slugs: [String]) {\n  offers(\n    stage: PUBLISHED\n    orderBy: createdAt_DESC\n    where: {sold: $sold, slug_in: $slugs}\n    first: $first\n    skip: $skip\n  ) {\n    ...OfferContent\n  }\n}"): typeof import('./graphql').GetOffersBySlugsDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "query GetOffersCount($sold: Boolean) {\n  offersConnection(where: {sold: $sold}, stage: PUBLISHED) {\n    aggregate {\n      count\n    }\n  }\n}"): typeof import('./graphql').GetOffersCountDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GetOffersSlugs {\n  offers(stage: PUBLISHED, first: 100) {\n    slug\n  }\n}"): typeof import('./graphql').GetOffersSlugsDocument;
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(source: "query getRecomendedOffers($first: Int = 3, $skip: Int = 0, $currentSlug: String, $limitCountOfImages: Int = 1) {\n  offers(\n    stage: PUBLISHED\n    orderBy: createdAt_DESC\n    where: {sold: false, NOT: {slug: $currentSlug}}\n    first: $first\n    skip: $skip\n  ) {\n    ...OfferContent\n  }\n}"): typeof import('./graphql').GetRecomendedOffersDocument;
+export function graphql(source: "query GetOffersSlugs($sold: Boolean) {\n  offers(stage: PUBLISHED, first: 100, where: {sold: $sold}) {\n    slug\n  }\n}"): typeof import('./graphql').GetOffersSlugsDocument;
 
 
 export function graphql(source: string) {

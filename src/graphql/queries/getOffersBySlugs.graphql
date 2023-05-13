@@ -1,13 +1,14 @@
-query getRecomendedOffers(
+query getOffersBySlugs(
   $first: Int = 3
   $skip: Int = 0
-  $currentSlug: String
   $limitCountOfImages: Int = 1
+  $sold: Boolean
+  $slugs: [String]
 ) {
   offers(
     stage: PUBLISHED
     orderBy: createdAt_DESC
-    where: { sold: false, NOT: { slug: $currentSlug } }
+    where: { sold: $sold, slug_in: $slugs }
     first: $first
     skip: $skip
   ) {

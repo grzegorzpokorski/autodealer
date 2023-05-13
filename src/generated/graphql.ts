@@ -4944,6 +4944,17 @@ export type GetSoldOffersByBrandSlugQueryVariables = Exact<{
 
 export type GetSoldOffersByBrandSlugQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }>, offersConnection: { aggregate: { count: number } } };
 
+export type GetOffersBySlugsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limitCountOfImages?: InputMaybe<Scalars['Int']>;
+  sold?: InputMaybe<Scalars['Boolean']>;
+  slugs?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+}>;
+
+
+export type GetOffersBySlugsQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }> };
+
 export type GetOffersCountQueryVariables = Exact<{
   sold?: InputMaybe<Scalars['Boolean']>;
 }>;
@@ -4951,20 +4962,12 @@ export type GetOffersCountQueryVariables = Exact<{
 
 export type GetOffersCountQuery = { offersConnection: { aggregate: { count: number } } };
 
-export type GetOffersSlugsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetOffersSlugsQuery = { offers: Array<{ slug: string }> };
-
-export type GetRecomendedOffersQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  currentSlug?: InputMaybe<Scalars['String']>;
-  limitCountOfImages?: InputMaybe<Scalars['Int']>;
+export type GetOffersSlugsQueryVariables = Exact<{
+  sold?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type GetRecomendedOffersQuery = { offers: Array<{ id: string, invoice: boolean, price: number, slug: string, sold: boolean, title: string, gallery: Array<{ url: string, height?: number | null, width?: number | null, alt?: string | null, thumbnail: string }>, brand?: { id: string, brandName: string } | null, features?: { kolor: string, moc: string, pojemnoscSilnika: string, przebieg: string, rocznik: string, typ: string } | null, description?: { html: string } | null }> };
+export type GetOffersSlugsQuery = { offers: Array<{ slug: string }> };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -5189,28 +5192,12 @@ fragment OfferContent on Offer {
   }
   sold
 }`) as unknown as TypedDocumentString<GetSoldOffersByBrandSlugQuery, GetSoldOffersByBrandSlugQueryVariables>;
-export const GetOffersCountDocument = new TypedDocumentString(`
-    query GetOffersCount($sold: Boolean) {
-  offersConnection(where: {sold: $sold}, stage: PUBLISHED) {
-    aggregate {
-      count
-    }
-  }
-}
-    `) as unknown as TypedDocumentString<GetOffersCountQuery, GetOffersCountQueryVariables>;
-export const GetOffersSlugsDocument = new TypedDocumentString(`
-    query GetOffersSlugs {
-  offers(stage: PUBLISHED, first: 100) {
-    slug
-  }
-}
-    `) as unknown as TypedDocumentString<GetOffersSlugsQuery, GetOffersSlugsQueryVariables>;
-export const GetRecomendedOffersDocument = new TypedDocumentString(`
-    query getRecomendedOffers($first: Int = 3, $skip: Int = 0, $currentSlug: String, $limitCountOfImages: Int = 1) {
+export const GetOffersBySlugsDocument = new TypedDocumentString(`
+    query getOffersBySlugs($first: Int = 3, $skip: Int = 0, $limitCountOfImages: Int = 1, $sold: Boolean, $slugs: [String]) {
   offers(
     stage: PUBLISHED
     orderBy: createdAt_DESC
-    where: {sold: false, NOT: {slug: $currentSlug}}
+    where: {sold: $sold, slug_in: $slugs}
     first: $first
     skip: $skip
   ) {
@@ -5250,4 +5237,20 @@ fragment OfferContent on Offer {
     html
   }
   sold
-}`) as unknown as TypedDocumentString<GetRecomendedOffersQuery, GetRecomendedOffersQueryVariables>;
+}`) as unknown as TypedDocumentString<GetOffersBySlugsQuery, GetOffersBySlugsQueryVariables>;
+export const GetOffersCountDocument = new TypedDocumentString(`
+    query GetOffersCount($sold: Boolean) {
+  offersConnection(where: {sold: $sold}, stage: PUBLISHED) {
+    aggregate {
+      count
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<GetOffersCountQuery, GetOffersCountQueryVariables>;
+export const GetOffersSlugsDocument = new TypedDocumentString(`
+    query GetOffersSlugs($sold: Boolean) {
+  offers(stage: PUBLISHED, first: 100, where: {sold: $sold}) {
+    slug
+  }
+}
+    `) as unknown as TypedDocumentString<GetOffersSlugsQuery, GetOffersSlugsQueryVariables>;

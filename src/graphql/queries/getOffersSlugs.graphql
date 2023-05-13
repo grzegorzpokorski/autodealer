@@ -1,5 +1,5 @@
-query GetOffersSlugs {
-  offers(stage: PUBLISHED, first: 100) {
+query GetOffersSlugs($sold: Boolean) {
+  offers(stage: PUBLISHED, first: 100, where: { sold: $sold }) {
     slug
   }
 }
