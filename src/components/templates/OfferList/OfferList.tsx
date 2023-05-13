@@ -13,6 +13,7 @@ export const OfferList = ({ offers }: Props) => (
       <Offer key={offer.title}>
         {offer.invoice && <Offer.Invoice />}
         <Link href={`/oferta/${offer.slug}`} tabIndex={-1}>
+          {/* @ts-expect-error Server Component */}
           <Offer.Image image={offer.gallery[0]} />
         </Link>
         <Offer.Header href={`/oferta/${offer.slug}`} title={offer.title} />

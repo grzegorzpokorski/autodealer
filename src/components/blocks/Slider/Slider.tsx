@@ -44,20 +44,18 @@ export const Slider = ({ images }: Props) => {
         nextSlide={nextSlide}
         prevSlide={prevSlide}
       >
-        {images.map((image, idx) => {
-          return (
-            <SliderItem
-              key={image.url}
-              image={image}
-              isCurrent={currentSlide === idx}
-              onClick={(e: MouseEvent) => {
-                e.preventDefault();
-                setSlide(idx);
-                openLightbox();
-              }}
-            />
-          );
-        })}
+        {images.map((image, idx) => (
+          <SliderItem
+            key={image.url}
+            image={image}
+            isCurrent={currentSlide === idx}
+            onClick={(e: MouseEvent) => {
+              e.preventDefault();
+              setSlide(idx);
+              openLightbox();
+            }}
+          />
+        ))}
       </SliderTrack>
       <SliderLightbox
         isOpen={isLightboxOpen}

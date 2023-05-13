@@ -1,9 +1,9 @@
 import Image from "next/image";
-import type { GetOfferBySlugQuery } from "@/generated/graphql";
+import type { ImageFragment } from "@/generated/graphql";
 import { base64 } from "@/utils/imagePlaiceholder";
 
 type Props = {
-  image: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"][number];
+  image: ImageFragment;
 };
 
 export const SliderLightboxItem = ({ image }: Props) => (
