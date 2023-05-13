@@ -6,6 +6,7 @@ type ButtonVariants =
   | "primary"
   | "secondary"
   | "white"
+  | "white-outline"
   | "primary-white"
   | "contact";
 

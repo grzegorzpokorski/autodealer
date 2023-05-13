@@ -105,12 +105,12 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
             </div>
             <div className="col-span-12 md:col-span-5 flex flex-col gap-3 md:gap-6 order-1 md:order-2">
               <section
-                className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow rounded"
+                className="p-8 bg-primary-dark text-white sticky top-6 flex flex-col gap-8 shadow rounded @container"
                 aria-labelledby="cena-i-kontakt"
               >
                 <header className="sr-only">
                   <Heading as="h2" size="base" id="cena-i-kontakt" hidden>
-                    Cena i kontakt
+                    Cena, dane kontakowe
                   </Heading>
                 </header>
                 <div
