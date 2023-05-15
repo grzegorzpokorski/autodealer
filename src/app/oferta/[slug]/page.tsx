@@ -5,6 +5,8 @@ import { getOffersBySlugs } from "@/queries/getOffersBySlugs";
 import { notFound } from "next/navigation";
 import { shuffleArray } from "@/utils/shuffleArray";
 import type { Metadata } from "next";
+import dafaultOgImage from "publicDir/default-og.png";
+import { StaticImageData } from "next/image";
 
 export const dynamicParams = true;
 
@@ -21,34 +23,33 @@ export async function generateMetadata({
     offer.features?.rocznik || ""
   } - ${offer.price || 0} zł`;
 
-  const image = offer.gallery[0]
-    ? {
-        url: offer.gallery[0].url,
-        thumbnail: offer.gallery[0].thumbnail,
-        width: offer.gallery[0].width || 800,
-        height: offer.gallery[0].height || 600,
-        alt: offer.gallery[0].alt || "",
-      }
-    : null;
-
   return {
     title: promoString,
     description: `${promoString}. Zapytaj o szczegóły oferty lub umów się na jazdę testową oraz spotkanie. AutoDealer`,
     alternates: {
       canonical: `/oferta/${slug}`,
     },
-    openGraph: image
+    openGraph: offer.gallery[0]
       ? {
           images: [
             {
-              url: image.url,
-              width: image.width,
-              height: image.height,
-              alt: image.alt,
+              url: offer.gallery[0].url,
+              width: offer.gallery[0].width || 800,
+              height: offer.gallery[0].height || 600,
+              alt: offer.gallery[0].alt || "",
             },
           ],
         }
-      : null,
+      : {
+          images: [
+            {
+              url: dafaultOgImage.src,
+              width: dafaultOgImage.width,
+              height: dafaultOgImage.height,
+              alt: "",
+            },
+          ],
+        },
   };
 }
 
