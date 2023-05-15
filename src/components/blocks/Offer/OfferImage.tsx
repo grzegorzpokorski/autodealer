@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ImageFragment } from "@/generated/graphql";
-import { base64 } from "@/utils/imagePlaiceholder";
 import { getPlaiceholder } from "plaiceholder";
+import defaultOgImage from "publicDir/default-og.png";
 
 type Props = {
   image: ImageFragment;
@@ -29,13 +29,12 @@ export const OfferImage = async ({ image }: Props) => {
   return (
     <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md bg-primary">
       <Image
-        src={base64}
+        src={defaultOgImage}
         alt={""}
         fill
         className="object-cover object-center w-full h-full"
         sizes="(max-width: 720px) 100vw, 50vw"
         placeholder="blur"
-        blurDataURL={base64}
       />
     </picture>
   );

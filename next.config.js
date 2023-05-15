@@ -11,8 +11,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/sprzedalismy/:slug",
-        destination: "/sprzedalismy/:slug/1",
+        source: "/sprzedane/:slug",
+        destination: "/sprzedane/:slug/1",
         permanent: true,
       },
     ];

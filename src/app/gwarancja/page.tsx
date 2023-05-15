@@ -1,14 +1,19 @@
 import { ContentPage } from "@/components/pages/ContentPage/ContentPage";
 
 export const metadata = {
-  title: "gwarancja",
+  title: "Gwarancja",
+  description:
+    "Wychodząć na przeciw oczekiwaniom klientów firma AutoDealer oferuje możliwość dokupienia dodatkowe gwarancji na okres od 1 do 24 miesięcy.",
+  alternates: {
+    canonical: "gwarancja",
+  },
 };
 
 export default function Page() {
   return (
     <ContentPage
       title="Gwarancja"
-      subtitle="Wychodząć na przeciw oczekiwaniom klientów oferujemy możliwośc dokupienia dodatkowe gwarancji na okres od 1 do 24 miesięcy."
+      subtitle="Wychodząć na przeciw oczekiwaniom klientów oferujemy możliwość dokupienia dodatkowe gwarancji na okres od 1 do 24 miesięcy."
       content={
         <>
           <p>

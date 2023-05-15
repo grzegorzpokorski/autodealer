@@ -16,7 +16,7 @@ export const SoldPage = ({ brands }: Props) => {
   return (
     <>
       <HedaerSection
-        title="Sprzedaliśmy"
+        title="Sprzedane"
         description="Zapraszam do obejrzenia ciekawych samochodów jakie zostały zakupione
             w firmie AUTO-Handel. Modele wyselekcjonowane wg. marek."
       />
@@ -33,7 +33,7 @@ export const SoldPage = ({ brands }: Props) => {
                 brands.map((brand) => (
                   <CategoryLink
                     key={brand.slug}
-                    href={`/sprzedalismy/${brand.slug}`}
+                    href={`/sprzedane/${brand.slug}`}
                   >
                     {brand.brandName}
                     <CategoryLink.Counter>

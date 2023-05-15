@@ -3,12 +3,22 @@ import { OffersSection } from "@/components/sections/OffersSection/OffersSection
 import { getOffers } from "@/queries/getOffers";
 import { getOffersCount } from "@/queries/getOffersCount";
 import { offersPerPage } from "@/settings/consts";
+import type { Metadata } from "next";
 
 export const dynamicParams = false;
 
-export const metadata = {
-  title: "oferta",
-};
+export function generateMetadata({
+  params: { page },
+}: {
+  params: { page: string };
+}): Metadata {
+  return {
+    title: `Oferta`,
+    alternates: {
+      canonical: `/oferty/${page}`,
+    },
+  };
+}
 
 export const generateStaticParams = async () => {
   const offersCount = await getOffersCount({ sold: false });

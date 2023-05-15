@@ -7,8 +7,28 @@ import { getBrandsOfSoldOffers } from "@/queries/getBrandsOfSoldOffers";
 import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
 import { OfferOrderByInput } from "@/generated/graphql";
 import { offersPerPage } from "@/settings/consts";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+  params: { brandSlug, page },
+}: {
+  params: { brandSlug: string; page: string };
+}): Promise<Metadata> {
+  const brandName = await getBrandNameBySlug({ slug: brandSlug });
+
+  if (!brandName) return notFound();
+
+  return {
+    title: `Sprzedane: ${brandName}`,
+    description: `Sprzedane samochody marki ${brandName}, strona ${page}`,
+    alternates: {
+      canonical: `/sprzedane/${brandSlug}/${page}`,
+    },
+  };
+}
 
 export const generateStaticParams = async () => {
   const brands = await getBrandsOfSoldOffers();

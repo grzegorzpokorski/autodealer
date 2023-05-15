@@ -1,7 +1,12 @@
 import { ContentPage } from "@/components/pages/ContentPage/ContentPage";
 
 export const metadata = {
-  title: "finansowanie",
+  title: "Finansowanie",
+  description:
+    "Firma AutoDealer oferuje kompleksową obsługę finansowania zakupionych pojazdów w firmie jak i z własnego źródła zarówno w kredycie jak i leasingu",
+  alternates: {
+    canonical: "finansowanie",
+  },
 };
 
 export default function Page() {

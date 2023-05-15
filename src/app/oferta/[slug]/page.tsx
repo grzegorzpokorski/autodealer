@@ -4,8 +4,53 @@ import { getOffersSlugs } from "@/queries/getOffersSlugs";
 import { getOffersBySlugs } from "@/queries/getOffersBySlugs";
 import { notFound } from "next/navigation";
 import { shuffleArray } from "@/utils/shuffleArray";
+import type { Metadata } from "next";
 
 export const dynamicParams = true;
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const offer = await getOfferBySlug({ slug });
+
+  if (!offer) return notFound();
+
+  const promoString = `${offer.title || ""} - ${offer.features?.typ || ""} - ${
+    offer.features?.rocznik || ""
+  } - ${offer.price || 0} zł`;
+
+  const image = offer.gallery[0]
+    ? {
+        url: offer.gallery[0].url,
+        thumbnail: offer.gallery[0].thumbnail,
+        width: offer.gallery[0].width || 800,
+        height: offer.gallery[0].height || 600,
+        alt: offer.gallery[0].alt || "",
+      }
+    : null;
+
+  return {
+    title: promoString,
+    description: `${promoString}. Zapytaj o szczegóły oferty lub umów się na jazdę testową oraz spotkanie. AutoDealer`,
+    alternates: {
+      canonical: `/oferta/${slug}`,
+    },
+    openGraph: image
+      ? {
+          images: [
+            {
+              url: image.url,
+              width: image.width,
+              height: image.height,
+              alt: image.alt,
+            },
+          ],
+        }
+      : null,
+  };
+}
 
 export async function generateStaticParams() {
   const slugs = await getOffersSlugs({

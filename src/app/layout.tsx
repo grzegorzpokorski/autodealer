@@ -2,6 +2,8 @@ import "./../styles/globals.css";
 import { Poppins } from "next/font/google";
 import type { ReactNode } from "react";
 import { Layout } from "@/components/blocks/Layout/Layout";
+import { baseUrl, indexPage, pageName } from "@/settings/consts";
+import defaultOgImage from "publicDir/default-og.png";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -10,12 +12,26 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: { default: "AutoDealer", template: "AutoDealer | %s" },
+  title: { default: pageName, template: `${pageName} | %s` },
   description:
     "Samochody z Polskiej sieci dealerskiej. Sprzedaż samochodów Gdynia.",
   robots: {
-    index: false,
-    follow: false,
+    index: indexPage,
+    follow: indexPage,
+  },
+  metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    images: [
+      {
+        url: defaultOgImage.src,
+        width: defaultOgImage.width,
+        height: defaultOgImage.height,
+        alt: "",
+      },
+    ],
   },
 };
 
