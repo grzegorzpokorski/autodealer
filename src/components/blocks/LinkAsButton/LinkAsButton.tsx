@@ -15,27 +15,19 @@ const baseButtonStyles =
 
 const buttonVariants = {
   primary: twMerge(
-    baseButtonStyles,
     "bg-primary-dark hover:bg-primary focus:bg-primary text-white border-primary-dark",
   ),
   "primary-white": twMerge(
-    baseButtonStyles,
     "bg-transpatent hover:bg-primary hover:text-white focus:bg-primary focus:text-white text-primary border-primary-dark",
   ),
   secondary: twMerge(
-    baseButtonStyles,
     "bg-secondary hover:bg-secondary/90 text-white border-secondary",
   ),
-  white: twMerge(
-    baseButtonStyles,
-    "bg-white hover:bg-slate-100 text-gray-800 border-white",
-  ),
+  white: twMerge("bg-white hover:bg-slate-100 text-gray-800 border-white"),
   "white-outline": twMerge(
-    baseButtonStyles,
     "bg-transparent hover:bg-white text-white hover:text-gray-800 border-white",
   ),
   contact: twMerge(
-    baseButtonStyles,
     "bg-white hover:bg-slate-100 text-gray-800 border-white flex-1",
   ),
 } as const;
@@ -75,6 +67,7 @@ export const LinkAsButton = ({
       href={href}
       onClick={onClick}
       className={twMerge(
+        baseButtonStyles,
         buttonStyle && buttonVariants[buttonStyle],
         sizes[size],
       )}
@@ -91,6 +84,7 @@ export const LinkAsButton = ({
       tabIndex={tabIndex}
       onClick={onClick}
       className={twMerge(
+        baseButtonStyles,
         buttonStyle && buttonVariants[buttonStyle],
         sizes[size],
       )}
