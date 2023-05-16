@@ -2,10 +2,9 @@ import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import type { MouseEvent } from "react";
 import type { ImageFragment } from "@/generated/graphql";
-import { base64 } from "@/utils/imagePlaiceholder";
 
 type Props = {
-  image: ImageFragment;
+  image: ImageFragment & { plaiceholder: string };
   isCurrent: boolean;
   onClick: (e: MouseEvent) => void;
 };
@@ -38,7 +37,7 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
         fill
         draggable={false}
         placeholder="blur"
-        blurDataURL={base64}
+        blurDataURL={image.plaiceholder}
       />
     </a>
   </li>

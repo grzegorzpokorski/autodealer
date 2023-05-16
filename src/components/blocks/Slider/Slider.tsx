@@ -11,7 +11,7 @@ import { SliderItem } from "./SliderItem";
 import type { ImageFragment } from "@/generated/graphql";
 
 type Props = {
-  images: ImageFragment[];
+  images: (ImageFragment & { plaiceholder: string })[];
 };
 
 export const Slider = ({ images }: Props) => {

@@ -1,9 +1,8 @@
 import Image from "next/image";
 import type { ImageFragment } from "@/generated/graphql";
-import { base64 } from "@/utils/imagePlaiceholder";
 
 type Props = {
-  image: ImageFragment;
+  image: ImageFragment & { plaiceholder: string };
 };
 
 export const SliderLightboxItem = ({ image }: Props) => (
@@ -21,7 +20,7 @@ export const SliderLightboxItem = ({ image }: Props) => (
         draggable={false}
         onClick={(e) => e.stopPropagation()}
         placeholder="blur"
-        blurDataURL={base64}
+        blurDataURL={image.plaiceholder}
       />
     </div>
   </li>

@@ -4,17 +4,28 @@ import { Slider } from "@/components/blocks/Slider/Slider";
 import { ShadowBox } from "@/components/blocks/ShadowBox/ShadowBox";
 import { PricesList } from "@/components/blocks/PricesList/PricesList";
 import { FeaturesTable } from "@/components/blocks/FeaturesTable/FeaturesTable";
+import { getPlaiceholder } from "plaiceholder";
 
 type Props = {
   offer: NonNullable<GetOfferBySlugQuery["offer"]>;
 };
 
-export const SingleOffer = ({ offer }: Props) => {
+export const SingleOffer = async ({ offer }: Props) => {
+  const images = await Promise.all(
+    offer.gallery.map(async (image) => {
+      const { base64 } = await getPlaiceholder(image.thumbnail);
+      return {
+        ...image,
+        plaiceholder: base64,
+      };
+    }),
+  );
+
   return (
     <article className="grid grid-cols-12 gap-3 md:gap-6 py-8">
-      {offer.gallery.length > 0 && (
+      {images.length > 0 && (
         <div className="col-span-12">
-          <Slider images={offer.gallery} />
+          <Slider images={images} />
         </div>
       )}
       <div className="col-span-12 md:col-span-7 flex flex-col gap-3 md:gap-6 order-2 md:order-1">
