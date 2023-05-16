@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 const defaultStyles =
@@ -13,15 +13,16 @@ const variants = {
 const sizes = {
   small: "px-3.5 py-1.5 text-sm",
   default: "px-5 py-2 text-base",
+  "default-square": "p-2 px-4 text-base aspect-square",
   large: "px-8 py-4 text-xl",
-};
+} as const;
 
 type Props = {
   children: ReactNode;
   onClick: () => void;
-  size?: "small" | "default" | "large";
+  size?: "small" | "default" | "large" | "default-square";
   variant?: Variants;
-};
+} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, "aria-label">;
 
 export const Button = ({
   children,
