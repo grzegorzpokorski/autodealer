@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 import { shuffleArray } from "@/utils/shuffleArray";
 import type { Metadata } from "next";
 import dafaultOgImage from "publicDir/default-og.png";
-import { StaticImageData } from "next/image";
 
 export const dynamicParams = true;
 
