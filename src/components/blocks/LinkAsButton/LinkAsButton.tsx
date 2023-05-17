@@ -56,9 +56,7 @@ export const LinkAsButton = ({
   children,
   ...rest
 }: LinkProps) => {
-  const isInternal = ["#", "/", "tel:", "email:"].some((item) =>
-    href.startsWith(item),
-  )
+  const isInternal = ["#", "/"].some((item) => href.startsWith(item))
     ? true
     : false;
 

@@ -6,10 +6,18 @@ type Props = {
   href: string;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const MetricsLink = ({ children, ...rest }: Props) => {
-  return (
-    <Link {...rest} className="hover:underline focus:underline">
+export const MetricsLink = ({ children, href, ...rest }: Props) => {
+  const isInternal = href
+    ? href.startsWith("#") || href.startsWith("/")
+    : false;
+
+  return isInternal ? (
+    <Link {...rest} href={href} className="hover:underline focus:underline">
       {children}
     </Link>
+  ) : (
+    <a {...rest} href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
   );
 };
