@@ -1,8 +1,8 @@
 fragment Image on Asset {
   thumbnail: url(
-    transformation: { image: { resize: { height: 300, fit: scale } } }
+    transformation: { image: { resize: { height: 400, fit: scale } } }
   )
-  url(transformation: { image: { resize: { height: 600, fit: scale } } })
+  url
   height
   width
   alt

@@ -14,7 +14,7 @@ import * as types from './graphql';
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "fragment Image on Asset {\n  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})\n  url(transformation: {image: {resize: {height: 600, fit: scale}}})\n  height\n  width\n  alt\n}": types.ImageFragmentDoc,
+    "fragment Image on Asset {\n  thumbnail: url(transformation: {image: {resize: {height: 400, fit: scale}}})\n  url\n  height\n  width\n  alt\n}": types.ImageFragmentDoc,
     "fragment OfferContent on Offer {\n  id\n  invoice\n  price\n  slug\n  sold\n  title\n  gallery(first: $limitCountOfImages) {\n    ...Image\n  }\n  brand {\n    id\n    brandName\n  }\n  features {\n    kolor\n    moc\n    pojemnoscSilnika\n    przebieg\n    rocznik\n    typ\n  }\n  description {\n    html\n  }\n  sold\n}": types.OfferContentFragmentDoc,
     "query GetBrandNameBySlug($slug: String) {\n  brand(where: {slug: $slug}) {\n    brandName\n  }\n}": types.GetBrandNameBySlugDocument,
     "query GetBrandsOfSoldOffers {\n  brands(\n    orderBy: brandName_ASC\n    stage: PUBLISHED\n    where: {offers_some: {sold: true}}\n    first: 100\n  ) {\n    brandName\n    slug\n    offers(where: {sold: true}, first: 100) {\n      id\n    }\n  }\n}": types.GetBrandsOfSoldOffersDocument,
@@ -29,7 +29,7 @@ const documents = {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "fragment Image on Asset {\n  thumbnail: url(transformation: {image: {resize: {height: 300, fit: scale}}})\n  url(transformation: {image: {resize: {height: 600, fit: scale}}})\n  height\n  width\n  alt\n}"): typeof import('./graphql').ImageFragmentDoc;
+export function graphql(source: "fragment Image on Asset {\n  thumbnail: url(transformation: {image: {resize: {height: 400, fit: scale}}})\n  url\n  height\n  width\n  alt\n}"): typeof import('./graphql').ImageFragmentDoc;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
