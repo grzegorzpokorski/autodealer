@@ -1,7 +1,11 @@
 {
-  "name": "autobart",
+  "name": "autodealer",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Grzegorz Pokorski",
+    "email": "mr.pokorski@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,7 +24,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.38.0",
     "graphql": "^16.6.0",
-    "next": "13.4.2",
+    "next": "13.4.3",
     "plaiceholder": "^2.5.0",
     "postcss": "8.4.22",
     "react": "18.2.0",
@@ -36,7 +40,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
-    "eslint-config-next": "13.4.2",
+    "eslint-config-next": "13.4.3",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react-hooks": "^4.6.0",
