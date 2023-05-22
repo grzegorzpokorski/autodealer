@@ -3,7 +3,6 @@ import { GridList } from "@/components/blocks/GridList/GridList";
 import Link from "next/link";
 import { Offer } from "@/components/blocks/Offer/Offer";
 import { formatNumber } from "@/utils/formatNumber";
-import { offersPerPage } from "@/settings/consts";
 
 type Props = {
   offers: GetOffersQuery["offers"];
@@ -50,18 +49,3 @@ export const OfferList = ({ offers }: Props) => (
       ))}
   </GridList>
 );
-
-const Skeleton = () => (
-  <GridList role="status">
-    {Array(offersPerPage)
-      .fill(0)
-      .map((_, idx) => (
-        <Offer.Skeleton key={idx}>
-          <Offer.Image.Skeleton />
-          <Offer.Header.Skeleton />
-        </Offer.Skeleton>
-      ))}
-  </GridList>
-);
-
-OfferList.Skeleton = Skeleton;
