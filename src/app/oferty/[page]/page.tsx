@@ -1,9 +1,10 @@
-import { OffersSection } from "@/components/sections/OffersSection/OffersSection";
+import { OffersSection } from "@/components/templates/OffersSection/OffersSection";
 import { defaultSort, sorting } from "@/lib/constants";
 import { getOffers } from "@/queries/getOffers";
 import { offersPerPage } from "@/settings/consts";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export function generateMetadata({
   params: { page },
@@ -47,7 +48,9 @@ export default async function Page({
       title={`Obecnie dostępne modele, strona ${currentPage} z ${totalPages}`}
     >
       <OffersSection.Filters totalOffers={offers.total} />
-      <OffersSection.OfferList offers={offers.offers} />
+      <Suspense fallback={<p>loading</p>}>
+        <OffersSection.OfferList offers={offers.offers} />
+      </Suspense>
       {totalPages > 1 && (
         <OffersSection.Pagination
           pagination={{

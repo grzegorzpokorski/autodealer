@@ -1,6 +1,6 @@
 import { Main } from "@/components/blocks/Main/Main";
 import { HedaerSection } from "@/components/templates/HeaderSection/HeaderSection";
-import { OffersSection } from "@/components/sections/OffersSection/OffersSection";
+import { OffersSection } from "@/components/templates/OffersSection/OffersSection";
 import { getBrandNameBySlug } from "@/queries/getBrandNameBySlug";
 import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
 import { offersPerPage } from "@/settings/consts";

@@ -3,9 +3,9 @@ import { useId } from "react";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { Section } from "@/components/blocks/Section/Section";
 import { Container } from "@/components/blocks/Container/Container";
-import { OffersSectionOfferList } from "./OffersSectionOfferList";
 import { OffersSectionPagination } from "./OffersSectionPagination";
 import { OffersSectionFilters } from "./OffersSectionFilters";
+import { OffersSectionOfferList } from "./OffersSectionOfferList";
 
 type Props = {
   children: ReactNode;

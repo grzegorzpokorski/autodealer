@@ -3,7 +3,7 @@ import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { Main } from "@/components/blocks/Main/Main";
 import { SectionWithOverlay } from "@/components/blocks/SectionWithOverlay/SectionWithOverlay";
 import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
-import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
+import { RecommendedOffersSection } from "@/components/templates/RecommendedOffersSection/RecommendedOffersSection";
 import type { OfferContentFragment } from "@/generated/graphql";
 
 type Props = {
