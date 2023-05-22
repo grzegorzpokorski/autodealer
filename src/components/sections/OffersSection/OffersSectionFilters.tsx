@@ -24,8 +24,8 @@ export const OffersSectionFilters = ({ totalOffers }: Props) => {
       <output className="hidden md:inline-flex text-secondary text-base">
         Liczba dostępnych ofert: {totalOffers}
       </output>
-      <div className="flex flex-row items-center justify-between gap-2">
-        <span>Sortowanie:</span>
+      <div className="flex flex-row flex-wrap items-center justify-between gap-2">
+        <span>Sortuj:</span>
         <Menu as="div" className="relative focus:outline-red">
           <Menu.Button className="flex flex-row items-center gap-2 border-2 border-secondary bg-white rounded px-3 py-1.5 relative flex">
             {currentSortTitle}
@@ -39,6 +39,7 @@ export const OffersSectionFilters = ({ totalOffers }: Props) => {
                   prefetch={false}
                   className={twMerge(
                     "py-2 hover:text-primary focus:text-primary transition-colors",
+                    currentSortSlug === item.slug && "text-primary",
                   )}
                 >
                   {item.title}
