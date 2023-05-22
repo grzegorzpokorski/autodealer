@@ -48,7 +48,7 @@ export default async function Page({
       title={`Obecnie dostępne modele, strona ${currentPage} z ${totalPages}`}
     >
       <OffersSection.Filters totalOffers={offers.total} />
-      <Suspense fallback={<p>loading</p>}>
+      <Suspense fallback={<OffersSection.OfferList.Skeleton />}>
         <OffersSection.OfferList offers={offers.offers} />
       </Suspense>
       {totalPages > 1 && (

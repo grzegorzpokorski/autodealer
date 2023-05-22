@@ -3,9 +3,9 @@ import { useId } from "react";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { Section } from "@/components/blocks/Section/Section";
 import { Container } from "@/components/blocks/Container/Container";
-import { OffersSectionPagination } from "./OffersSectionPagination";
-import { OffersSectionFilters } from "./OffersSectionFilters";
-import { OffersSectionOfferList } from "./OffersSectionOfferList";
+import { Pagination } from "./parts/Pagination";
+import { Filters } from "./parts/Filters";
+import { OfferList } from "./parts/OfferList";
 
 type Props = {
   children: ReactNode;
@@ -26,6 +26,6 @@ export const OffersSection = ({ children, title }: Props) => {
   );
 };
 
-OffersSection.OfferList = OffersSectionOfferList;
-OffersSection.Filters = OffersSectionFilters;
-OffersSection.Pagination = OffersSectionPagination;
+OffersSection.OfferList = OfferList;
+OffersSection.Filters = Filters;
+OffersSection.Pagination = Pagination;

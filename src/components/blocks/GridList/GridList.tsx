@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode;
   margin?: "none" | "top";
   gap?: "gap-4" | "gap-8";
+  role?: "list" | "status";
 };
 
 const marginVariants = {
@@ -21,6 +22,7 @@ export const GridList = ({
   children,
   margin = "none",
   gap = "gap-8",
+  role = "list",
 }: Props) => {
   return (
     <ul
@@ -29,7 +31,7 @@ export const GridList = ({
         marginVariants[margin],
         gapVariants[gap],
       )}
-      role="list"
+      role={role}
     >
       {children}
     </ul>

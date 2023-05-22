@@ -15,3 +15,12 @@ export const OfferHeader = ({ href, title }: Props) => (
     </Link>
   </header>
 );
+
+const Skeleton = () => (
+  <div className="px-4 flex flex-col gap-1">
+    <div className="h-6 w-[90%] rounded bg-gray-200"></div>
+    <div className="h-6 w-[30%] rounded bg-gray-200"></div>
+  </div>
+);
+
+OfferHeader.Skeleton = Skeleton;

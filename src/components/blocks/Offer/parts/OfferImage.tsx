@@ -39,3 +39,9 @@ export const OfferImage = async ({ image }: Props) => {
     </picture>
   );
 };
+
+const Skeleton = () => (
+  <div className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md bg-gray-300"></div>
+);
+
+OfferImage.Skeleton = Skeleton;

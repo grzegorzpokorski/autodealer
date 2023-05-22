@@ -8,6 +8,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
 import { defaultSort, sorting } from "@/lib/constants";
+import { Suspense } from "react";
+import Offer from "@/app/oferta/[slug]/page";
+import { OfferList } from "@/components/templates/OffersSection/parts/OfferList";
 
 export async function generateMetadata({
   params: { brandSlug, page },
@@ -65,7 +68,9 @@ export default async function Page({
           }, strona ${currentPage} z ${totalPages}`}
         >
           <OffersSection.Filters totalOffers={totalOffers} />
-          <OffersSection.OfferList offers={offers.offers} />
+          <Suspense fallback={<OfferList.Skeleton />}>
+            <OffersSection.OfferList offers={offers.offers} />
+          </Suspense>
           {totalPages > 1 && (
             <OffersSection.Pagination
               pagination={{

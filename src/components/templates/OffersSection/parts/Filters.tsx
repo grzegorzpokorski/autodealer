@@ -11,7 +11,7 @@ type Props = {
   totalOffers: number;
 };
 
-export const OffersSectionFilters = ({ totalOffers }: Props) => {
+export const Filters = ({ totalOffers }: Props) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentSortSlug = searchParams.get("sort") || defaultSort.slug;
