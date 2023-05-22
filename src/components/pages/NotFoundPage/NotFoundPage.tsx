@@ -2,6 +2,7 @@ import { Heading } from "@/components/blocks/Heading/Heading";
 import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { Main } from "@/components/blocks/Main/Main";
 import { SectionWithOverlay } from "@/components/blocks/SectionWithOverlay/SectionWithOverlay";
+import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
 import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
 import type { OfferContentFragment } from "@/generated/graphql";
 
@@ -39,6 +40,7 @@ export const NotFoundPage = ({ offers }: Props) => {
           offers={offers.slice(0, 3)}
           title="Chciałbyś sprawdzić polecene modele?"
         />
+        <DefaultBanner />
       </Main>
     </>
   );

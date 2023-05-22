@@ -4,8 +4,8 @@ import { GridList } from "@/components/blocks/GridList/GridList";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { Main } from "@/components/blocks/Main/Main";
 import { Section } from "@/components/blocks/Section/Section";
-import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
-import { HedaerSection } from "@/components/sections/HeaderSection/HeaderSection";
+import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
+import { HedaerSection } from "@/components/templates/HeaderSection/HeaderSection";
 import type { GetBrandsOfSoldOffersQuery } from "@/generated/graphql";
 
 type Props = {
@@ -44,10 +44,7 @@ export const SoldPage = ({ brands }: Props) => {
             </GridList>
           </Container>
         </Section>
-        <BannerSection
-          title="Już dzisiaj znajdź dla siebie wymarzone auto!"
-          button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}
-        />
+        <DefaultBanner />
       </Main>
     </>
   );

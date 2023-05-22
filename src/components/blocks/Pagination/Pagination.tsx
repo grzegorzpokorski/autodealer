@@ -5,6 +5,7 @@ type Props = {
     currentPage: number;
     totalPages: number;
     base: string;
+    searchParams: string | null;
   };
 };
 
@@ -64,7 +65,11 @@ export const Pagination = ({ pagination }: Props) => {
           ) : (
             <li key={page}>
               <LinkAsButton
-                href={`${pagination.base}/${page}`}
+                href={
+                  pagination.searchParams
+                    ? `${pagination.base}/${page}?${pagination.searchParams}`
+                    : `${pagination.base}/${page}`
+                }
                 size="small"
                 buttonStyle={
                   pagination.currentPage === page ? "primary" : "primary-white"

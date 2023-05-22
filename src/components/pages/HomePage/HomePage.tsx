@@ -1,5 +1,5 @@
 import { Main } from "@/components/blocks/Main/Main";
-import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
+import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
 import { FeaturesSection } from "@/components/sections/FeaturesSection/FeaturesSection";
 import { HeroSection } from "@/components/sections/HeroSection/HeroSection";
 import { MetricsSection } from "@/components/sections/MetricsSection/MetricsSection";
@@ -21,10 +21,7 @@ export const HomePage = ({ offers }: Props) => {
           offers={offers.slice(0, 3)}
           title="Zobacz polecane modele"
         />
-        <BannerSection
-          title="Już dzisiaj znajdź dla siebie wymarzone auto!"
-          button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}
-        />
+        <DefaultBanner />
       </Main>
     </>
   );

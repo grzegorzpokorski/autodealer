@@ -1,9 +1,9 @@
 import { Container } from "@/components/blocks/Container/Container";
 import { Main } from "@/components/blocks/Main/Main";
-import { BannerSection } from "@/components/sections/BannerSection/BannerSection";
 import { RecommendedOffersSection } from "@/components/sections/RecommendedOffersSection/RecommendedOffersSection";
 import type { GetOfferBySlugQuery, GetOffersQuery } from "@/generated/graphql";
 import { SingleOffer } from "@/components/templates/SingleOffer/SingleOffer";
+import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
 
 type Props = {
   offer: GetOfferBySlugQuery["offer"];
@@ -25,10 +25,7 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
           title="Zobacz dostępne modele"
           cta={false}
         />
-        <BannerSection
-          title="Już dzisiaj znajdź dla siebie wymarzone auto!"
-          button={{ label: "Zobacz naszą ofetę", href: "/oferty" }}
-        />
+        <DefaultBanner />
       </Main>
     </>
   );

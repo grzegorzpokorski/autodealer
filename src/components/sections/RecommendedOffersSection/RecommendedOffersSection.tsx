@@ -23,7 +23,11 @@ export const RecommendedOffersSection = ({
   if (offers.length === 0) return null;
 
   return (
-    <Section ariaLabelledby={sectionTitleID} border="top">
+    <Section
+      ariaLabelledby={sectionTitleID}
+      border="top"
+      padding="recommendedOffers"
+    >
       <Container>
         <header>
           <Heading as="h2" size="md" id={sectionTitleID}>

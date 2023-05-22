@@ -16,6 +16,6 @@ export const getOffers = async ({ first, skip, sold, order }: Args) => {
 
   return {
     offers: result.offers,
-    offersCount: result.offersConnection.aggregate.count,
+    total: result.offersConnection.aggregate.count,
   };
 };

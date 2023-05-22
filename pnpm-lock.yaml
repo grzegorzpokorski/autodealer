@@ -4,6 +4,7 @@ specifiers:
   '@graphql-codegen/cli': ^3.3.1
   '@graphql-codegen/client-preset': ^3.0.1
   '@graphql-typed-document-node/core': ^3.2.0
+  '@headlessui/react': ^1.7.14
   '@tailwindcss/typography': ^0.5.9
   '@types/node': 18.15.11
   '@types/react': 18.0.35
@@ -33,6 +34,7 @@ specifiers:
 
 dependencies:
   '@graphql-typed-document-node/core': 3.2.0_graphql@16.6.0
+  '@headlessui/react': 1.7.14_biqbaboplfbrettd7655fr4n2y
   '@types/node': 18.15.11
   '@types/react': 18.0.35
   '@types/react-dom': 18.0.11
@@ -1289,6 +1291,18 @@ packages:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       graphql: 16.6.0
+
+  /@headlessui/react/1.7.14_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-znzdq9PG8rkwcu9oQ2FwIy0ZFtP9Z7ycS+BAqJ3R5EIqC/0bJGvhT7193rFf+45i9nnPsYvCQVW4V/bB9Xc+gA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}

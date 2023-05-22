@@ -1,16 +1,20 @@
 import { Main } from "@/components/blocks/Main/Main";
-import { ContactSection } from "@/components/sections/ContactSection/ContactSection";
 import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
 import { HedaerSection } from "@/components/templates/HeaderSection/HeaderSection";
+import type { ReactNode } from "react";
 
-export const ContactPage = () => {
+type Props = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: Props) {
   return (
     <>
-      <HedaerSection title="Kontakt" />
+      <HedaerSection title="Oferta" />
       <Main>
-        <ContactSection />
+        {children}
         <DefaultBanner />
       </Main>
     </>
   );
-};
+}

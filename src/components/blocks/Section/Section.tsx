@@ -1,13 +1,15 @@
 import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-type Paddings = "none" | "default";
+type Paddings = "none" | "default" | "offersArchive" | "recommendedOffers";
 type Margins = "none" | "negative-top";
 type Borders = "none" | "top";
 
 const paddingVariants = {
   none: "p-0",
   default: "py-16",
+  offersArchive: "pb-16 lg:pb-0",
+  recommendedOffers: "py-16 lg:pb-0",
 } as const;
 
 const marginVariants = {
