@@ -37,7 +37,7 @@ export const BannerSection = ({ title, button }: Props) => {
             {title}
           </Heading>
           {button && (
-            <LinkAsButton href={button.href} buttonStyle="white">
+            <LinkAsButton href={button.href} linkStyle="white">
               {button.label}
             </LinkAsButton>
           )}

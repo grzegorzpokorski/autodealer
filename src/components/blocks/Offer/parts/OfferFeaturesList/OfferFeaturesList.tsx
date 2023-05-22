@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { OfferFeaturesListItem } from "./OfferFeaturesListItem";
+import { OfferFeaturesListItem } from "./parts/OfferFeaturesListItem/OfferFeaturesListItem";
 
 type Props = {
   children: ReactNode;

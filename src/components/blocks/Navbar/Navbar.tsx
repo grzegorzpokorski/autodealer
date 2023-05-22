@@ -2,9 +2,9 @@
 
 import { useId } from "react";
 import { Container } from "@/components/blocks/Container/Container";
-import { NavbarMenu } from "./NavbarMenu/NavbarMenu";
-import { NavbarLogo } from "./NavbarLogo";
-import { NavbarToggler } from "./NavbarToggler";
+import { NavbarMenu } from "./parts/NavbarMenu/NavbarMenu";
+import { NavbarLogo } from "./parts/NavbarLogo/NavbarLogo";
+import { NavbarToggler } from "./parts/NavbarToggler/NavbarToggler";
 import { useNavbar } from "./useNavbar";
 
 export const Navbar = () => {

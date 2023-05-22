@@ -1,16 +1,16 @@
 import { useId } from "react";
+import Link from "next/link";
 import { Container } from "@/components/blocks/Container/Container";
 import { Section } from "@/components/blocks/Section/Section";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { GridList } from "@/components/blocks/GridList/GridList";
 import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
-import type { GetOffersQuery } from "@/generated/graphql";
 import { Offer } from "@/components/blocks/Offer/Offer";
-import Link from "next/link";
 import { formatNumber } from "@/utils/formatNumber";
+import type { OfferContentFragment } from "@/generated/graphql";
 
 type Props = {
-  offers: GetOffersQuery["offers"];
+  offers: OfferContentFragment[];
   title: string;
   cta?: boolean;
 };
@@ -81,7 +81,7 @@ export const RecommendedOffersSection = ({
         </GridList>
         {cta && (
           <footer className="pt-8 text-center">
-            <LinkAsButton href="/oferty" buttonStyle="primary" size="large">
+            <LinkAsButton href="/oferty" linkStyle="primary" size="large">
               Zobacz całą ofertę
             </LinkAsButton>
           </footer>

@@ -1,13 +1,13 @@
-import type { GetOfferBySlugQuery } from "@/generated/graphql";
 import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { Slider } from "@/components/blocks/Slider/Slider";
 import { ShadowBox } from "@/components/blocks/ShadowBox/ShadowBox";
 import { PricesList } from "@/components/blocks/PricesList/PricesList";
 import { FeaturesTable } from "@/components/blocks/FeaturesTable/FeaturesTable";
+import type { OfferContentFragment } from "@/generated/graphql";
 import { getPlaiceholder } from "plaiceholder";
 
 type Props = {
-  offer: NonNullable<GetOfferBySlugQuery["offer"]>;
+  offer: OfferContentFragment;
 };
 
 export const SingleOffer = async ({ offer }: Props) => {
@@ -77,7 +77,7 @@ export const SingleOffer = async ({ offer }: Props) => {
                 ) : (
                   <LinkAsButton
                     href="tel:+48123456789"
-                    buttonStyle="contact"
+                    linkStyle="contact"
                     aria-label="Zadźwoń: +48123456789"
                   >
                     <span className="font-bold">Zadźwoń: </span>

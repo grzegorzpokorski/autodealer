@@ -9,6 +9,7 @@ type Props = {
 
 export const HedaerSection = ({ title, description }: Props) => {
   const headerTitleID = useId();
+
   return (
     <SectionWithOverlay
       as="header"

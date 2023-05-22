@@ -1,10 +1,10 @@
-import type { GetOfferBySlugQuery } from "@/generated/graphql";
-import { useOnKeydown } from "@/hooks/useOnKeydown";
 import type { MouseEvent, TouchEvent } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useOnKeydown } from "@/hooks/useOnKeydown";
+import type { ImageFragment } from "@/generated/graphql";
 
 type Args = {
-  images: NonNullable<GetOfferBySlugQuery["offer"]>["gallery"];
+  images: ImageFragment[];
 };
 export const useSlider = ({ images }: Args) => {
   const sliderRef = useRef<HTMLUListElement>(null);

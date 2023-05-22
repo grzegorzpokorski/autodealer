@@ -1,13 +1,10 @@
-import { Main } from "@/components/blocks/Main/Main";
-import { HedaerSection } from "@/components/templates/HeaderSection/HeaderSection";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { OffersSection } from "@/components/templates/OffersSection/OffersSection";
 import { getBrandNameBySlug } from "@/queries/getBrandNameBySlug";
 import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
-import { offersPerPage } from "@/settings/consts";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
 import { defaultSort, sorting } from "@/lib/constants";
+import { offersPerPage } from "@/settings/consts";
 
 export async function generateMetadata({
   params: { brandSlug, page },
@@ -15,7 +12,6 @@ export async function generateMetadata({
   params: { brandSlug: string; page: string };
 }): Promise<Metadata> {
   const brandName = await getBrandNameBySlug({ slug: brandSlug });
-
   if (!brandName) return notFound();
 
   return {
@@ -41,46 +37,38 @@ export default async function Page({
   const { sortKey, slug: sortingSlug } =
     sorting.find((item) => item.slug === sort) || defaultSort;
 
-  const brandName = await getBrandNameBySlug({ slug: brandSlug });
-  const offers = await getOffersByBrandSlug({
+  const brandName =
+    (await getBrandNameBySlug({ slug: brandSlug })) || brandSlug;
+  const { offers, total } = await getOffersByBrandSlug({
     brandSlug,
     sold: true,
     first: offersPerPage,
     skip: (currentPage - 1) * offersPerPage,
     order: sortKey,
   });
-  const totalOffers = offers.offersCount;
 
-  if (offers.offers.length === 0) return notFound();
+  if (offers.length === 0) return notFound();
 
-  const totalPages = Math.ceil(totalOffers / offersPerPage);
+  const totalPages = Math.ceil(total / offersPerPage);
 
   return (
-    <>
-      <HedaerSection title={`Sprzedane: ${brandName || brandSlug}`} />
-      <Main>
-        <OffersSection
-          title={`Sprzedane samochody marki ${
-            brandName || brandSlug
-          }, strona ${currentPage} z ${totalPages}`}
-        >
-          <OffersSection.Filters totalOffers={totalOffers} />
-          <OffersSection.OfferList offers={offers.offers} />
-          {totalPages > 1 && (
-            <OffersSection.Pagination
-              pagination={{
-                currentPage: currentPage,
-                totalPages: totalPages,
-                base: `/sprzedalismy/${brandSlug}`,
-                searchParams: sortingSlug
-                  ? new URLSearchParams({ sort: sortingSlug }).toString()
-                  : null,
-              }}
-            />
-          )}
-        </OffersSection>
-        <DefaultBanner />
-      </Main>
-    </>
+    <OffersSection
+      title={`Sprzedane samochody marki ${brandName}, strona ${currentPage} z ${totalPages}`}
+    >
+      <OffersSection.Filters totalOffers={total} />
+      <OffersSection.OfferList offers={offers} />
+      {totalPages > 1 && (
+        <OffersSection.Pagination
+          pagination={{
+            currentPage: currentPage,
+            totalPages: totalPages,
+            base: `/sprzedalismy/${brandSlug}`,
+            searchParams: sortingSlug
+              ? new URLSearchParams({ sort: sortingSlug }).toString()
+              : null,
+          }}
+        />
+      )}
+    </OffersSection>
   );
 }

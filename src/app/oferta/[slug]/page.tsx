@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { SinglePage } from "@/components/pages/SinglePage/SinglePage";
 import { getOfferBySlug } from "@/queries/getOfferBySlug";
 import { getOffersSlugs } from "@/queries/getOffersSlugs";
 import { getOffersBySlugs } from "@/queries/getOffersBySlugs";
-import { notFound } from "next/navigation";
 import { shuffleArray } from "@/utils/shuffleArray";
-import type { Metadata } from "next";
 import dafaultOgImage from "publicDir/default-og.png";
 
 export const dynamicParams = true;

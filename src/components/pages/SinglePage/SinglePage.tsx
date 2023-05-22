@@ -1,13 +1,13 @@
 import { Container } from "@/components/blocks/Container/Container";
 import { Main } from "@/components/blocks/Main/Main";
 import { RecommendedOffersSection } from "@/components/templates/RecommendedOffersSection/RecommendedOffersSection";
-import type { GetOfferBySlugQuery, GetOffersQuery } from "@/generated/graphql";
 import { SingleOffer } from "@/components/templates/SingleOffer/SingleOffer";
 import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
+import type { OfferContentFragment } from "@/generated/graphql";
 
 type Props = {
-  offer: GetOfferBySlugQuery["offer"];
-  recommendedOffers: GetOffersQuery["offers"];
+  offer: OfferContentFragment;
+  recommendedOffers: OfferContentFragment[];
 };
 
 export const SinglePage = ({ offer, recommendedOffers }: Props) => {

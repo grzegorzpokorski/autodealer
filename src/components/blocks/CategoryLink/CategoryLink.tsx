@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Counter } from "./Counter";
+import { CategoryLinkCounter } from "./parts/CategoryLinkCounter";
 
 type Props = {
   children: ReactNode;
@@ -18,4 +18,4 @@ export const CategoryLink = ({ children, href }: Props) => {
   );
 };
 
-CategoryLink.Counter = Counter;
+CategoryLink.Counter = CategoryLinkCounter;

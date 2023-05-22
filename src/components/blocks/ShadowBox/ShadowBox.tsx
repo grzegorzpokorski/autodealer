@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
-import { ShadowBoxHeader } from "./ShadowBoxHeader";
+import { ShadowBoxHeader } from "./parts/ShadowBoxHeader/ShadowBoxHeader";
 
 type Props = {
   children: ReactNode;

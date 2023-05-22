@@ -3,11 +3,7 @@ import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner
 import { HedaerSection } from "@/components/templates/HeaderSection/HeaderSection";
 import type { ReactNode } from "react";
 
-type Props = {
-  children: ReactNode;
-};
-
-export default function Layout({ children }: Props) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <HedaerSection title="Oferta" />

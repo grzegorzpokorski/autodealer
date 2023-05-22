@@ -3,9 +3,12 @@ import { useId } from "react";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { Section } from "@/components/blocks/Section/Section";
 import { Container } from "@/components/blocks/Container/Container";
-import { Pagination } from "./parts/Pagination";
-import { Filters } from "./parts/Filters";
-import { OfferList } from "./parts/OfferList";
+import { OfferList } from "./parts/OfferList/OfferList";
+import { PaginationSkeleton } from "./parts/Pagination/PaginationSkeleton";
+import { FiltersSkeleton } from "./parts/Filters/FiltersSkeleton";
+import { OffersListSkeleton } from "./parts/OfferList/OffersListSkeleton";
+import { Filters } from "./parts/Filters/Filters";
+import { Pagination } from "./parts/Pagination/Pagination";
 
 type Props = {
   children: ReactNode;
@@ -29,3 +32,7 @@ export const OffersSection = ({ children, title }: Props) => {
 OffersSection.OfferList = OfferList;
 OffersSection.Filters = Filters;
 OffersSection.Pagination = Pagination;
+
+OffersSection.OffersListSkeleton = OffersListSkeleton;
+OffersSection.FiltersSkeleton = FiltersSkeleton;
+OffersSection.PaginationSkeleton = PaginationSkeleton;

@@ -12,6 +12,7 @@ module.exports = {
         "primary-light": "#65bbfc",
         secondary: "#0f143c",
         "light-gray": "#f6f6f6",
+        skeleton: colors.slate[300],
       },
       typography: {
         fontFamily: {

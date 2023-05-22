@@ -1,5 +1,5 @@
-import { Container } from "@/components/blocks/Container/Container";
 import { memo } from "react";
+import { Container } from "@/components/blocks/Container/Container";
 
 export const Footer = memo(() => {
   const actualYear = new Date().getFullYear();

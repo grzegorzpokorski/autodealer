@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
-import { MetricsItem } from "./MetricsItem/MetricsItem";
-import { MetricsLink } from "./MetricsLink";
+import { MetricsItem } from "./parts/MetricsItem/MetricsItem";
+import { MetricsLink } from "./parts/MetricsLink/MetricsLink";
 
 type Props = {
   children: ReactNode;

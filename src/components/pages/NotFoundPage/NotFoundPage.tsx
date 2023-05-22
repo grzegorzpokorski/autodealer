@@ -25,23 +25,25 @@ export const NotFoundPage = ({ offers }: Props) => {
             </Heading>
             <p>Strona, której szukasz, nie istnieje (błąd 404)</p>
             <div className="flex flex-row flex-wrap gap-2 justify-center mt-2">
-              <LinkAsButton href="/oferty" buttonStyle="primary">
+              <LinkAsButton href="/oferty" linkStyle="primary">
                 Aktualna oferta
               </LinkAsButton>
-              <LinkAsButton href="/" buttonStyle="white">
+              <LinkAsButton href="/" linkStyle="white">
                 Zabierz mnie na stronę główną
               </LinkAsButton>
             </div>
           </div>
         </div>
       </SectionWithOverlay>
-      <Main>
-        <RecommendedOffersSection
-          offers={offers.slice(0, 3)}
-          title="Chciałbyś sprawdzić polecene modele?"
-        />
-        <DefaultBanner />
-      </Main>
+      {offers.length > 2 && (
+        <Main>
+          <RecommendedOffersSection
+            offers={offers.slice(0, 3)}
+            title="Chciałbyś sprawdzić polecene modele?"
+          />
+          <DefaultBanner />
+        </Main>
+      )}
     </>
   );
 };

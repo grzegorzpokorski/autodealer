@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { OfferFooterLink } from "./OfferFooterLink";
-import { OfferFooterPriceTag } from "./OfferFooterPriceTag";
+import { OfferFooterLink } from "./parts/OfferFooterLink/OfferFooterLink";
+import { OfferFooterPriceTag } from "./parts/OfferFooterPriceTag/OfferFooterPriceTag";
 
 type Props = {
   children: ReactNode;

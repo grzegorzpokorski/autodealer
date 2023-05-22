@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Container } from "@/components/blocks/Container/Container";
 import { twMerge } from "tailwind-merge";
+import { Container } from "@/components/blocks/Container/Container";
 
 type Props = {
   children: ReactNode;

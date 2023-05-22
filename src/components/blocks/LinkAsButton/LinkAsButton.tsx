@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 import LinkNext from "next/link";
 import { twMerge } from "tailwind-merge";
 
-type ButtonVariants =
+type StyleVariants =
   | "primary"
   | "secondary"
   | "white"
@@ -10,10 +10,10 @@ type ButtonVariants =
   | "primary-white"
   | "contact";
 
-const baseButtonStyles =
+const baseLinksStyles =
   "inline-flex transition-colors border-2 text-center disabled:cursor-not-allowed items-center justify-center gap-1.5 rounded";
 
-const buttonVariants = {
+const StyleVariants = {
   primary: twMerge(
     "bg-primary-dark hover:bg-primary focus:bg-primary text-white border-primary-dark",
   ),
@@ -43,14 +43,14 @@ export type LinkProps = {
   children: ReactNode;
   tabIndex?: number;
   onClick?: () => void;
-  buttonStyle?: ButtonVariants;
+  linkStyle?: StyleVariants;
   size?: "small" | "default" | "large";
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const LinkAsButton = ({
   href,
   onClick,
-  buttonStyle,
+  linkStyle,
   size = "default",
   tabIndex,
   children,
@@ -65,8 +65,8 @@ export const LinkAsButton = ({
       href={href}
       onClick={onClick}
       className={twMerge(
-        baseButtonStyles,
-        buttonStyle && buttonVariants[buttonStyle],
+        baseLinksStyles,
+        linkStyle && StyleVariants[linkStyle],
         sizes[size],
       )}
       tabIndex={tabIndex}
@@ -82,8 +82,8 @@ export const LinkAsButton = ({
       tabIndex={tabIndex}
       onClick={onClick}
       className={twMerge(
-        baseButtonStyles,
-        buttonStyle && buttonVariants[buttonStyle],
+        baseLinksStyles,
+        linkStyle && StyleVariants[linkStyle],
         sizes[size],
       )}
       {...rest}

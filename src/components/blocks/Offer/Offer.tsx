@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import { OfferImage } from "./parts/OfferImage";
-import { OfferInvoice } from "./parts/OfferInvoice";
-import { OfferHeader } from "./parts/OfferHeader";
+import { OfferImage } from "./parts/OfferImage/OfferImage";
+import { OfferInvoice } from "./parts/OfferInvoice/OfferInvoice";
 import { OfferFeaturesList } from "./parts/OfferFeaturesList/OfferFeaturesList";
 import { OfferFooter } from "./parts/OfferFooter/OfferFooter";
+import { OfferHeader } from "./parts/OfferHeader/OfferHeader";
 
 type Props = {
   children: ReactNode;

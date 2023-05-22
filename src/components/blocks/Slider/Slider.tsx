@@ -2,12 +2,12 @@
 
 import type { MouseEvent } from "react";
 import { useSlider } from "./useSlider";
-import { SliderLightboxItem } from "./SliderLightboxItem";
-import { SliderLightbox } from "./SliderLightbox";
-import { SliderLightboxTrack } from "./SliderLightboxTrack";
-import { SliderContainer } from "./SliderContainer";
-import { SliderTrack } from "./SliderTrack";
-import { SliderItem } from "./SliderItem";
+import { SliderLightboxItem } from "./parts/SliderLightbox/parts/SliderLightboxItem/SliderLightboxItem";
+import { SliderLightbox } from "./parts/SliderLightbox/SliderLightbox";
+import { SliderLightboxTrack } from "./parts/SliderLightbox/parts/SliderLightboxTrack/SliderLightboxTrack";
+import { SliderContainer } from "./parts/SliderContainer/SliderContainer";
+import { SliderTrack } from "./parts/SliderTrack/SliderTrack";
+import { SliderItem } from "./parts/SliderItem/SliderItem";
 import type { ImageFragment } from "@/generated/graphql";
 
 type Props = {

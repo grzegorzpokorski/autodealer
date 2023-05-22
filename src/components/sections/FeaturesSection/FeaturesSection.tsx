@@ -15,6 +15,7 @@ import {
 
 export const FeaturesSection = () => {
   const sectionTitleID = useId();
+
   return (
     <Section ariaLabelledby={sectionTitleID}>
       <Container>

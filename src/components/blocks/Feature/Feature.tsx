@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import { FeatureDescription } from "./FeatureDescription";
-import { FeatureHeader } from "./FeatureHeader";
-import { FeatureTitle } from "./FeatureTitle";
-import { FeatureIcon } from "./FeatureIcon";
+import { FeatureDescription } from "./parts/FeatureDescription/FeatureDescription";
+import { FeatureHeader } from "./parts/FeatureHeader/FeatureHeader";
+import { FeatureTitle } from "./parts/FeatureTitle/FeatureTitle";
+import { FeatureIcon } from "./parts/FeatureIcon/FeatureIcon";
 
 type Props = {
   children: ReactNode;

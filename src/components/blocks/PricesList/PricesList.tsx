@@ -1,5 +1,5 @@
-import { formatCurrency } from "@/utils/formatCurrency";
 import { twMerge } from "tailwind-merge";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 type Props = {
   invoice: boolean;
