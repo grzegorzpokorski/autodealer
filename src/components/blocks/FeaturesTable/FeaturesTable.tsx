@@ -1,5 +1,5 @@
 import type { OfferContentFragment } from "@/generated/graphql";
-import { formatNumber } from "@/utils/formatNumber";
+import { formatMileage } from "@/utils/formatMileage";
 
 type Props = {
   features: NonNullable<OfferContentFragment["features"]>;
@@ -29,7 +29,7 @@ export const FeaturesTable = ({ features }: Props) => {
         </tr>
         <tr key={features.przebieg} className="pb-10">
           <td>Przebieg</td>
-          <td>{formatNumber(parseInt(features.przebieg))} km</td>
+          <td>{formatMileage(parseInt(features.przebieg))} km</td>
         </tr>
         <tr key={features.rocznik} className="pb-10">
           <td>Rocznik</td>

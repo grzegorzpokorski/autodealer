@@ -6,7 +6,7 @@ import { Heading } from "@/components/blocks/Heading/Heading";
 import { GridList } from "@/components/blocks/GridList/GridList";
 import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
 import { Offer } from "@/components/blocks/Offer/Offer";
-import { formatNumber } from "@/utils/formatNumber";
+import { formatMileage } from "@/utils/formatMileage";
 import type { OfferContentFragment } from "@/generated/graphql";
 
 type Props = {
@@ -57,7 +57,7 @@ export const RecommendedOffersSection = ({
                     {offer.features.moc} KM
                   </Offer.FeaturesList.Item>
                   <Offer.FeaturesList.Item key={offer.features.przebieg}>
-                    {formatNumber(parseInt(offer.features.przebieg))} km
+                    {formatMileage(parseInt(offer.features.przebieg))} km
                   </Offer.FeaturesList.Item>
                   <Offer.FeaturesList.Item
                     key={offer.features.pojemnoscSilnika}

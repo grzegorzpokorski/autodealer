@@ -2,7 +2,7 @@ import Link from "next/link";
 import { GridList } from "@/components/blocks/GridList/GridList";
 import { Offer } from "@/components/blocks/Offer/Offer";
 import type { OfferContentFragment } from "@/generated/graphql";
-import { formatNumber } from "@/utils/formatNumber";
+import { formatMileage } from "@/utils/formatMileage";
 
 type Props = {
   offers: OfferContentFragment[];
@@ -28,7 +28,7 @@ export const OfferList = ({ offers }: Props) => (
                 {offer.features.moc} KM
               </Offer.FeaturesList.Item>
               <Offer.FeaturesList.Item key={offer.features.przebieg}>
-                {formatNumber(parseInt(offer.features.przebieg))} km
+                {formatMileage(parseInt(offer.features.przebieg))} km
               </Offer.FeaturesList.Item>
               <Offer.FeaturesList.Item key={offer.features.pojemnoscSilnika}>
                 {offer.features.pojemnoscSilnika}
