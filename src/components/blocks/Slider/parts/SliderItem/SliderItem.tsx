@@ -13,7 +13,7 @@ export const SliderItem = ({ image, isCurrent, onClick }: Props) => (
   <li
     key={image.url}
     className={twMerge(
-      "min-w-[100%] md:min-w-[60%] lg:min-w-[calc(40%)] min-h-[300px] bg-blue-500 h-64 flex flex-col items-center justify-center text-white font-bold text-2xl overflow-hidden snap-start relative",
+      "min-w-[100%] md:min-w-[60%] lg:min-w-[calc(40%)] min-h-[300px] bg-blue-500 h-64 flex flex-col items-center justify-center text-white font-bold text-2xl overflow-hidden relative",
       "md:border-4 transition-[border]",
       isCurrent ? "border-primary" : "border-none",
       "rounded md:rounded-lg",

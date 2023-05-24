@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="pl"
-      className={`${poppins.variable} bg-light-gray text-secondary`}
+      className={`${poppins.variable} bg-light-gray text-secondary scrollbar-gutter-stable `}
     >
       <body>
         <Layout>{children}</Layout>
