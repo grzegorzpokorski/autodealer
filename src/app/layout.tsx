@@ -22,10 +22,6 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: "/api/icon",
-    apple: "/api/icon?size=180",
-  },
   openGraph: {
     images: [
       {

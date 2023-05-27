@@ -1,11 +1,12 @@
+import { ENV } from "@/lib/env";
 import type { NextRequest } from "next/server";
 import { ImageResponse } from "next/server";
 
 export const runtime = "edge";
 
-const font = fetch(new URL("../Poppins-Bold.ttf", import.meta.url)).then(
-  (res) => res.arrayBuffer(),
-);
+const font = fetch(
+  new URL("../../../assets/Poppins-Bold.ttf", import.meta.url),
+).then((res) => res.arrayBuffer());
 
 export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
   try {
@@ -17,9 +18,13 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
       ? parseInt(searchParams.get("size") || "0")
       : 32;
 
-    const part1 = searchParams.has("part1") ? searchParams.get("part1") : "A";
+    const part1 = searchParams.has("part1")
+      ? searchParams.get("part1")
+      : ENV.SITE_NAME_FIRST_PART.slice(0, 1);
 
-    const part2 = searchParams.has("part2") ? searchParams.get("part2") : "D";
+    const part2 = searchParams.has("part2")
+      ? searchParams.get("part2")
+      : ENV.SITE_NAME_SECOND_PART.slice(0, 1);
 
     const fontSize = size / 2;
 
