@@ -7,6 +7,18 @@ export const metadata = {
   alternates: {
     canonical: "finansowanie",
   },
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?width=1200&height=630&subtitle=${encodeURIComponent(
+          "Finansowanie",
+        )}`,
+        width: 1200,
+        height: 630,
+        alt: "",
+      },
+    ],
+  },
 };
 
 export default function Page() {

@@ -20,6 +20,18 @@ export async function generateMetadata({
     alternates: {
       canonical: `/sprzedane/${brandSlug}/${page}`,
     },
+    openGraph: {
+      images: [
+        {
+          url: `/api/og?width=1200&height=630&subtitle=${encodeURIComponent(
+            `Sprzedane: ${brandName}`,
+          )}`,
+          width: 1200,
+          height: 630,
+          alt: "",
+        },
+      ],
+    },
   };
 }
 

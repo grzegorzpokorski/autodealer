@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import type { ReactNode } from "react";
 import { Layout } from "@/components/blocks/Layout/Layout";
 import { baseUrl, indexPage, pageName } from "@/settings/consts";
-import defaultOgImage from "publicDir/default-og.png";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -23,12 +22,16 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/api/icon",
+    apple: "/api/icon?size=180",
+  },
   openGraph: {
     images: [
       {
-        url: defaultOgImage.src,
-        width: defaultOgImage.width,
-        height: defaultOgImage.height,
+        url: "/api/og?width=1200&height=630",
+        width: 1200,
+        height: 630,
         alt: "",
       },
     ],

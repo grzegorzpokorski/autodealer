@@ -5,7 +5,6 @@ import { getOfferBySlug } from "@/queries/getOfferBySlug";
 import { getOffersSlugs } from "@/queries/getOffersSlugs";
 import { getOffersBySlugs } from "@/queries/getOffersBySlugs";
 import { shuffleArray } from "@/utils/shuffleArray";
-import dafaultOgImage from "publicDir/default-og.png";
 
 export const dynamicParams = true;
 
@@ -42,9 +41,9 @@ export async function generateMetadata({
       : {
           images: [
             {
-              url: dafaultOgImage.src,
-              width: dafaultOgImage.width,
-              height: dafaultOgImage.height,
+              url: `/api/og?width=1200&height=630`,
+              width: 1200,
+              height: 630,
               alt: "",
             },
           ],

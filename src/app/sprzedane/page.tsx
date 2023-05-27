@@ -8,6 +8,18 @@ export const metadata = {
   alternates: {
     canonical: "sprzedane",
   },
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?width=1200&height=630&subtitle=${encodeURIComponent(
+          "Sprzedane",
+        )}`,
+        width: 1200,
+        height: 630,
+        alt: "",
+      },
+    ],
+  },
 };
 
 export default async function Page() {
