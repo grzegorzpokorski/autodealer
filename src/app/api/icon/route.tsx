@@ -1,4 +1,4 @@
-import { ENV } from "@/lib/env";
+import { env } from "@/lib/env";
 import type { NextRequest } from "next/server";
 import { ImageResponse } from "next/server";
 
@@ -20,11 +20,11 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 
     const part1 = searchParams.has("part1")
       ? searchParams.get("part1")
-      : ENV.SITE_NAME_FIRST_PART.slice(0, 1);
+      : env.SITE_NAME_FIRST_PART.slice(0, 1);
 
     const part2 = searchParams.has("part2")
       ? searchParams.get("part2")
-      : ENV.SITE_NAME_SECOND_PART.slice(0, 1);
+      : env.SITE_NAME_SECOND_PART.slice(0, 1);
 
     const fontSize = size / 2;
 

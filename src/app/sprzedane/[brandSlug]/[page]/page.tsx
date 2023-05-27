@@ -4,7 +4,7 @@ import { OffersSection } from "@/components/templates/OffersSection/OffersSectio
 import { getBrandNameBySlug } from "@/queries/getBrandNameBySlug";
 import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
 import { defaultSort, sorting } from "@/lib/constants";
-import { offersPerPage } from "@/settings/consts";
+import { env } from "@/lib/env";
 
 export async function generateMetadata({
   params: { brandSlug, page },
@@ -54,14 +54,14 @@ export default async function Page({
   const { offers, total } = await getOffersByBrandSlug({
     brandSlug,
     sold: true,
-    first: offersPerPage,
-    skip: (currentPage - 1) * offersPerPage,
+    first: env.OFFERS_PER_PAGE,
+    skip: (currentPage - 1) * env.OFFERS_PER_PAGE,
     order: sortKey,
   });
 
   if (offers.length === 0) return notFound();
 
-  const totalPages = Math.ceil(total / offersPerPage);
+  const totalPages = Math.ceil(total / env.OFFERS_PER_PAGE);
 
   return (
     <OffersSection

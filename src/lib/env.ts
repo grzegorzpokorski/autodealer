@@ -12,8 +12,12 @@ const envSchema = z
   })
   .required();
 
-export const ENV = envSchema.parse(process.env);
-
-export const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : "http://localhost:3000";
+export const env = envSchema.parse({
+  HYGRAPH_URL: process.env.HYGRAPH_URL,
+  INDEX_SITE: process.env.INDEX_SITE,
+  SITE_NAME: process.env.SITE_NAME,
+  SITE_NAME_FIRST_PART: process.env.SITE_NAME_FIRST_PART,
+  SITE_NAME_SECOND_PART: process.env.SITE_NAME_SECOND_PART,
+  SITE_DESCRIPTION: process.env.SITE_DESCRIPTION,
+  OFFERS_PER_PAGE: process.env.OFFERS_PER_PAGE,
+});
