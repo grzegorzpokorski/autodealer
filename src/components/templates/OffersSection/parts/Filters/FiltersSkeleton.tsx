@@ -4,7 +4,7 @@ export const FiltersSkeleton = () => {
       <div className="hidden md:inline-flex w-48 h-6 rounded bg-skeleton"></div>
       <div className="flex flex-row flex-wrap items-center justify-between gap-2">
         <div className="w-12 h-6 rounded bg-skeleton"></div>
-        <div className="w-52 h-10 rounded bg-skeleton"></div>
+        <div className="w-64 h-10 rounded bg-skeleton"></div>
       </div>
     </nav>
   );
