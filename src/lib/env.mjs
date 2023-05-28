@@ -5,7 +5,10 @@ export const env = createEnv({
   server: {
     HYGRAPH_URL: z.string().url(),
     OFFERS_PER_PAGE: z.coerce.number().int().min(1).optional().default(6),
-    INDEX_SITE: z.coerce.boolean().optional().default(false),
+    INDEX_SITE: z
+      .preprocess((v) => v === "true" || v === "1", z.boolean())
+      .optional()
+      .default(false),
   },
   client: {
     NODE_ENV: z.enum(["development", "test", "production"]),
