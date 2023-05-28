@@ -1,17 +1,18 @@
 # AutoDealer
 
-This repo contains the source code of the webpage which presenting car dealer offer.
+This repo contains the source code of the website that showcases a car dealer offer. Project achieves at least 95/100 points in google PageSpeed Insights tests referring to the core web vitals.
+
+Some of used technologies:
+
+- TypeScript
+- Next.js
+- Hygraph CMS
+- GraphQL + GraphQL Code Generator
+- Tailwind CSS
 
 ## Live 🌐
 
 [https://autodealer.vercel.app/](https://autodealer.vercel.app/)
-
-## Features
-
-- Available offers are fetch from headless cms - Hygraph - and then static generated, what causes that pages are ultra fast and achieve nearly 100 points in google page insights.
-- Each offer page features a custom-written, reusable, fully responsive, and gesture-friendly slider that also presents photos in a slideshow, also known as a lightbox.
-- The webpage includes an archive of sold offers - given the significant quantity of them, pages showcasing archived offers are dynamically generated upon request and cached. This approach helps minimize app build time and conserve server resources.
-- Randomized recomended offers.
 
 ## Some screenshots:
 
