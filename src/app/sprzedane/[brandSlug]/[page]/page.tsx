@@ -4,7 +4,7 @@ import { OffersSection } from "@/components/templates/OffersSection/OffersSectio
 import { getBrandNameBySlug } from "@/queries/getBrandNameBySlug";
 import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
 import { defaultSort, sorting } from "@/lib/constants";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 export async function generateMetadata({
   params: { brandSlug, page },

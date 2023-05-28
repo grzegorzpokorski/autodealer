@@ -2,7 +2,7 @@ import "./../styles/globals.css";
 import { Poppins } from "next/font/google";
 import type { ReactNode } from "react";
 import { Layout } from "@/components/blocks/Layout/Layout";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 import { baseUrl } from "@/lib/constants";
 
 const poppins = Poppins({
@@ -12,9 +12,11 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: { default: env.SITE_NAME, template: `${env.SITE_NAME} | %s` },
-  description:
-    "Samochody z Polskiej sieci dealerskiej. Sprzedaż samochodów Gdynia.",
+  title: {
+    default: env.NEXT_PUBLIC_SITE_NAME,
+    template: `${env.NEXT_PUBLIC_SITE_NAME} | %s`,
+  },
+  description: env.NEXT_PUBLIC_SITE_DESCRIPTION,
   robots: {
     index: env.INDEX_SITE,
     follow: env.INDEX_SITE,

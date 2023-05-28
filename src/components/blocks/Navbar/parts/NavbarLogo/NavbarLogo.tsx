@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useNavbarLogo } from "./useNavbarLogo";
+import { env } from "@/lib/env.mjs";
 
 export const NavbarLogo = () => {
   const { isHome } = useNavbarLogo();
@@ -10,7 +11,10 @@ export const NavbarLogo = () => {
     return (
       <Link href="#">
         <h1 className="font-bold text-xl text-primary-dark">
-          Auto<span className="text-secondary">Dealer</span>
+          {env.NEXT_PUBLIC_SITE_NAME_FIRST_PART}
+          <span className="text-secondary">
+            {env.NEXT_PUBLIC_SITE_NAME_SECOND_PART}
+          </span>
         </h1>
       </Link>
     );
@@ -19,7 +23,10 @@ export const NavbarLogo = () => {
   return (
     <Link href="/">
       <p className="font-bold text-xl text-primary-dark">
-        Auto<span className="text-secondary">Dealer</span>
+        {env.NEXT_PUBLIC_SITE_NAME_FIRST_PART}
+        <span className="text-secondary">
+          {env.NEXT_PUBLIC_SITE_NAME_SECOND_PART}
+        </span>
       </p>
     </Link>
   );

@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { ImageResponse } from "next/server";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 export const runtime = "edge";
 
@@ -24,11 +24,11 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 
     const part1 = searchParams.has("part1")
       ? searchParams.get("part1")
-      : env.SITE_NAME_FIRST_PART;
+      : env.NEXT_PUBLIC_SITE_NAME_FIRST_PART;
 
     const part2 = searchParams.has("part2")
       ? searchParams.get("part2")
-      : env.SITE_NAME_SECOND_PART;
+      : env.NEXT_PUBLIC_SITE_NAME_SECOND_PART;
 
     const subtitle = searchParams.get("subtitle");
 

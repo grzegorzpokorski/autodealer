@@ -1,8 +1,7 @@
 import type { TypedDocumentString } from "@/generated/graphql";
-import { invariant } from "@/utils/invariant";
+import { env } from "@/lib/env.mjs";
 
-const endpoint = process.env.HYGRAPH_URL;
-invariant(endpoint, "There is no HYGRAPH_URL provided in .env file!");
+const endpoint = env.HYGRAPH_URL;
 
 type GraphQlError = {
   message: string;
@@ -20,8 +19,6 @@ export async function fetcher<Result, Variables>({
   headers?: HeadersInit;
   cache?: RequestCache;
 }): Promise<Result> {
-  invariant(endpoint, "There is no HYGRAPH_URL provided in .env file!");
-
   const result = await fetch(endpoint, {
     method: "POST",
     headers: {

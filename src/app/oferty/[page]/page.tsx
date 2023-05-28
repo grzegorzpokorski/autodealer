@@ -3,7 +3,7 @@ import { defaultSort, sorting } from "@/lib/constants";
 import { getOffers } from "@/queries/getOffers";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 export function generateMetadata({
   params: { page },

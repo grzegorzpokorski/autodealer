@@ -1,6 +1,6 @@
 import { GridList } from "@/components/blocks/GridList/GridList";
 import { OfferSkeleton } from "@/components/blocks/Offer/OfferSkeleton";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 export const OffersListSkeleton = () => {
   return (
