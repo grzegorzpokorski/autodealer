@@ -28,7 +28,8 @@ export const SliderLightbox = ({
   <Portal>
     <div
       className={twMerge(
-        "fixed bg-black/90 z-50 transition-all duration-300",
+        "fixed bg-black/90 z-50",
+        "transition-all duration-300 motion-reduce:transition-none",
         isOpen ? "opacity-100 inset-0" : "opacity-0 -top-[100vh]",
       )}
       onClick={onClose}

@@ -36,7 +36,7 @@ export const SliderTrack = forwardRef<HTMLUListElement, Props>(
   ) => (
     <>
       <ul
-        className="overflow-hidden flex flex-row gap-4 scroll-smooth snap-x"
+        className="overflow-hidden flex flex-row gap-4 motion-safe:scroll-smooth snap-x"
         ref={ref}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}

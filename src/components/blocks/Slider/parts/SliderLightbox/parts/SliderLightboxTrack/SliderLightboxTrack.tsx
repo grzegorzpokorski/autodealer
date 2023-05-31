@@ -24,7 +24,8 @@ export const SliderLightboxTrack = ({
 }: Props) => (
   <ul
     className={twMerge(
-      "list-none ovevflow-hidden flex flex-row transition-[transform] duration-[500ms]",
+      "list-none ovevflow-hidden flex flex-row",
+      "transition-[transform] duration-[500ms] motion-reduce:transition-none",
     )}
     style={{ transform: `translateX(calc(-${currentSlide}*100dvw))` }}
     onTouchStart={onTouchStart}

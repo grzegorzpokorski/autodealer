@@ -11,7 +11,7 @@ type StyleVariants =
   | "contact";
 
 const baseLinksStyles =
-  "inline-flex transition-colors border-2 text-center disabled:cursor-not-allowed items-center justify-center gap-1.5 rounded";
+  "inline-flex border-2 text-center disabled:cursor-not-allowed items-center justify-center gap-1.5 rounded transition-colors motion-reduce:transition-none";
 
 const StyleVariants = {
   primary: twMerge(

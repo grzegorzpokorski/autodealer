@@ -71,7 +71,7 @@ export const SingleOffer = async ({ offer }: Props) => {
               <PricesList invoice={offer.invoice} price={offer.price} />
               <div className="flex flex-row flex-wrap justify-center gap-2">
                 {offer.sold ? (
-                  <p className="inline-flex transition-colors border-2 text-center items-center justify-center gap-1.5 bg-white text-gray-800 border-white px-5 py-2 text-base font-bold rounded flex-1">
+                  <p className="inline-flex border-2 text-center items-center justify-center gap-1.5 bg-white text-gray-800 border-white px-5 py-2 text-base font-bold rounded flex-1 transition-colors motion-reduce:transition-none">
                     sprzedany
                   </p>
                 ) : (

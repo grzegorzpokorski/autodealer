@@ -25,7 +25,7 @@ export const Filters = ({ totalOffers }: Props) => {
           name="sortingMethod"
           id="sortingMethod"
           className={twMerge(
-            "rounded transition",
+            "rounded transition motion-reduce:transition-none",
             "border-2 border-secondary/80",
             "hover:border-secondary focus:border-secondary",
           )}

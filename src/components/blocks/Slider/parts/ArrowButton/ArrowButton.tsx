@@ -17,7 +17,8 @@ export const ArrowButton = ({
   return (
     <button
       className={twMerge(
-        "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full transition-all",
+        "w-10 h-10 bg-primary hover:bg-primary-dark focus:bg-primary-dark text-white flex flex-col items-center justify-center rounded-full",
+        "transition-all motion-reduce:transition-none",
         "absolute top-1/2 -translate-y-1/2",
         position === "left" && "left-4",
         position === "right" && "right-4",

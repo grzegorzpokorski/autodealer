@@ -7,7 +7,8 @@ type Props = {
 };
 
 export const NavbarToggler = ({ isOpen, onClick, menuID }: Props) => {
-  const itemStyles = "ease h-0.5 w-8 bg-secondary transition duration-300";
+  const itemStyles =
+    "ease h-0.5 w-8 bg-secondary transition duration-300 motion-reduce:transition-none";
 
   return (
     <button

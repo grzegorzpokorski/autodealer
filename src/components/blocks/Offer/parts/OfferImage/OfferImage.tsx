@@ -17,7 +17,7 @@ export const OfferImage = async ({ image }: Props) => {
           alt={image.alt || ""}
           width={image.width || 600}
           height={image.height || 300}
-          className="object-cover object-center w-full h-full hover:scale-105 transition-all"
+          className="object-cover object-center w-full h-full motion-safe:hover:scale-105 transition-all motion-reduce:transition-none"
           sizes="(max-width: 720px) 100vw, 50vw"
           placeholder="blur"
           blurDataURL={plaiceholder}

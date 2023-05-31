@@ -4,7 +4,7 @@ import { OffersSection } from "@/components/templates/OffersSection/OffersSectio
 
 export const OffersSectionSkeleton = () => {
   return (
-    <div role="status" className="animate-pulse">
+    <div role="status" className="motion-safe:animate-pulse">
       <Section ariaLabelledby="loading" padding="offersArchive">
         <Container>
           <OffersSection.FiltersSkeleton />

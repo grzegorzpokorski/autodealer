@@ -11,7 +11,8 @@ type Props = {
 export const NavbarMenu = ({ children, id, isMobileMenuOpen }: Props) => (
   <div
     className={twMerge(
-      "list-none lg:flex lg:static fixed inset-0 flex flex-col bg-white items-center justify-center z-20 -translate-y-full lg:translate-y-0 transition-[transform] duration-300",
+      "list-none lg:flex lg:static fixed inset-0 flex flex-col bg-white items-center justify-center z-20 -translate-y-full lg:translate-y-0",
+      "transition-[transform] duration-300 motion-reduce:transition-none",
       isMobileMenuOpen && "translate-y-0",
     )}
   >

@@ -33,7 +33,8 @@ export const NavbarMenuItem = ({ label, href, button, onClick }: Props) => {
       <NextLink
         href={href}
         className={twMerge(
-          "text-secondary/60 hover:text-secondary focus:text-secondary transition-colors",
+          "text-secondary/60 hover:text-secondary focus:text-secondary",
+          "transition-colors motion-reduce:transition-none",
           pathname === href && "text-secondary",
         )}
         onClick={onClick}
