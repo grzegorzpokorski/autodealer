@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CategoryLinkCounter } from "./CategoryLinkCounter";
 
-const meta: Meta<typeof CategoryLinkCounter> = {
-  title: "Components/blocks/CategoryLink/CategoryLinkCounter",
+const meta = {
   component: CategoryLinkCounter,
   tags: ["autodocs"],
   argTypes: {
@@ -10,14 +9,13 @@ const meta: Meta<typeof CategoryLinkCounter> = {
       control: "number",
     },
   },
-};
+} satisfies Meta<typeof CategoryLinkCounter>;
 
 export default meta;
-
-type Story = StoryObj<typeof CategoryLinkCounter>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: "10",
+    children: "15",
   },
 };
