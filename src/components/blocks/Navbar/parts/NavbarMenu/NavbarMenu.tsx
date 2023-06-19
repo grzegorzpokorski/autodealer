@@ -13,7 +13,9 @@ export const NavbarMenu = ({ children, id, isMobileMenuOpen }: Props) => (
     className={twMerge(
       "list-none lg:flex lg:static fixed inset-0 flex flex-col bg-white items-center justify-center z-20 -translate-y-full lg:translate-y-0",
       "transition-all duration-300 motion-reduce:transition-none",
-      isMobileMenuOpen ? "translate-y-0 opacity-100" : "opacity-0",
+      isMobileMenuOpen
+        ? "translate-y-0 opacity-100"
+        : "opacity-0 lg:opacity-100",
     )}
   >
     <ul
