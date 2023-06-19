@@ -14,7 +14,13 @@ const meta = {
       typ: "Sedan",
     },
   },
-  decorators: [(story) => <div className="prose max-w-none">{story()}</div>],
+  decorators: [
+    (Story) => (
+      <div className="prose m-4">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof FeaturesTable>;
 
 export default meta;

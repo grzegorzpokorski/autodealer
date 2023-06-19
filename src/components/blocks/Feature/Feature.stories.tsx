@@ -1,23 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Feature } from "./Feature";
-import * as FeatureTitleStories from "./parts/FeatureTitle/FeatureTitle.stories";
-import * as FeatureIconStories from "./parts/FeatureIcon/FeatureIcon.stories";
-import * as FeatureDescriptionStories from "./parts/FeatureDescription/FeatureDescription.stories";
+import { FaUsers } from "react-icons/fa";
 
 const meta = {
   component: Feature,
   decorators: [
     (Story) => (
-      <ul className="list-none">
+      <ul className="list-none max-w-sm m-4">
         <Story />
       </ul>
     ),
   ],
-  parameters: {
-    viewport: {
-      defaultViewport: "sm",
-    },
-  },
 } satisfies Meta<typeof Feature>;
 
 export default meta;
@@ -31,11 +24,14 @@ export const WithDescription: Story = {
     <Feature {...args}>
       <Feature.Header>
         <Feature.Title>
-          {FeatureTitleStories.Default.args.children}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </Feature.Title>
       </Feature.Header>
       <Feature.Description>
-        {FeatureDescriptionStories.Default.args.children}
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
+        tempore pariatur tenetur dolorum cumque ipsa laborum. Modi corrupti et
+        cum, quas totam pariatur nam nihil quae, eius eligendi laudantium
+        consectetur.
       </Feature.Description>
     </Feature>
   ),
@@ -48,13 +44,18 @@ export const WithIcon: Story = {
   render: (args) => (
     <Feature {...args}>
       <Feature.Header>
-        <Feature.Icon>{FeatureIconStories.Default.args.children}</Feature.Icon>
+        <Feature.Icon>
+          <FaUsers />
+        </Feature.Icon>
         <Feature.Title>
-          {FeatureTitleStories.Default.args.children}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </Feature.Title>
       </Feature.Header>
       <Feature.Description>
-        {FeatureDescriptionStories.Default.args.children}
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
+        tempore pariatur tenetur dolorum cumque ipsa laborum. Modi corrupti et
+        cum, quas totam pariatur nam nihil quae, eius eligendi laudantium
+        consectetur.
       </Feature.Description>
     </Feature>
   ),

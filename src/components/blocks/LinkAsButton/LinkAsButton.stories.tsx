@@ -4,6 +4,13 @@ import { LinkAsButton } from "./LinkAsButton";
 const meta = {
   component: LinkAsButton,
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div className="m-4">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof LinkAsButton>;
 
 export default meta;
@@ -11,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: "Placeholder text for button",
+    children: "Link as button",
     href: "/",
     linkStyle: "primary",
   },
@@ -66,3 +73,17 @@ export const Contact: Story = {
     },
   },
 };
+
+export const AllSizes = () => (
+  <ul className="list-none flex flex-row items-center gap-4">
+    <LinkAsButton href="#" linkStyle="primary" size="small">
+      {Primary.args.children}
+    </LinkAsButton>
+    <LinkAsButton href="#" linkStyle="primary" size="default">
+      {Primary.args.children}
+    </LinkAsButton>
+    <LinkAsButton href="#" linkStyle="primary" size="large">
+      {Primary.args.children}
+    </LinkAsButton>
+  </ul>
+);

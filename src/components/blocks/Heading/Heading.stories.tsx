@@ -11,8 +11,9 @@ type Story = StoryObj<typeof Heading>;
 
 export const H1: Story = {
   args: {
-    children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    children: "Lorem ipsum dolor sit amet.",
     as: "h1",
+    size: "base",
   },
 };
 
@@ -36,3 +37,17 @@ export const H4: Story = {
     as: "h4",
   },
 };
+
+export const AllSizes = () => (
+  <div className="flex flex-col gap-4">
+    <Heading as="h1" size="base">
+      {H1.args?.children}
+    </Heading>
+    <Heading as="h1" size="md">
+      {H1.args?.children}
+    </Heading>
+    <Heading as="h1" size="lg">
+      {H1.args?.children}
+    </Heading>
+  </div>
+);
