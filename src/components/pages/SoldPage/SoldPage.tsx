@@ -5,7 +5,7 @@ import { Heading } from "@/components/blocks/Heading/Heading";
 import { Main } from "@/components/blocks/Main/Main";
 import { Section } from "@/components/blocks/Section/Section";
 import { DefaultBanner } from "@/components/sections/DefaultBanner/DefaultBanner";
-import { HedaerSection } from "@/components/templates/HeaderSection/HeaderSection";
+import { HeaderSection } from "@/components/templates/HeaderSection/HeaderSection";
 import type { GetBrandsOfSoldOffersQuery } from "@/generated/graphql";
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 export const SoldPage = ({ brands }: Props) => {
   return (
     <>
-      <HedaerSection
+      <HeaderSection
         title="Sprzedane"
         description="Zapraszam do obejrzenia ciekawych samochodów jakie zostały zakupione
             w firmie AUTO-Handel. Modele wyselekcjonowane wg. marek."

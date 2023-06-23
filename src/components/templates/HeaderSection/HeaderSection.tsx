@@ -7,7 +7,7 @@ type Props = {
   description?: string;
 };
 
-export const HedaerSection = ({ title, description }: Props) => {
+export const HeaderSection = ({ title, description }: Props) => {
   const headerTitleID = useId();
 
   return (
