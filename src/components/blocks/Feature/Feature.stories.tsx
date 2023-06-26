@@ -4,11 +4,14 @@ import { FaUsers } from "react-icons/fa";
 
 const meta = {
   component: Feature,
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <ul className="list-none max-w-sm m-4">
-        <Story />
-      </ul>
+      <div className="m-4">
+        <ul className="list-none">
+          <Story />
+        </ul>
+      </div>
     ),
   ],
 } satisfies Meta<typeof Feature>;

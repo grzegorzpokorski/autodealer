@@ -16,24 +16,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    children: "Link as button",
-    href: "/",
-    linkStyle: "primary",
+    title: "Section title",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, porro molestiae. Reiciendis mollitia tempora repellat eos et placeat. Iusto placeat explicabo dicta alias quaerat accusamus quos numquam sit asperiores doloremque?",
   },
 };
-
-export const AllSizes = () => (
-  <ul className="list-none flex flex-row items-center gap-4">
-    <HeaderSection href="#" linkStyle="primary" size="small">
-      {Primary.args.children}
-    </HeaderSection>
-    <HeaderSection href="#" linkStyle="primary" size="default">
-      {Primary.args.children}
-    </HeaderSection>
-    <HeaderSection href="#" linkStyle="primary" size="large">
-      {Primary.args.children}
-    </HeaderSection>
-  </ul>
-);
+export const TitleOnly: Story = {
+  args: {
+    title: "Section title",
+  },
+};
