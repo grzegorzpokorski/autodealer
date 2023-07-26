@@ -17,7 +17,6 @@ export const SinglePage = ({ offer, recommendedOffers }: Props) => {
     <>
       <Main>
         <Container>
-          {/* @ts-expect-error Server Component */}
           <SingleOffer offer={offer} />
         </Container>
         <RecommendedOffersSection
