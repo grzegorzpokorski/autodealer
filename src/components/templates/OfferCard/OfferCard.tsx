@@ -7,7 +7,7 @@ type Props = {
   offer: OfferContentFragment;
 };
 
-export const OfferListItem = ({ offer }: Props) => (
+export const OfferCard = ({ offer }: Props) => (
   <Offer key={offer.title}>
     {offer.invoice && <Offer.Invoice />}
     <Link href={`/oferta/${offer.slug}`} tabIndex={-1}>

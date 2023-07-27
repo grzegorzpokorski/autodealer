@@ -1,5 +1,5 @@
 import { GridList } from "@/components/blocks/GridList/GridList";
-import { OfferListItem } from "@/components/templates/OfferListItem/OfferListItem";
+import { OfferCard } from "@/components/templates/OfferCard/OfferCard";
 import type { OfferContentFragment } from "@/generated/graphql";
 
 type Props = {
@@ -9,6 +9,6 @@ type Props = {
 export const OfferList = ({ offers }: Props) => (
   <GridList>
     {offers.length > 0 &&
-      offers.map((offer) => <OfferListItem key={offer.id} offer={offer} />)}
+      offers.map((offer) => <OfferCard key={offer.id} offer={offer} />)}
   </GridList>
 );

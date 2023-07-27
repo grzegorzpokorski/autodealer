@@ -4,7 +4,7 @@ import { Section } from "@/components/blocks/Section/Section";
 import { Heading } from "@/components/blocks/Heading/Heading";
 import { GridList } from "@/components/blocks/GridList/GridList";
 import { LinkAsButton } from "@/components/blocks/LinkAsButton/LinkAsButton";
-import { OfferListItem } from "@/components/templates/OfferListItem/OfferListItem";
+import { OfferCard } from "@/components/templates/OfferCard/OfferCard";
 import type { OfferContentFragment } from "@/generated/graphql";
 
 type Props = {
@@ -36,7 +36,7 @@ export const RecommendedOffersSection = ({
         </header>
         <GridList margin="top">
           {offers.map((offer) => (
-            <OfferListItem key={offer.id} offer={offer} />
+            <OfferCard key={offer.id} offer={offer} />
           ))}
         </GridList>
         {cta && (
