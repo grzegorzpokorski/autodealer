@@ -6,6 +6,8 @@ import { getOffersByBrandSlug } from "@/queries/getOffersByBrandSlug";
 import { defaultSort, sorting } from "@/lib/constants";
 import { env } from "@/lib/env.mjs";
 
+export const revalidate = 86_400;
+
 export async function generateMetadata({
   params: { brandSlug, page },
 }: {
