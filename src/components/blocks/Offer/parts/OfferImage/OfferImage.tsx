@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ImageFragment } from "@/generated/graphql";
-import { getPlaiceholder } from "plaiceholder";
 import defaultOgImage from "publicDir/default-og.png";
+import { getPlaiceholderImage } from "@/lib/plaiceholderImage";
 
 type Props = {
   image: ImageFragment;
@@ -9,7 +9,7 @@ type Props = {
 
 export const OfferImage = async ({ image }: Props) => {
   if (image) {
-    const { base64: plaiceholder } = await getPlaiceholder(image.url);
+    const { base64: plaiceholder } = await getPlaiceholderImage(image.url);
     return (
       <picture className="w-full h-72 max-h-72 overflow-hidden relative block rounded-t-md bg-primary">
         <Image

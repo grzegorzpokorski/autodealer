@@ -4,7 +4,7 @@ import { ShadowBox } from "@/components/blocks/ShadowBox/ShadowBox";
 import { PricesList } from "@/components/blocks/PricesList/PricesList";
 import { FeaturesTable } from "@/components/blocks/FeaturesTable/FeaturesTable";
 import type { OfferContentFragment } from "@/generated/graphql";
-import { getPlaiceholder } from "plaiceholder";
+import { getPlaiceholderImage } from "@/lib/plaiceholderImage";
 
 type Props = {
   offer: OfferContentFragment;
@@ -13,7 +13,7 @@ type Props = {
 export const SingleOffer = async ({ offer }: Props) => {
   const images = await Promise.all(
     offer.gallery.map(async (image) => {
-      const { base64 } = await getPlaiceholder(image.thumbnail);
+      const { base64 } = await getPlaiceholderImage(image.thumbnail);
       return {
         ...image,
         plaiceholder: base64,

@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 import { env } from "@/lib/env.mjs";
 
 export const runtime = "edge";
