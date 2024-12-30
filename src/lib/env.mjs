@@ -9,6 +9,9 @@ export const env = createEnv({
       .preprocess((v) => v === "true" || v === "1", z.boolean())
       .optional()
       .default(false),
+    OPTIMIZE_IMAGES: z
+      .enum(["true", "false"])
+      .transform((val) => (val === "true" ? true : false)),
   },
   client: {
     NODE_ENV: z.enum(["development", "test", "production"]),
@@ -22,6 +25,7 @@ export const env = createEnv({
     HYGRAPH_URL: process.env.HYGRAPH_URL,
     OFFERS_PER_PAGE: process.env.OFFERS_PER_PAGE,
     INDEX_SITE: process.env.INDEX_SITE,
+    OPTIMIZE_IMAGES: process.env.OPTIMIZE_IMAGES,
 
     NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
     NEXT_PUBLIC_SITE_NAME_FIRST_PART:

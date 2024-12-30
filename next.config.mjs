@@ -1,10 +1,17 @@
-import "./src/lib/env.mjs";
+import { env } from "./src/lib/env.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ hostname: "media.graphassets.com", protocol: "https" }],
-    unoptimized: process.env.VERCEL_ENV !== "production",
+    remotePatterns: [
+      {
+        hostname: "eu-central-1-shared-euc1-02.graphassets.com",
+        protocol: "https",
+      },
+    ],
+    unoptimized:
+      process.env.VERCEL_ENV !== "production" ||
+      env.OPTIMIZE_IMAGES === "false",
   },
   async redirects() {
     return [
