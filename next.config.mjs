@@ -5,13 +5,11 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "eu-central-1-shared-euc1-02.graphassets.com",
+        hostname: "eu-central-1.graphassets.com",
         protocol: "https",
       },
     ],
-    unoptimized:
-      process.env.VERCEL_ENV !== "production" ||
-      env.OPTIMIZE_IMAGES === "false",
+    unoptimized: env.OPTIMIZE_IMAGES === false,
   },
   async redirects() {
     return [
