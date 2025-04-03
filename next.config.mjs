@@ -10,6 +10,7 @@ const nextConfig = {
       },
     ],
     unoptimized: env.OPTIMIZE_IMAGES === false,
+    minimumCacheTTL: 604800, // week
   },
   async redirects() {
     return [
